@@ -12,14 +12,14 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
-    @media (max-width: 991px) {
+    @media (max-width: 1440px) {
       font-size: 17px;
       top: 8px;
     }
   }
 
   &__input {
-    @media (max-width: 991px) {
+    @media (max-width: 1440px) {
       font-size: 17px;
       padding: 30px 24px 6px;
     }
