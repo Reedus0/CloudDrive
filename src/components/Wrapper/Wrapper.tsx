@@ -11,7 +11,7 @@ const Wrapper = (props: any) => {
 
   return (
     <div className='wrapper'>
-      <img className={['wrapper__bg', !isAuth ? '_blur' : ''].join(' ')} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/bg.png?raw=true'/>
+      <img className={['wrapper__bg', !isAuth ? '_blur' : ''].join(' ')} alt="Background" src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/bg.png?raw=true'/>
       <div className='wrapper__inner'>
         {props.children}
       </div>

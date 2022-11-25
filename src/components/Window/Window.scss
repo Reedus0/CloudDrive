@@ -8,23 +8,16 @@
  
 
   width: calc(100vw - 250px);
-  height: calc(100vh - 150px);
 
   @media (max-width: 1440px) {
     width: calc(90vw - 50px);
-    height: calc(100vh - 120px);
   }
 
   @media (max-width: 991px) {
     width: calc(90vw - 20px);
-    height: calc(100vh - 100px);
   }
 
   &__inner{
-    padding: 50px;
-    @media (max-width: 767px) {
-      padding: 25px;
-    }
   }
 
   &__title {
