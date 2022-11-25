@@ -1,0 +1,21 @@
+.wrapper {
+  min-width: 100vw;
+  min-height: calc(100vh - 140px);
+  padding-bottom: 70px;
+
+  @media (max-width: 767px) {
+    min-height: calc(100vh - 130px);
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__bg {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+}
