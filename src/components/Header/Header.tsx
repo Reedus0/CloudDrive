@@ -24,26 +24,21 @@ const Header: FC = () => {
   return (
     <header className='header'>
       <div className={['header__inner', isAuth ? "_blur" : ""].join(" ")}>
-        <div className='header__drop'>
-          <div className='header__profile profile-header'>
-            {isAuth ?
-              <>
-                <Button name="Выйти" />
-              </>
-              :
-              <>
-                <Button name="Войти" function={() => setPrompt(
-                  <Prompt title="Login">
-                    <FormLogin />
-                  </Prompt>
-                )} />
-              </>
-            }
-          </div>
+        <div className='header__profile profile-header'>
+          {isAuth ?
+            <>
+              <Button name="Выйти" />
+            </>
+            :
+            <>
+              <Button name="Войти" function={() => setPrompt(
+                <Prompt title="Login">
+                  <FormLogin />
+                </Prompt>
+              )} />
+            </>
+          }
         </div>
-        <label className="header__burger burger-header" onClick={() => showDrop()}>
-          <span className="burger__toggle"></span>
-        </label>
       </div>
     </header>
   )

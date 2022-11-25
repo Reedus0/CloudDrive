@@ -124,13 +124,7 @@
   justify-content: flex-end;
   align-items: center;
 
-  @media (max-width: 767px) {
-    width: 100%;
-    text-align: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding-top: 10px;
-  }
+
 
   position: relative;
 

@@ -14,9 +14,10 @@
     border-radius: 20px 0px;
 
     @media (max-width: 767px) {
-      font-size: 20px;
+      font-size: 17px;
       flex: 1 1 100%;
       margin-bottom: 5px;
+      padding: 10px 0;
     }
 
     @media (min-width: 767px) {
@@ -40,6 +41,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
+    border: none;
     
     color: #FFFFFF;
     padding: 12px 0;
