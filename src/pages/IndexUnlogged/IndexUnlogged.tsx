@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import Header from '../../components/Header/Header'
-import Intro from './components/Intro/Intro'
+import Wrapper from '../../components/Wrapper/Wrapper'
 
 const IndexUnlogged: FC = () => {
   return (
     <>
     <Header />
-    <Intro />
+    <Wrapper >
+      <h1 className='wrapper__title'>Начать</h1>
+    </Wrapper>
     </>
   )
 }

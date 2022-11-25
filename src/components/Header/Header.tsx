@@ -32,7 +32,7 @@ const Header: FC = () => {
             :
             <>
               <Button name="Войти" function={() => setPrompt(
-                <Prompt title="Login">
+                <Prompt title="Вход">
                   <FormLogin />
                 </Prompt>
               )} />

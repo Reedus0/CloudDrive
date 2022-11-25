@@ -1,10 +1,10 @@
 .wrapper {
   min-width: 100vw;
-  min-height: calc(100vh - 140px);
-  padding-bottom: 70px;
+  min-height: calc(100vh - 60px);
 
   @media (max-width: 767px) {
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 60px);
+    padding-bottom: 0;
   }
 
   display: flex;
@@ -12,11 +12,28 @@
   justify-content: center;
 
   &__bg {
+    &._blur{
+      filter: blur(20px);
+
+    }
     top: 0;
     left: 0;
     position: absolute;
     width: 100vw;
     height: 100vh;
-    
+
+  }
+
+  &__title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 128px;
+    line-height: 156px;
+    margin-bottom: 60px;
+
+    @media (max-width: 767px) {
+      font-size: 60px;
+    }
   }
 }

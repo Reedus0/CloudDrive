@@ -1,0 +1,41 @@
+.window {
+
+  background: rgba(233, 235, 235, 0.5);
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+ 
+
+  width: calc(100vw - 250px);
+  height: calc(100vh - 150px);
+
+  @media (max-width: 1440px) {
+    width: calc(90vw - 50px);
+    height: calc(100vh - 120px);
+  }
+
+  @media (max-width: 991px) {
+    width: calc(90vw - 20px);
+    height: calc(100vh - 100px);
+  }
+
+  &__inner{
+    padding: 50px;
+    @media (max-width: 767px) {
+      padding: 25px;
+    }
+  }
+
+  &__title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+  }
+}

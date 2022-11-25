@@ -20,30 +20,30 @@ export default function FormRegister() {
       <div className='form-auth__inputs'>
         <div className='form-auth__input'>
 
-          <Input name="username" type="text" placeholder="Username" autoComplete='off' />
+          <Input name="username" type="text" placeholder="Логин" autoComplete='off' />
         </div>
         <div className='form-auth__input'>
 
-          <Input name="email" type="email" placeholder="E-mail" autoComplete='off' />
+          <Input name="email" type="email" placeholder="Почта" autoComplete='off' />
         </div>
         <div className='form-auth__input'>
 
-          <Input name="passwordFirst" type="password" placeholder="Password" autoComplete='off' />
+          <Input name="passwordFirst" type="password" placeholder="Пароль" autoComplete='off' />
         </div>
         <div className='form-auth__input'>
 
-          <Input name="passwordSecond" type="password" placeholder="Password again" autoComplete='off' />
+          <Input name="passwordSecond" type="password" placeholder="Пароль снова" autoComplete='off' />
         </div>
       </div>
       <div className='buttons-prompt'>
-        <ButtonPrompt name="Register" function={() => registerRequest()} />
+        <ButtonPrompt name="Зарегистрироваться" function={() => registerRequest()} />
       </div>
       <div className='form-auth__link'>
         <button name="Login" className='form-auth__link-button' onClick={() => setPrompt(
-          <Prompt title="Login">
+          <Prompt title="Вход">
             <FormLogin />
           </Prompt>
-        )} >Already have an account? Sign In</button>
+        )} ><span className='form-auth__link-light'>Уже есть аккаунт?</span> Войти</button>
       </div>
     </form>
   )
