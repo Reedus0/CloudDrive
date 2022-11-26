@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { IElement } from '../../../../models/IElement'
+import Buttons from '../Buttons/Buttons'
 import Files from '../Files/Files'
 
 import './FileBrowser.scss'
@@ -86,6 +87,7 @@ const FileBrowser = () => {
   
   return (
     <div className='file-browser'>
+      <Buttons />
       <Files files={files}/>
     </div>
   )

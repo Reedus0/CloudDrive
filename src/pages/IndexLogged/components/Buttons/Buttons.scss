@@ -1,0 +1,59 @@
+.browser-buttons{
+  flex: 1 1 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 50px;
+  &__top{
+    border-bottom: 3px solid #B3B3B3;
+  }
+  &__bottom{
+    border-top: 3px solid #B3B3B3;
+
+  }
+  &__buttons{
+    flex: 1 1 auto;
+  }
+  &__button{
+    cursor: pointer;
+    display: block;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    background: none;
+    border: none;
+    margin-top: 10px;
+  }
+  &__name{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  }
+  &__type{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    
+    color: #B3B3B3;
+
+    margin: 10px 0;
+  }
+  &__upload{
+    cursor: pointer;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    margin-top: 10px;
+    border: none;
+    background: none;
+
+  }
+}

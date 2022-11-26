@@ -12,7 +12,14 @@ const Files = (props: { files: IElement[] }) => {
       <SimpleBar style={{ maxHeight: "calc(100vh - 170px)" }} forceVisible="y" autoHide={false}>
         <div className='browser-files__inner'>
 
-          {props.files.map((file: IElement) => <button className='browser-files__element'>{file.name}</button>)}
+          {props.files.map((file: IElement) => 
+          <div className='browser-files__element'>
+            <img className='browser-files__icon' alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
+            <h1 className='browser-files__name'>
+
+            {file.name}
+            </h1>
+          </div>)}
         </div>
       </SimpleBar>
     </div>
