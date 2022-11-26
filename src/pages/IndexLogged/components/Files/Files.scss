@@ -3,17 +3,26 @@
   padding-right: 5px;
   &__inner{
     background: white;
-    margin-right: 15px;
-    padding: 10px;
+    margin-right: 20px;
   }
   &__element{
+    &._active{
+      background: rgba(233, 235, 235, 0.5);
+
+    }
+    padding: 12px 15px;
+
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+        &:hover{
+          background: rgba(233, 235, 235, 0.5);
+        }
+    }
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    &:not(:last-child){
-        margin-bottom: 10px;
-    }
+    
   }
     &__name{
       font-family: 'Montserrat';
@@ -24,5 +33,11 @@
       margin-left: 10px;
     }
 
-  
+  &__icon-wrapper{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

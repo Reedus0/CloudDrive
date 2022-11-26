@@ -1,14 +1,15 @@
 import React from 'react'
+import { IElement } from '../../../../models/IElement'
 
 import './Buttons.scss'
 
-const Buttons = () => {
+const Buttons = (props: { selectedFile: IElement | undefined }) => {
   return (
     <div className='browser-buttons'>
-      <div className='browser-buttons__top'>
-        <h1 className='browser-buttons__name'>Пароли</h1>
+      {props.selectedFile ? <div className='browser-buttons__top'>
+        <h1 className='browser-buttons__name'>{props.selectedFile.name}</h1>
         <h2 className='browser-buttons__type'>Папка</h2>
-      </div>
+      </div> : <></>}
       <div className='browser-buttons__buttons'>
         <button className='browser-buttons__button'>Открыть</button>
         <button className='browser-buttons__button'>Копировать</button>

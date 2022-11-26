@@ -1,3 +1,9 @@
 export interface IElement {
-  name: string
+  name: string,
+  type: IElementTypes
+}
+
+export enum IElementTypes {
+  FILE = 'file',
+  FOLDER = 'folder'
 }

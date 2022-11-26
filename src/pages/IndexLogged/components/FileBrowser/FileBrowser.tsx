@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IElement } from '../../../../models/IElement'
+import { IElement, IElementTypes } from '../../../../models/IElement'
 import Buttons from '../Buttons/Buttons'
 import Files from '../Files/Files'
 
@@ -9,86 +9,111 @@ const FileBrowser = () => {
 
 
   const [files, filesSet] = useState<IElement[]>([
-    {name: "asd"},
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-    {name: "asd"},
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-    {name: "asd"},
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-    {name: "asd"},
-
-
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER
+    },
+    
   ])
+
+  const [selectedFile, selectedFileSet] = useState<IElement>()
   
   return (
     <div className='file-browser'>
-      <Buttons />
-      <Files files={files}/>
+      <Buttons selectedFile={selectedFile} />
+      <Files files={files} fileSet={selectedFileSet} />
     </div>
   )
 }
