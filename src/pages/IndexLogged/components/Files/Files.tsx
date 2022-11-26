@@ -5,15 +5,13 @@ import { IElement, IElementTypes } from '../../../../models/IElement'
 import 'simplebar-react/dist/simplebar.min.css';
 
 import './Files.scss'
+import { refreshAllFiles } from '../../../../utils';
 
 const Files = (props: { files: IElement[], fileSet: Function }) => {
 
   const formatFiles = (element: any) => {
 
-    let files = Array.from(document.querySelectorAll('.browser-files__element'))
-    for (let i = 0; i < files.length; i++) {
-      files[i].classList.remove("_active")
-    }
+    refreshAllFiles()
     element.closest(".browser-files__element").classList.add("_active")
   }
 
@@ -22,7 +20,7 @@ const Files = (props: { files: IElement[], fileSet: Function }) => {
       <SimpleBar style={{ maxHeight: "calc(100vh - 170px)" }} forceVisible="y" autoHide={false}>
         <div className='browser-files__inner'>
 
-          {props.files.map((file: IElement) =>
+          {props.files.length ? props.files.map((file: IElement) =>
             <div className='browser-files__element' onClick={(e) => {
               props.fileSet(file)
               formatFiles(e.target)
@@ -42,7 +40,11 @@ const Files = (props: { files: IElement[], fileSet: Function }) => {
 
                 {file.name}
               </h1>
-            </div>)}
+            </div>) : 
+            
+            <div className='browser-files__loading'>
+              <div className="browser-files__ring"></div>
+              </div>}
         </div>
       </SimpleBar>
     </div>

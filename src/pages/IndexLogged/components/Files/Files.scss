@@ -5,6 +5,8 @@
   &__inner {
     background: white;
     margin-right: 15px;
+    min-height: calc(100vh - 180px);
+
   }
 
   &__element {
@@ -37,6 +39,40 @@
     font-size: 20px;
     line-height: 24px;
     margin-left: 10px;
+  }
+
+  &__loading{
+    display: flex;
+    justify-content: center;
+    margin-right: 15px;
+
+    min-height: calc(100vh - 180px);
+  }
+
+  &__ring {
+    margin-top: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+  &__ring:after {
+    content: " ";
+    display: block;
+    width: 44px;
+    height: 44px;
+    
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: black transparent black transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   &__icon-wrapper {

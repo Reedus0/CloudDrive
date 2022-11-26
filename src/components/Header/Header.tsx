@@ -12,7 +12,6 @@ const Header: FC = () => {
   const { setPrompt } = useActions()
   const { isAuth } = useTypedSelector(state => state.auth);
 
-
   return (
     <header className='header'>
       <div className={['header__inner', isAuth ? "_blur" : ""].join(" ")}>
