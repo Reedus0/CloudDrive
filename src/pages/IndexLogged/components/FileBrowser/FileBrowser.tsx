@@ -9,7 +9,6 @@ import './FileBrowser.scss'
 
 const FileBrowser = () => {
 
-  const { setFiles } = useActions()
   const { files } = useTypedSelector(state => state.files);
 
   const [selectedFile, selectedFileSet] = useState<IElement>({} as IElement)
@@ -17,7 +16,7 @@ const FileBrowser = () => {
   return (
     <div className='file-browser'>
       <Buttons selectedFile={selectedFile} selectedFileSet={selectedFileSet}/>
-      <Files files={files} fileSet={selectedFileSet} />
+      <Files files={files} selectedFileSet={selectedFileSet} />
     </div>
   )
 }

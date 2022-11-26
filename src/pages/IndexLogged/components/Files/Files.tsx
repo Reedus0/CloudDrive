@@ -1,13 +1,16 @@
 import React from 'react'
 import SimpleBar from 'simplebar-react'
 import { IElement, IElementTypes } from '../../../../models/IElement'
-
 import 'simplebar-react/dist/simplebar.min.css';
+import { refreshAllFiles } from '../../../../utils';
+import { useActions } from '../../../../hooks/useActions';
 
 import './Files.scss'
-import { refreshAllFiles } from '../../../../utils';
+import { Link } from 'react-router-dom';
 
-const Files = (props: { files: IElement[], fileSet: Function }) => {
+const Files = (props: { files: IElement[], selectedFileSet: Function }) => {
+
+  const { setFiles } = useActions()
 
   const formatFiles = (element: any) => {
 
@@ -17,12 +20,17 @@ const Files = (props: { files: IElement[], fileSet: Function }) => {
 
   return (
     <div className='browser-files'>
-      <SimpleBar style={{ maxHeight: "calc(100vh - 170px)" }} forceVisible="y" autoHide={false}>
+      <SimpleBar style={{ maxHeight: "calc(100vh - 180px)" }} forceVisible="y" autoHide={false}>
         <div className='browser-files__inner'>
 
           {props.files.length ? props.files.map((file: IElement) =>
             <div className='browser-files__element' onClick={(e) => {
-              props.fileSet(file)
+
+              props.selectedFileSet(file)
+              if (e.detail === 2) {
+                console.log(e.detail)
+
+              }
               formatFiles(e.target)
             }
             }>
@@ -40,11 +48,11 @@ const Files = (props: { files: IElement[], fileSet: Function }) => {
 
                 {file.name}
               </h1>
-            </div>) : 
-            
+            </div>) :
+
             <div className='browser-files__loading'>
               <div className="browser-files__ring"></div>
-              </div>}
+            </div>}
         </div>
       </SimpleBar>
     </div>

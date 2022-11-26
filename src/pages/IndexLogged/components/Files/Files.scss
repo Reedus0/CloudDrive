@@ -10,6 +10,8 @@
   }
 
   &__element {
+    overflow: hidden;
+    width: calc(100% - 24px);
     &._active {
       background: rgba(233, 235, 235, 0.5);
 
@@ -76,8 +78,8 @@
   }
 
   &__icon-wrapper {
-    width: 30px;
-    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
