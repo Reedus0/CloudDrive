@@ -4,6 +4,6 @@ export interface IElement {
 }
 
 export enum IElementTypes {
-  FILE = 'file',
-  FOLDER = 'folder'
+  FILE = 'Файл',
+  FOLDER = 'Папка'
 }

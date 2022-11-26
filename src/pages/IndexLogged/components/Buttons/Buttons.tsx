@@ -8,7 +8,7 @@ const Buttons = (props: { selectedFile: IElement | undefined }) => {
     <div className='browser-buttons'>
       {props.selectedFile ? <div className='browser-buttons__top'>
         <h1 className='browser-buttons__name'>{props.selectedFile.name}</h1>
-        <h2 className='browser-buttons__type'>Папка</h2>
+        <h2 className='browser-buttons__type'>{props.selectedFile.type}</h2>
       </div> : <></>}
       <div className='browser-buttons__buttons'>
         <button className='browser-buttons__button'>Открыть</button>
