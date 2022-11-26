@@ -1,0 +1,35 @@
+.intro {
+  min-width: 100vw;
+  min-height: calc(100vh - 140px);
+  padding-bottom: 70px;
+
+  @media (max-width: 767px) {
+    min-height: calc(100vh - 130px);
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 128px;
+    line-height: 156px;
+
+    @media (max-width: 767px) {
+      font-size: 60px;
+    }
+  }
+
+  &__bg {
+    filter: blur(20px);
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+}

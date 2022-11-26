@@ -12,10 +12,7 @@
   justify-content: center;
 
   &__bg {
-    &._blur{
-      filter: blur(20px);
 
-    }
     top: 0;
     left: 0;
     position: absolute;
@@ -24,16 +21,4 @@
 
   }
 
-  &__title {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 128px;
-    line-height: 156px;
-    margin-bottom: 60px;
-
-    @media (max-width: 767px) {
-      font-size: 60px;
-    }
-  }
 }

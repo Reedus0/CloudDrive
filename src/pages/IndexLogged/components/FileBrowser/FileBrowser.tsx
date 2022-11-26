@@ -10,7 +10,7 @@ const FileBrowser = () => {
 
   const [files, filesSet] = useState<IElement[]>([
     {
-      name: "file",
+      name: "asdd dddddddas dasdasdee eerrtjktjwer os[dgad0-f0df",
       type: IElementTypes.FILE
     },
     {

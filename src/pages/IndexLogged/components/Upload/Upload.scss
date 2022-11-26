@@ -1,0 +1,34 @@
+.browser-upload {
+  margin-top: 25px;
+  min-width: 200px;
+  min-height: 50px;
+  @media (max-width: 991px) {
+    margin-top: 10px;
+  }
+  &__input {
+    display: none;
+  }
+
+  &__drop{
+    transition: all 0.3s ease 0s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 50px;
+    border: dashed 3px black;
+    margin-bottom: 20px;
+    &._active{
+      background-color: black;
+      color: white;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+
+  &__drop-title{
+    pointer-events: none;
+    font-size: 24px;
+  }
+}
+
