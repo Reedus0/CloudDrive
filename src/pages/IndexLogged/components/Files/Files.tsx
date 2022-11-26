@@ -12,7 +12,7 @@ const Files = (props: { files: IElement[] }) => {
       <SimpleBar style={{ maxHeight: "calc(100vh - 170px)" }} forceVisible="y" autoHide={false}>
         <div className='browser-files__inner'>
 
-          {props.files.map((file: IElement) => <div>{file.name}</div>)}
+          {props.files.map((file: IElement) => <button className='browser-files__element'>{file.name}</button>)}
         </div>
       </SimpleBar>
     </div>
