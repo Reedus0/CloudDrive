@@ -8,13 +8,16 @@ import './Upload.scss'
 
 const Upload = () => {
 
-  const { setPrompt, addFiles } = useActions()
+  const { setPrompt, addFile } = useActions()
 
   const uploadElement = (uploadedFiles: FileList) => {
     setPrompt(
       <></>
     )
-    addFiles(parseFiles(uploadedFiles))
+    const parsedUploadedFiles = parseFiles(uploadedFiles)
+    for (let i = 0; i < parsedUploadedFiles.length; i ++){
+      addFile(parsedUploadedFiles[i])
+    }
   }
 
   const parseFiles = (uploadedFiles: FileList): IElement[] => {

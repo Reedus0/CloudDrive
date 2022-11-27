@@ -21,9 +21,14 @@ const Create = () => {
       <div className='browser-create__option' onClick={() => createFolder()}>
         <div className='browser-create__icon-wrapper'>
           <img className='browser-create__icon' alt="Icon" width={25} height={20} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/folder.png?raw=true' />
-
         </div>
-        <h1 className='browser-create__name'>Папку</h1>
+        <h1 className='browser-create__name'>Общую папку</h1>
+      </div>
+      <div className='browser-create__option' onClick={() => createFolder()}>
+        <div className='browser-create__icon-wrapper'>
+          <img className='browser-create__icon' alt="Icon" width={25} height={20} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/folder.png?raw=true' />
+        </div>
+        <h1 className='browser-create__name'>Личную папку</h1>
       </div>
     </div>
   )

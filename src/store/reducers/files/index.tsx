@@ -115,8 +115,8 @@ export default function filesReducer(state = initialState, action: FilesAction):
       return { ...state, files: action.payload }
     case FilesActionEnum.DELETE_FILE:
       return { ...state, files: [...state.files.filter((file: IElement) => file != action.payload)] }
-    case FilesActionEnum.ADD_FILES:
-      return { ...state, files: [...state.files, ...action.payload] }
+    case FilesActionEnum.ADD_FILE:
+      return { ...state, files: [...state.files, action.payload] }
     case FilesActionEnum.CREATE_FILE:
       return { ...state, files: [...state.files, action.payload] }
     default:

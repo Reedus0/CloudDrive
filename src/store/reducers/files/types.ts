@@ -9,7 +9,7 @@ export interface FilesState {
 
 export enum FilesActionEnum {
   SET_FILES = "SET_FILES",
-  ADD_FILES = "ADD_FILES",
+  ADD_FILE = "ADD_FILE",
   DELETE_FILE = "DELETE_FILE",
   CREATE_FILE = "CREATE_FILE"
 }
@@ -19,9 +19,9 @@ export interface SetFilesAction {
   payload: IElement[];
 }
 
-export interface AddFilesAction {
-  type: FilesActionEnum.ADD_FILES;
-  payload: IElement[];
+export interface AddFileAction {
+  type: FilesActionEnum.ADD_FILE;
+  payload: IElement;
 }
 
 export interface DeleteFileAction {
@@ -39,6 +39,6 @@ export interface CreateFileAction {
 
 export type FilesAction =
   SetFilesAction |
-  AddFilesAction |
+  AddFileAction |
   DeleteFileAction |
   CreateFileAction

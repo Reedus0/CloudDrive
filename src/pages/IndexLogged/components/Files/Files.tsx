@@ -23,8 +23,8 @@ const Files = (props: { files: IElement[], selectedFileSet: Function }) => {
       <SimpleBar style={{ maxHeight: "calc(100vh - 180px)" }} forceVisible="y" autoHide={false}>
         <div className='browser-files__inner'>
 
-          {props.files.length ? props.files.map((file: IElement) =>
-            <div className='browser-files__element' onClick={(e) => {
+          {props.files.length ? props.files.map((file: IElement, index: number) =>
+            <div className='browser-files__element' key={index} onClick={(e) => {
 
               props.selectedFileSet(file)
               if (e.detail === 2) {
