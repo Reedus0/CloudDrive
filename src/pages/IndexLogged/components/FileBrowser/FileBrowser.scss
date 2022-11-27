@@ -1,3 +1,7 @@
 .file-browser{
   display: flex;
+  @media (max-width: 767px) {
+      flex-wrap: wrap;
+      max-width: 100%;
+  }
 }

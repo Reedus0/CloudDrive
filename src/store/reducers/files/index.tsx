@@ -3,111 +3,111 @@ import { FilesAction, FilesState, FilesActionEnum } from "./types";
 
 
 
-// const initialState = {
-//   files: [
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-
-// ],
-// }
-
 const initialState = {
-  files: [] as IElement[]
+  files: [
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+  {
+    name: "file",
+    type: IElementTypes.FILE
+  },
+  {
+    name: "folder",
+    type: IElementTypes.FOLDER
+  },
+
+],
 }
+
+// const initialState = {
+//   files: [] as IElement[]
+// }
 
 export default function filesReducer(state = initialState, action: FilesAction): FilesState {
   switch (action.type) {

@@ -2,6 +2,10 @@
   flex: 1 1 75%;
   padding-right: 5px;
 
+  @media (max-width: 767px) {
+    flex: 1 1 100%;
+  }
+
   &__inner {
     background: white;
     margin-right: 15px;
@@ -12,6 +16,7 @@
   &__element {
     overflow: hidden;
     width: calc(100% - 24px);
+
     &._active {
       background: rgba(233, 235, 235, 0.5);
 
@@ -32,18 +37,27 @@
     justify-content: flex-start;
     align-items: center;
 
+    @media (max-width: 767px) {
+      padding: 8px 15px;
+    }
+
   }
 
   &__name {
+    overflow: hidden;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     margin-left: 10px;
+
+    @media (max-width: 767px) {
+      font-size: 18px;
+    }
   }
 
-  &__loading{
+  &__loading {
     display: flex;
     justify-content: center;
     margin-right: 15px;
@@ -57,21 +71,24 @@
     width: 50px;
     height: 50px;
   }
+
   &__ring:after {
     content: " ";
     display: block;
     width: 44px;
     height: 44px;
-    
+
     border-radius: 50%;
     border: 6px solid #fff;
     border-color: black transparent black transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
+
   @keyframes lds-dual-ring {
     0% {
       transform: rotate(0deg);
     }
+
     100% {
       transform: rotate(360deg);
     }
@@ -83,5 +100,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 767px) {
+      min-width: 25px;
+      min-height: 25px;
+    }
   }
 }
