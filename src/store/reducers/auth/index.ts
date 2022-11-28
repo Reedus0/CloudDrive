@@ -4,9 +4,9 @@ import { AuthAction, AuthState, AuthActionEnum } from "./types";
 
 const initialState = {
   isAuth: true,
-  user: {
-    username: "User"
-  } as IUser
+  user: {} as IUser,
+  authError: "",
+  userIsLoading: false
 }
 
 export default function authReducer(state = initialState, action: AuthAction): AuthState {
@@ -15,6 +15,10 @@ export default function authReducer(state = initialState, action: AuthAction): A
       return { ...state, isAuth: action.payload }
     case AuthActionEnum.SET_USER:
       return { ...state, user: action.payload }
+    case AuthActionEnum.SET_ERROR:
+      return { ...state, authError: action.payload, userIsLoading: false }
+    case AuthActionEnum.SET_LOADING:
+      return { ...state, userIsLoading: action.payload }
     default:
       return state;
   }

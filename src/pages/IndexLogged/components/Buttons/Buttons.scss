@@ -100,6 +100,11 @@
     border: none;
     margin: 7.5px 0;
 
+    &._disabled{
+      cursor: default;
+      color: rgb(100, 100, 100);
+    }
+
     @media (max-width: 991px) {
       font-size: 20px;
     }

@@ -1,7 +1,6 @@
 import React from 'react'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import { useActions } from '../../../../hooks/useActions'
-import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import { IElement, IElementTypes } from '../../../../models/IElement'
 
 import './Upload.scss'

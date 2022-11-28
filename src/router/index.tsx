@@ -10,7 +10,7 @@ export interface IRoute {
 
 export const privateRoutes: IRoute[] = [
   { path: "/", element: <IndexLogged /> },
-
+  { path: "/*", element: <IndexLogged /> },
 ]
 
 export const publicRoutes: IRoute[] = [
