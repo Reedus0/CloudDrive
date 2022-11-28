@@ -11,7 +11,8 @@ export enum FilesActionEnum {
   SET_FILES = "SET_FILES",
   ADD_FILE = "ADD_FILE",
   DELETE_FILE = "DELETE_FILE",
-  CREATE_FILE = "CREATE_FILE"
+  CREATE_FILE = "CREATE_FILE",
+  RENAME_FILE = "RENAME_FILE"
 }
 
 export interface SetFilesAction {
@@ -34,6 +35,12 @@ export interface CreateFileAction {
   payload: IElement;
 }
 
+export interface RenameFileAction {
+  type: FilesActionEnum.RENAME_FILE;
+  payload: {file: IElement, name: string};
+}
+
+
 
 
 
@@ -41,4 +48,5 @@ export type FilesAction =
   SetFilesAction |
   AddFileAction |
   DeleteFileAction |
-  CreateFileAction
+  CreateFileAction |
+  RenameFileAction

@@ -12,10 +12,16 @@ const FileBrowser = () => {
   const { files } = useTypedSelector(state => state.files);
 
   const [selectedFile, selectedFileSet] = useState<IElement>({} as IElement)
+  const [isEditing, isEditingSet] = useState<boolean>(false)
   
   return (
     <div className='file-browser'>
-      <Buttons selectedFile={selectedFile} selectedFileSet={selectedFileSet}/>
+      <Buttons 
+      selectedFile={selectedFile} 
+      selectedFileSet={selectedFileSet} 
+      isEditing={isEditing} 
+      isEditingSet={isEditingSet}
+      />
       <Files files={files} selectedFileSet={selectedFileSet} />
     </div>
   )

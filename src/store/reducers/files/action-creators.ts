@@ -1,5 +1,5 @@
 import { IElement } from "../../../models/IElement";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, RenameFileAction } from "./types";
 
 
 export const FilesActionCreators = {
@@ -7,4 +7,6 @@ export const FilesActionCreators = {
 	addFile: (file: IElement): AddFileAction => ({ type: FilesActionEnum.ADD_FILE, payload: file }),
 	createFile: (file: IElement): CreateFileAction => ({ type: FilesActionEnum.CREATE_FILE, payload: file }),
 	deleteFile: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
+	renameFile: (file: IElement, name: string): RenameFileAction => ({ type: FilesActionEnum.RENAME_FILE, payload: {file: file, name: name} }),
+
 }

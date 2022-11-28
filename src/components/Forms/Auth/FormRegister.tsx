@@ -11,12 +11,13 @@ export default function FormRegister() {
 
   const { setPrompt } = useActions()
 
-  function registerRequest() {
 
+  function registerRequest(event: any) {
+    event.preventDefault()
   }
 
   return (
-    <form className='form-auth' id="form-login" onSubmit={() => registerRequest()}>
+    <form className='form-auth' id="form-login" onSubmit={(e) => registerRequest(e)}>
       <div className='form-auth__inputs'>
         <div className='form-auth__input'>
 
@@ -36,7 +37,7 @@ export default function FormRegister() {
         </div>
       </div>
       <div className='buttons-prompt'>
-        <ButtonPrompt name="Зарегистрироваться" function={() => registerRequest()} />
+        <ButtonPrompt name="Зарегистрироваться" function={(e: any) => registerRequest(e)} />
       </div>
       <div className='form-auth__link'>
         <button name="Login" className='form-auth__link-button' onClick={() => setPrompt(
