@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
@@ -15,11 +16,21 @@ const Buttons = (props: { selectedFile: IElement, selectedFileSet: Function }) =
 
   const deleteElement = () => {
     setPrompt(
-      <></>
+      <Prompt title="Удалить">
+        <div className='browser-delete'>
+        <h2 className='prompt__text'>Вы действительно хотите удалить это файл?</h2>
+        <div className='buttons-prompt'>
+          <ButtonPrompt name="Нет, оставить" function={() => setPrompt(<></>)}/>
+          <ButtonPrompt class="_red" name="Да, удалить" function={() => {
+            deleteFile(props.selectedFile)
+            props.selectedFileSet({} as IElement)
+            refreshAllFiles()
+            setPrompt(<></>)
+          }}/>
+        </div>
+      </div>
+      </Prompt>
     )
-    props.selectedFileSet({} as IElement)
-    deleteFile(props.selectedFile)
-    refreshAllFiles()
   }
 
   return (

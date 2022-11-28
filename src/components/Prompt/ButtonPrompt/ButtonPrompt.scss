@@ -10,6 +10,10 @@
 
 
   &__button {
+    &._red{
+      background: rgb(218, 30, 30);
+    }
+    flex: 1 1 calc(50% - 10px);
     background: #000000;
     border-radius: 20px 0px;
 

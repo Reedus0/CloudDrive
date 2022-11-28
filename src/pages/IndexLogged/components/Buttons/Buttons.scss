@@ -170,3 +170,11 @@
     }
   }
 }
+
+.browser-delete{
+  margin-top: 10px;
+  min-width: 360px;
+  @media (max-width: 767px) {
+    min-width: 260px;
+  }
+}
