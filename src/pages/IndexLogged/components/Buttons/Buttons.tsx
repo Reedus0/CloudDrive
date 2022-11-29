@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Notification from '../../../../components/Notification/Notification'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
@@ -14,7 +15,7 @@ const Buttons = () => {
 
   const { selectedFile } = useTypedSelector(state => state.files);
 
-  const { setPrompt, deleteFile, renameFile, setSelectedFile, copyFile, pasteFile } = useActions()
+  const { setPrompt, deleteFile, renameFile, setSelectedFile, copyFile, pasteFile, setNotification } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
