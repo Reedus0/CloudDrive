@@ -8,6 +8,7 @@
   z-index: 1001;
   visibility: visible;
   opacity: 1;
+  pointer-events: none;
 
   @media (max-width: 767px) {
       top: 5px;
@@ -18,6 +19,7 @@
   justify-content: center;
 
   &__inner {
+    pointer-events: all;
     background: #f8f8f8;
     position: relative;
 
