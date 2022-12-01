@@ -1,5 +1,6 @@
+import { AppDispatch } from "../..";
 import { IElement } from "../../../models/IElement";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, RenameFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, RenameFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction } from "./types";
 
 
 export const FilesActionCreators = {
@@ -13,4 +14,7 @@ export const FilesActionCreators = {
 	deleteFile: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	renameFile: (file: IElement, name: string): RenameFileAction => ({ type: FilesActionEnum.RENAME_FILE, payload: {file: file, name: name} }),
 	pasteFile: (): PasteFileAction => ({ type: FilesActionEnum.PASTE_FILE, payload: "name" }),
+	setFilesPath: (path: string) => async (dispatch: AppDispatch) => {
+		dispatch(FilesActionCreators.setFiles([] as IElement[]))
+	}
 }

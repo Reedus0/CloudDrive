@@ -11,6 +11,5 @@ export interface SetPromptAction {
   payload: JSX.Element;
 }
 
-
 export type PromptAction =
   SetPromptAction 

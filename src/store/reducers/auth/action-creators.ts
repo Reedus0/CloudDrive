@@ -21,7 +21,7 @@ export const AuthActionCreators = {
     } else {
       dispatch(AuthActionCreators.setAuthError(responseJSON['error']))
     }
-  },
+  }, 
   logout: () => async (dispatch: AppDispatch) => {
     localStorage.removeItem('access_token')
     dispatch(AuthActionCreators.setUser({} as IUser));

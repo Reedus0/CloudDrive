@@ -11,6 +11,5 @@ export interface SetNotificationAction {
   payload: JSX.Element;
 }
 
-
 export type NotificationAction =
   SetNotificationAction 

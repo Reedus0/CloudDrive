@@ -13,9 +13,8 @@ import './Buttons.scss'
 
 const Buttons = () => {
 
-  const { selectedFile } = useTypedSelector(state => state.files);
-
-  const { setPrompt, deleteFile, renameFile, setSelectedFile, copyFile, pasteFile } = useActions()
+  const { selectedFile } = useTypedSelector(state => state.files)
+  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)

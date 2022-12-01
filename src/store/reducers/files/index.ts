@@ -128,6 +128,8 @@ export default function filesReducer(state = initialState, action: FilesAction):
       return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
     case FilesActionEnum.SET_ERROR:
       return { ...state, filesError: action.payload, filesAreLoading: false }
+    case FilesActionEnum.SET_PATH:
+      return { ...state, path: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_SELECTED_FILE:
       return { ...state, selectedFile: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_LOADING:
@@ -142,14 +144,14 @@ export default function filesReducer(state = initialState, action: FilesAction):
             name: state.copiedFile['name']
               .split(".")
               .filter((part, index) => index != state.copiedFile['name']
-              .split(".").length - 1)
+                .split(".").length - 1)
               .join(".")
               +
               " копия."
               +
               state.copiedFile['name']
-              .split(".")[state.copiedFile['name']
-              .split(".").length - 1] // action.payload
+                .split(".")[state.copiedFile['name']
+                  .split(".").length - 1] // action.payload
           }] : state.files,
         copiedFile: {} as IElement
       }

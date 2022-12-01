@@ -1,4 +1,5 @@
 import React from 'react'
+import { API } from '../../../../api/API'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import { useActions } from '../../../../hooks/useActions'
 import { IElement, IElementTypes } from '../../../../models/IElement'
@@ -9,17 +10,21 @@ const Upload = () => {
 
   const { setPrompt, addFile } = useActions()
 
-  const uploadElement = (uploadedFiles: FileList) => {
+  const uploadElement = async (uploadedFiles: FileList) => {
     setPrompt(
       <></>
     )
     const parsedUploadedFiles = parseFiles(uploadedFiles)
-    for (let i = 0; i < parsedUploadedFiles.length; i ++){
-      addFile(parsedUploadedFiles[i])
+    for (let i = 0; i < (await parsedUploadedFiles).length; i ++){
+      addFile((await parsedUploadedFiles)[i])
     }
   }
 
-  const parseFiles = (uploadedFiles: FileList): IElement[] => {
+  const parseFiles = async (uploadedFiles: FileList): Promise<IElement[]> => {
+    const api = new API()
+
+    console.log(await api.toBase64(Array.from(uploadedFiles)[0]))
+
     return Array.from(uploadedFiles).map((file: File) => {
       return { 'name': file.name, 'type': IElementTypes.FILE }
     })
