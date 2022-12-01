@@ -1,6 +1,7 @@
 import { IElement } from "../../../models/IElement";
 
 export interface FilesState {
+  path: string,
   files: IElement[],
   selectedFile: IElement,
   filesAreLoading: boolean,

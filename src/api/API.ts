@@ -11,7 +11,7 @@ export class API {
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
       method: "POST",
-      body: JSON.stringify({ ...data })
+      body: JSON.stringify({ ...data, 'access_token': localStorage.getItem('access_token') ? localStorage.getItem('access_token') : ""})
     })
   }
 

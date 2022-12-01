@@ -7,13 +7,7 @@
     margin-top: 20px;
   }
   &__inputs {
-    margin-bottom: 40px;
-    @media (max-width: 1440px) {
-      margin-bottom: 30px;
-    }
-    @media (max-width: 991px) {
-      margin-bottom: 20px;
-    }
+    margin-bottom: 20px;
   }
 
   &__input {
@@ -62,5 +56,17 @@
   }
   &__link-light{
     color: #B3B3B3;
+  }
+  &__error{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #f14646;
+  }
+  @media (max-width: 767px) {
+      font-size: 20px;
   }
 }

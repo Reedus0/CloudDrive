@@ -9,6 +9,8 @@ export default function Input(props: any) {
       <input
         name={props.name}
         type={props.type}
+        onChange={props.onChange}
+        value={props.value}
         className={["input__input", props.class].join(" ")}
       />
     </div>

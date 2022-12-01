@@ -106,6 +106,7 @@ import { FilesAction, FilesState, FilesActionEnum } from "./types";
 // }
 
 const initialState = {
+  path: '/',
   files: [] as IElement[],
   filesAreLoading: true,
   selectedFile: {} as IElement,
