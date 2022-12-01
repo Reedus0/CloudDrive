@@ -119,11 +119,11 @@ export default function filesReducer(state = initialState, action: FilesAction):
     case FilesActionEnum.SET_FILES:
       return { ...state, files: action.payload, filesAreLoading: false }
     case FilesActionEnum.DELETE_FILE:
-      return { ...state, files: [...state.files.filter((file: IElement) => file != action.payload)], filesAreLoading: false }
+      return { ...state, files: [...state.files.filter((file: IElement) => file !== action.payload)], filesAreLoading: false }
     case FilesActionEnum.ADD_FILE:
       return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
     case FilesActionEnum.RENAME_FILE:
-      return { ...state, files: [...state.files.filter((file: IElement) => file != action.payload['file']), { type: action.payload['file']['type'], name: action.payload['name'] }], filesAreLoading: false }
+      return { ...state, files: [...state.files.filter((file: IElement) => file !== action.payload['file']), { type: action.payload['file']['type'], name: action.payload['name'] }], filesAreLoading: false }
     case FilesActionEnum.CREATE_FILE:
       return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
     case FilesActionEnum.SET_ERROR:
@@ -143,7 +143,7 @@ export default function filesReducer(state = initialState, action: FilesAction):
             type: state.copiedFile['type'],
             name: state.copiedFile['name']
               .split(".")
-              .filter((part, index) => index != state.copiedFile['name']
+              .filter((part, index) => index !== state.copiedFile['name']
                 .split(".").length - 1)
               .join(".")
               +

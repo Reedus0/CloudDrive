@@ -1,13 +1,16 @@
 .form-auth {
+  word-wrap: break-word;
+  max-width: 330px;
   margin-top: 40px;
   @media (max-width: 1440px) {
     margin-top: 30px;
   }
   @media (max-width: 767px) {
     margin-top: 20px;
+    max-width: 250px;
   }
   &__inputs {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   &__input {
@@ -23,16 +26,6 @@
       &:not(:last-child) {
         margin-bottom: 10px;
       }
-    }
-  }
-
-  &__link {
-    margin-top: 40px;
-    @media (max-width: 1440px) {
-      margin-top: 25px;
-    }
-    @media (max-width: 991px) {
-      margin-top: 20px;
     }
   }
 
@@ -58,6 +51,7 @@
     color: #B3B3B3;
   }
   &__error{
+    width: 330px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -65,8 +59,10 @@
     line-height: 24px;
 
     color: #f14646;
-  }
-  @media (max-width: 767px) {
-      font-size: 20px;
+    @media (max-width: 767px) {
+        font-size: 16px;
+        line-height: 20px;
+        width: 250px;
+    }
   }
 }

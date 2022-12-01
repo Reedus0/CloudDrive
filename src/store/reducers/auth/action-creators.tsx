@@ -11,21 +11,26 @@ export const AuthActionCreators = {
   setAuthError: (error: string): SetAuthErrorAction => ({ type: AuthActionEnum.SET_ERROR, payload: error }),
   setAuthLoading: (isLoading: boolean): SetAuthLoadingAction => ({ type: AuthActionEnum.SET_LOADING, payload: isLoading }),
   login: (login: string, password: string) => async (dispatch: AppDispatch) => {
-    dispatch(AuthActionCreators.setAuthLoading(true))
-    const api = new API()
-    const userService = new UserService()
-    const response: Response = await userService.login(login, password)
-    const responseJSON = await response.clone().json()
-    if(response.status === 200){
-      api.setCookie('access_token', responseJSON['access_token'])
-      dispatch(AuthActionCreators.setUser(responseJSON['user']))
-      dispatch(AuthActionCreators.setAuthError(""))
-      dispatch(AuthActionCreators.setIsAuth(true))
-      dispatch(PromptActionCreators.setPrompt(<></>))
-    } else {
-      dispatch(AuthActionCreators.setAuthError(responseJSON['error']))
+    try {
+      dispatch(AuthActionCreators.setAuthLoading(true))
+      const api = new API()
+      const userService = new UserService()
+      const response: Response = await userService.login(login, password)
+      const responseJSON = await response.clone().json()
+      if (response.status === 200) {
+        api.setCookie('access_token', responseJSON['access_token'])
+        dispatch(AuthActionCreators.setUser(responseJSON['user']))
+        dispatch(AuthActionCreators.setAuthError(""))
+        dispatch(AuthActionCreators.setIsAuth(true))
+        dispatch(PromptActionCreators.setPrompt(<></>))
+      } else {
+        dispatch(AuthActionCreators.setAuthError(responseJSON['error']))
+      }
+      dispatch(AuthActionCreators.setAuthLoading(false))
+    } catch (e) {
+      dispatch(AuthActionCreators.setAuthError("Произошла ошибка"))
     }
-  }, 
+  },
   logout: () => async (dispatch: AppDispatch) => {
     const api = new API()
     api.deleteCookie('access_token')

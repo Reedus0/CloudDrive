@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import { useActions } from '../../../hooks/useActions'
 import Input from '../../Input/Input'
 import ButtonPrompt from '../../Prompt/ButtonPrompt/ButtonPrompt'
-import Prompt from '../../Prompt/Prompt'
-import FormRegister from './FormRegister'
 import "../Form.scss"
 import { useTypedSelector } from '../../../hooks/useTypedSelector'
 
 
 export default function FormLogin() {
 
-  const { setPrompt, login } = useActions()
-  const { authError } = useTypedSelector(state => state.auth);
+  const { login } = useActions()
+  const { authError, userIsLoading } = useTypedSelector(state => state.auth);
 
 
   const [username, usernameSet] = useState<string>("")
@@ -36,15 +34,9 @@ export default function FormLogin() {
       </div>
       <h1 className='form-auth__error'>{authError}</h1>
       <div className='buttons-prompt'>
-        <ButtonPrompt name="Войти" function={(e: any) => loginRequest(e)} />
-      </div>
-      <div className='form-auth__link'>
-        <button name="Login" className='form-auth__link-button' onClick={() => setPrompt(
-          <Prompt title="Регистрация">
-            <FormRegister />
-          </Prompt>
-        )} ><span className='form-auth__link-light'>Нет аккаунта?</span> Зарегистрироваться</button>
+        <ButtonPrompt disabled={userIsLoading} name="Войти" function={(e: any) => loginRequest(e)} />
       </div>
     </form>
   )
 }
+ 

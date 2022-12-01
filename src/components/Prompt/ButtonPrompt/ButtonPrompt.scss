@@ -10,8 +10,13 @@
 
 
   &__button {
+    transition: all 0.3s ease 0s;
     &._red{
       background: rgb(218, 30, 30);
+    }
+    &:disabled{
+      cursor: default;
+      background: #808080;
     }
     flex: 1 1 calc(50% - 10px);
     background: #000000;
@@ -33,7 +38,6 @@
     cursor: pointer;
     text-align: center;
     outline: none;
-    transition: all 0.1s ease 0s;
     position: relative;
 
     color: black;
