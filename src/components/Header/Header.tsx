@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { IUser } from '../../models/IUser';
 import Button from '../Button/Button';
 import FormLogin from '../Forms/Auth/FormLogin';
 import Prompt from '../Prompt/Prompt';

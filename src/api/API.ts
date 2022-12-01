@@ -1,17 +1,11 @@
 export class API {
 
   link = ""
-
-  async getRequest(path: string) {
-    return fetch(this.link + path, {
-      method: "GET",
-    })
-  }
-
+  
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
       method: "POST",
-      body: JSON.stringify({ ...data, 'access_token': localStorage.getItem('access_token') ? localStorage.getItem('access_token') : "" })
+      body: JSON.stringify({ ...data, 'access_token': this.getCookie('access_token')})
     })
   }
 

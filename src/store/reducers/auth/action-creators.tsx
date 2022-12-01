@@ -2,6 +2,8 @@ import { AuthActionEnum, SetAuthAction, SetAuthErrorAction, SetAuthLoadingAction
 import { IUser } from "../../../models/IUser";
 import { UserService } from "../../../api/UserService";
 import { AppDispatch } from "../..";
+import { API } from "../../../api/API";
+import { PromptActionCreators } from "../prompt/action-creators";
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({ type: AuthActionEnum.SET_USER, payload: user }),
@@ -10,20 +12,23 @@ export const AuthActionCreators = {
   setAuthLoading: (isLoading: boolean): SetAuthLoadingAction => ({ type: AuthActionEnum.SET_LOADING, payload: isLoading }),
   login: (login: string, password: string) => async (dispatch: AppDispatch) => {
     dispatch(AuthActionCreators.setAuthLoading(true))
+    const api = new API()
     const userService = new UserService()
     const response: Response = await userService.login(login, password)
     const responseJSON = await response.clone().json()
-    if(response.status == 200){
-      localStorage.setItem('access_token', responseJSON['access_token'])
+    if(response.status === 200){
+      api.setCookie('access_token', responseJSON['access_token'])
       dispatch(AuthActionCreators.setUser(responseJSON['user']))
       dispatch(AuthActionCreators.setAuthError(""))
       dispatch(AuthActionCreators.setIsAuth(true))
+      dispatch(PromptActionCreators.setPrompt(<></>))
     } else {
       dispatch(AuthActionCreators.setAuthError(responseJSON['error']))
     }
   }, 
   logout: () => async (dispatch: AppDispatch) => {
-    localStorage.removeItem('access_token')
+    const api = new API()
+    api.deleteCookie('access_token')
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false))
   }

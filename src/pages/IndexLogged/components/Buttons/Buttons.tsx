@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Notification from '../../../../components/Notification/Notification'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
