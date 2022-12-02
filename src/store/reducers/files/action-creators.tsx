@@ -102,19 +102,15 @@ export const FilesActionCreators = {
 		}
 	},
 	setFilesPath: (path: string, navigate: Function) => async (dispatch: AppDispatch) => {
-		console.log(path);
-		console.log(document.location.pathname);
-		
-		if (path !== document.location.pathname) {
-			navigate(path)
-			return 
-		}
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
 			filesService.setPath(path)
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
+				if (path !== document.location.pathname) {
+					navigate(path)
+				}
 				dispatch(FilesActionCreators.setFiles(responseJSON['files']))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
