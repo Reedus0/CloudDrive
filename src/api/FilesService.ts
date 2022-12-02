@@ -20,4 +20,10 @@ export class FilesService {
   createFile(type: string) {
     return this.API.postRequest('/api/files/create', { 'path': this.path, 'type': type })
   }
+  deleteFile(name: string) {
+    return this.API.postRequest('/api/files/delete', { 'path': this.path, 'name': name })
+  }
+  renameFile(oldName: string, newName: string) {
+    return this.API.postRequest('/api/files/rename', { 'path': this.path, 'oldName': oldName, 'newName': newName })
+  }
 }

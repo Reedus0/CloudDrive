@@ -110,7 +110,7 @@ const initialState = {
   files: [] as IElement[],
   filesAreLoading: true,
   selectedFile: {} as IElement,
-  copiedFile: {} as IElement,
+  copiedFile: {} as {'path': string, 'file': IElement},
   filesError: ''
 }
 
@@ -137,24 +137,8 @@ export default function filesReducer(state = initialState, action: FilesAction):
     case FilesActionEnum.COPY_FILE:
       return { ...state, copiedFile: action.payload }
     case FilesActionEnum.PASTE_FILE:
-      return {
-        ...state, files: Object.keys(state.copiedFile).length ?
-          [...state.files, {
-            type: state.copiedFile['type'],
-            name: state.copiedFile['name']
-              .split(".")
-              .filter((part, index) => index !== state.copiedFile['name']
-                .split(".").length - 1)
-              .join(".")
-              +
-              " копия."
-              +
-              state.copiedFile['name']
-                .split(".")[state.copiedFile['name']
-                  .split(".").length - 1] // action.payload
-          }] : state.files,
-        copiedFile: {} as IElement
-      }
+      return { ...state, files: [...state.files, state.copiedFile['file']] }
+
     default:
       return state;
   }
