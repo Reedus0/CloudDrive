@@ -19,7 +19,7 @@ export const FilesActionCreators = {
 	deleteFileStore: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	setPathStore: (path: string): SetFilesPathAction => ({ type: FilesActionEnum.SET_PATH, payload: path }),
 	renameFileStore: (file: IElement, name: string): RenameFileAction => ({ type: FilesActionEnum.RENAME_FILE, payload: { file: file, name: name } }),
-	pasteFileStore: (): PasteFileAction => ({ type: FilesActionEnum.PASTE_FILE }),
+	pasteFileStore: (name: string): PasteFileAction => ({ type: FilesActionEnum.PASTE_FILE, payload: name }),
 	createFileStore: (file: IElement): CreateFileAction => ({ type: FilesActionEnum.CREATE_FILE, payload: file }),
 	setFilesError: (error: string): any => (dispatch: AppDispatch) => {
 		dispatch(NotificationActionCreators.setNotification(
@@ -34,7 +34,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.addFile(file)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.addFileStore({ 'name': file.name, 'type': IElementTypes.FILE }))
+				dispatch(FilesActionCreators.addFileStore({ 'name': responseJSON['name'], 'type': IElementTypes.FILE }))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -93,7 +93,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.pasteFile(name, newPath)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.pasteFileStore())
+				dispatch(FilesActionCreators.pasteFileStore(responseJSON['name']))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}

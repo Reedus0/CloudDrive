@@ -55,6 +55,7 @@ export interface CreateFileAction {
 
 export interface PasteFileAction {
   type: FilesActionEnum.PASTE_FILE;
+  payload: string;
 }
 
 export interface RenameFileAction {
