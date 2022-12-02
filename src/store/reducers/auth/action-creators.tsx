@@ -4,6 +4,7 @@ import { UserService } from "../../../api/UserService";
 import { AppDispatch } from "../..";
 import { API } from "../../../api/API";
 import { PromptActionCreators } from "../prompt/action-creators";
+import { NotificationActionCreators } from "../notification/action-creators";
 
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({ type: AuthActionEnum.SET_USER, payload: user }),
@@ -34,6 +35,7 @@ export const AuthActionCreators = {
   logout: () => async (dispatch: AppDispatch) => {
     const api = new API()
     api.deleteCookie('access_token')
+    dispatch(NotificationActionCreators.setNotification(<></>))
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false))
   }

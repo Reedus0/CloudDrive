@@ -1,7 +1,7 @@
 export class API {
 
   link = ""
-  
+
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
       method: "POST",
@@ -39,14 +39,5 @@ export class API {
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
-
-  toBase64(file: File) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    })
   }
 }

@@ -14,20 +14,9 @@ const Upload = () => {
     setPrompt(
       <></>
     )
-    const parsedUploadedFiles = parseFiles(uploadedFiles)
-    for (let i = 0; i < (await parsedUploadedFiles).length; i ++){
-      addFile((await parsedUploadedFiles)[i])
+    for (let i = 0; i < uploadedFiles.length; i ++){
+      addFile(uploadedFiles[i])
     }
-  }
-
-  const parseFiles = async (uploadedFiles: FileList): Promise<IElement[]> => {
-    const api = new API()
-
-    console.log(await api.toBase64(Array.from(uploadedFiles)[0]))
-
-    return Array.from(uploadedFiles).map((file: File) => {
-      return { 'name': file.name, 'type': IElementTypes.FILE }
-    })
   }
 
   const onDragOver = (event: any) => {
