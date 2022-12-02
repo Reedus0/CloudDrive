@@ -1,10 +1,6 @@
 import { IElement, IElementTypes } from "../../../models/IElement";
 import { FilesAction, FilesState, FilesActionEnum } from "./types";
 
-
-
-
-
 const initialState = {
   path: '/',
   files: [

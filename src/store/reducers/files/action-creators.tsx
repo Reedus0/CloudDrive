@@ -12,8 +12,9 @@ const filesService = new FilesService('/')
 export const FilesActionCreators = {
 	setFiles: (files: IElement[]): SetFilesAction => ({ type: FilesActionEnum.SET_FILES, payload: files }),
 	setSelectedFile: (file: IElement): SetSelectedFileAction => ({ type: FilesActionEnum.SET_SELECTED_FILE, payload: file }),
-	setFilesErrorStore: (error: string): SetFilesErrorAction => ({ type: FilesActionEnum.SET_ERROR, payload: error }),
 	setFilesLoading: (isLoading: boolean): SetFilesLoadingAction => ({ type: FilesActionEnum.SET_LOADING, payload: isLoading }),
+	copyFile: (path: string, file: IElement): CopyFileAction => ({ type: FilesActionEnum.COPY_FILE, payload: { 'path': path, 'file': file } }),
+	setFilesErrorStore: (error: string): SetFilesErrorAction => ({ type: FilesActionEnum.SET_ERROR, payload: error }),
 	addFileStore: (file: IElement): AddFileAction => ({ type: FilesActionEnum.ADD_FILE, payload: file }),
 	deleteFileStore: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	setPathStore: (path: string): SetFilesPathAction => ({ type: FilesActionEnum.SET_PATH, payload: path }),
@@ -86,7 +87,6 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при перименовании файла"))
 		}
 	},
-	copyFile: (path: string, file: IElement): CopyFileAction => ({ type: FilesActionEnum.COPY_FILE, payload: { 'path': path, 'file': file } }),
 	pasteFile: (name: string, newPath: string) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
@@ -102,22 +102,26 @@ export const FilesActionCreators = {
 		}
 	},
 	setFilesPath: (path: string, navigate: Function) => async (dispatch: AppDispatch) => {
+		console.log(path);
+		console.log(document.location.pathname);
+		
+		if (path !== document.location.pathname) {
+			navigate(path)
+			return 
+		}
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
 			filesService.setPath(path)
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				if (path != document.location.pathname) {
-					navigate(path)
-				}
 				dispatch(FilesActionCreators.setFiles(responseJSON['files']))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
 		} catch (e) {
-			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при переходе на другую страницу"))
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при загрузке файлов"))
 		}
 	},
 }
