@@ -26,4 +26,7 @@ export class FilesService {
   renameFile(oldName: string, newName: string) {
     return this.API.postRequest('/api/files/rename', { 'path': this.path, 'oldName': oldName, 'newName': newName })
   }
-}
+  pasteFile(name: string, oldPath: string) {
+    return this.API.postRequest('/api/files/paste', { 'name': name, 'oldPath': oldPath, 'newPath': this.path })
+  }
+} 

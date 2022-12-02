@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SimpleBar from 'simplebar-react'
 import { IElement, IElementTypes } from '../../../../models/IElement'
 import 'simplebar-react/dist/simplebar.min.css';
 import { refreshAllFiles } from '../../../../utils';
-
 import './Files.scss'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile } = useActions()
+  const { setSelectedFile, setFilesPath } = useActions()
 
   const formatFiles = (element: any) => {
 
     refreshAllFiles()
     element.closest(".browser-files__element").classList.add("_active")
   }
+  
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    setFilesPath(document.location.pathname, navigate)
+    setSelectedFile({} as IElement)
+    refreshAllFiles()
+  }, [location])
+  
+
 
   return (
     <div className='browser-files'>
@@ -30,7 +41,9 @@ const Files = () => {
             <div className='browser-files__element' key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                console.log(e.detail)
+                if(file.type == IElementTypes.FOLDER){    
+                  setFilesPath(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name, navigate)             
+                }
               }
               formatFiles(e.target)
             }

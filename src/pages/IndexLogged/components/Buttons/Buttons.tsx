@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
-import { IElement } from '../../../../models/IElement'
+import { IElement, IElementTypes } from '../../../../models/IElement'
 import { refreshAllFiles } from '../../../../utils'
 import Create from '../Create/Create'
 import Upload from '../Upload/Upload'
@@ -12,11 +13,13 @@ import './Buttons.scss'
 
 const Buttons = () => {
 
-  const { selectedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
+  const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
+  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile, setFilesPath } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
+
+  const navigate = useNavigate()
 
   const deleteElement = () => {
     setPrompt(
@@ -25,16 +28,17 @@ const Buttons = () => {
           <h2 className='prompt__text'>Вы действительно хотите удалить этот файл?</h2>
           <div className='buttons-prompt'>
             <ButtonPrompt name="Нет, оставить" function={() => setPrompt(<></>)} />
-            <ButtonPrompt class="_red" name="Да, удалить" function={() => {
-              deleteFile(selectedFile)
-              setSelectedFile({} as IElement)
-              refreshAllFiles()
-              setPrompt(<></>)
-            }} />
+            <ButtonPrompt class="_red" name="Да, удалить" function={() => deleteFile(selectedFile)} />
           </div>
         </div>
       </Prompt>
     )
+  }
+
+  const openElement = () => {
+    if(selectedFile.type == IElementTypes.FOLDER){    
+      setFilesPath(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name, navigate)             
+    }
   }
 
   const renameElement = () => {
@@ -78,9 +82,9 @@ const Buttons = () => {
         </div>
           <div className='browser-buttons__buttons'>
 
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing}>Открыть</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => copyFile(selectedFile)}>Копировать</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => pasteFile()}>Вставить</button>
+            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => openElement()}>Открыть</button>
+            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => copyFile(path, selectedFile)}>Копировать</button>
+            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
 

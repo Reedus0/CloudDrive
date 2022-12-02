@@ -1,114 +1,23 @@
-import { IElement } from "../../../models/IElement";
+import { IElement, IElementTypes } from "../../../models/IElement";
 import { FilesAction, FilesState, FilesActionEnum } from "./types";
 
 
 
-// const initialState = {
-//   files: [
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
-//   {
-//     name: "file",
-//     type: IElementTypes.FILE
-//   },
-//   {
-//     name: "folder",
-//     type: IElementTypes.FOLDER
-//   },
 
-// ],
-// }
 
 const initialState = {
   path: '/',
-  files: [] as IElement[],
-  filesAreLoading: true,
+  files: [
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+  ] as IElement[],
+  filesAreLoading: false,
   selectedFile: {} as IElement,
   copiedFile: {} as {'path': string, 'file': IElement},
   filesError: ''
