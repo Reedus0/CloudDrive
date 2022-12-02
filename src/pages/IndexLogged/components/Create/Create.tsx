@@ -1,7 +1,5 @@
 import React from 'react'
 import { useActions } from '../../../../hooks/useActions'
-import { useTypedSelector } from '../../../../hooks/useTypedSelector'
-import { IElement, IElementTypes } from '../../../../models/IElement'
 
 import './Create.scss'
 

@@ -1,8 +1,6 @@
 import React from 'react'
-import { API } from '../../../../api/API'
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import { useActions } from '../../../../hooks/useActions'
-import { IElement, IElementTypes } from '../../../../models/IElement'
 
 import './Upload.scss'
 

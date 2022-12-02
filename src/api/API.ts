@@ -5,7 +5,7 @@ export class API {
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
       method: "POST",
-      body: JSON.stringify({ ...data, 'access_token': this.getCookie('access_token')})
+      body: JSON.stringify({ ...data, 'access_token': this.getCookie('access_token') })
     })
   }
 
@@ -18,14 +18,14 @@ export class API {
     let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
 
     for (let optionKey in options) {
-      updatedCookie += "; " + optionKey;
-      let optionValue = options[optionKey];
+      updatedCookie += "; " + optionKey
+      let optionValue = options[optionKey]
       if (optionValue !== true) {
-        updatedCookie += "=" + optionValue;
+        updatedCookie += "=" + optionValue
       }
     }
 
-    document.cookie = updatedCookie;
+    document.cookie = updatedCookie
   }
 
   deleteCookie(name: string) {
@@ -36,8 +36,7 @@ export class API {
 
   getCookie(name: string) {
     let matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
 }

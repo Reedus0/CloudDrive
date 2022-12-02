@@ -41,7 +41,7 @@ const Files = () => {
             <div className='browser-files__element' key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                if(file.type == IElementTypes.FOLDER){    
+                if(file.type === IElementTypes.FOLDER){    
                   setFilesPath(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name, navigate)             
                 }
               }

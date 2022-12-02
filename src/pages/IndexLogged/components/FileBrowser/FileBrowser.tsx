@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Buttons from '../Buttons/Buttons'
 import Files from '../Files/Files'
 

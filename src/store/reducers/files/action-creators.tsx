@@ -39,7 +39,7 @@ export const FilesActionCreators = {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
 		} catch (e) {
-			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при добовлении файла"))
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при добавлении файла"))
 		}
 	},
 	createFile: (type: string) => async (dispatch: AppDispatch) => {
@@ -84,7 +84,7 @@ export const FilesActionCreators = {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
 		} catch (e) {
-			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при перименовании файла"))
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при перeименовании файла"))
 		}
 	},
 	pasteFile: (name: string, newPath: string) => async (dispatch: AppDispatch) => {
