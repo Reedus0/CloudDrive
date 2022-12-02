@@ -108,16 +108,15 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				if (path !== document.location.pathname) {
-					navigate(path)
-				}
 				dispatch(FilesActionCreators.setFiles(responseJSON['files']))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+				navigate(-1)
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при загрузке файлов"))
+			navigate(-1)
 		}
 	},
 }

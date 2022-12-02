@@ -36,8 +36,8 @@ const Buttons = () => {
   }
 
   const openElement = () => {
-    if(selectedFile.type === IElementTypes.FOLDER){    
-      setFilesPath(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name, navigate)             
+    if (selectedFile.type === IElementTypes.FOLDER) {
+      navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
     }
   }
 

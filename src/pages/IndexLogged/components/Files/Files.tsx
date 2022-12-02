@@ -18,7 +18,7 @@ const Files = () => {
     refreshAllFiles()
     element.closest(".browser-files__element").classList.add("_active")
   }
-  
+
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -27,7 +27,7 @@ const Files = () => {
     setSelectedFile({} as IElement)
     refreshAllFiles()
   }, [location])
-  
+
 
 
   return (
@@ -41,8 +41,8 @@ const Files = () => {
             <div className='browser-files__element' key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                if(file.type === IElementTypes.FOLDER){    
-                  setFilesPath(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name, navigate)             
+                if (file.type === IElementTypes.FOLDER) {
+                  navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
                 }
               }
               formatFiles(e.target)
