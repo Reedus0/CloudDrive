@@ -11,13 +11,14 @@ export class FilesService {
   }
   addFile(file: File) {
     const formData = new FormData()
-    formData.append(file.name, file)
-    formData.append('path', this.path)
-    formData.append('access_token', this.API.getCookie('access_token'))
-    return this.API.fileRequest('/api/files/add', formData)
+    formData.append(file.name, file, this.path)
+    return this.API.fileRequest('/api/upload', formData)
   }
   getFiles() {
-    return this.API.postRequest('/api/files/path', { 'path': this.path })
+    return this.API.postRequest('/api/dir', { 'path': this.path })
+  }
+  downloadFile() {
+    return this.API.postRequest('/api/load', { 'path': this.path })
   }
   createFile(type: string) {
     return this.API.postRequest('/api/files/create', { 'path': this.path, 'type': type })

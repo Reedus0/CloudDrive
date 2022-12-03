@@ -4,7 +4,7 @@ import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPromp
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
-import { IElement, IElementTypes } from '../../../../models/IElement'
+import { IElement } from '../../../../models/IElement'
 import { refreshAllFiles } from '../../../../utils'
 import Create from '../Create/Create'
 import Upload from '../Upload/Upload'
@@ -36,9 +36,9 @@ const Buttons = () => {
   }
 
   const openElement = () => {
-    if (selectedFile.type === IElementTypes.FOLDER) {
-      navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
-    }
+    
+    navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
+    
   }
 
   const renameElement = () => {

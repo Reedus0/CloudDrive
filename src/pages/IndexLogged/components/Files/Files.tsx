@@ -51,9 +51,9 @@ const Files = () => {
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                if (file.type === IElementTypes.FOLDER) {
-                  navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
-                }
+                
+                navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
+                
               }
               formatFiles(e.target)
             }

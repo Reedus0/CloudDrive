@@ -2,7 +2,7 @@ import { AppDispatch } from "../..";
 import { FilesService } from "../../../api/FilesService";
 import Notification from "../../../components/Notification/Notification";
 import { IElement, IElementTypes } from "../../../models/IElement";
-import { refreshAllFiles } from "../../../utils";
+import { formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
 import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, RenameFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction } from "./types";
@@ -34,7 +34,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.addFile(file)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.addFileStore({ 'name': responseJSON['name'], 'type': IElementTypes.FILE }))
+				dispatch(FilesActionCreators.addFileStore({ 'name': file.name, 'type': IElementTypes.FILE }))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -108,7 +108,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.setFiles(responseJSON['files']))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))

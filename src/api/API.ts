@@ -1,11 +1,11 @@
 export class API {
 
-  link = ""
+  link = "http://4.tcp.eu.ngrok.io:16765"
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
       method: "POST",
-      body: JSON.stringify({ ...data, 'access_token': this.getCookie('access_token') })
+      body: JSON.stringify(data)
     })
   }
 

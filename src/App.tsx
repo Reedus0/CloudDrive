@@ -12,7 +12,6 @@ const App: FC = () => {
   const { prompt } = useTypedSelector(state => state.prompt);
   const { notification } = useTypedSelector(state => state.notification);
 
-
   return (
     <>
       {notification}
