@@ -28,8 +28,6 @@ const Files = () => {
     setFilesPath(document.location.pathname, navigate)
     setSelectedFile({} as IElement)
     refreshAllFiles()
-    console.log(location);
-
   }, [location])
 
 
@@ -38,15 +36,15 @@ const Files = () => {
     <div className='browser-files'>
       <div className='browser-files__header header-browser'>
         <div className='header-browser__buttons'>
-          <button className='header-browser__button _left' onClick={() => navigate(-1)}>^</button>
-          <button className='header-browser__button _right' onClick={() => navigate(+1)}>^</button>
+          <button className='header-browser__button _left' disabled={location.key === 'default'} onClick={() => navigate(-1)}>^</button>
+          <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__view-mods'>
-          <button className='header-browser__view-mode' onClick={() => tilesViewSet(false)}>
-            <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' src='https://reedus0.github.io/img/catalog-bottom/imgs/style2.png' />
+          <button className='header-browser__view-mode' onClick={() => {tilesViewSet(false); setSelectedFile({} as IElement)}}>
+            <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' width={25} height={23} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/rows.png' />
           </button>
-          <button className='header-browser__view-mode' onClick={() => tilesViewSet(true)}>
-            <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' src='https://reedus0.github.io/img/catalog-bottom/imgs/style1.png' />
+          <button className='header-browser__view-mode' onClick={() => {tilesViewSet(true); setSelectedFile({} as IElement)}}>
+            <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' width={25} height={25} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/tiles.png' />
           </button>
         </div>
       </div>

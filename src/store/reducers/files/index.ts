@@ -45,7 +45,7 @@ const initialState = {
       'type': IElementTypes.FILE
     },
     {
-      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
       'type': IElementTypes.FOLDER
     },
     {
