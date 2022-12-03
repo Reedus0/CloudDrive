@@ -1,17 +1,18 @@
 .button {
 
-  
+
   @media (any-hover: hover) {
-      &:hover{
-          background: black;
-          color: white;
-      }
+    &:hover {
+      background: black;
+      color: white;
+    }
   }
 
   @media (max-width: 767px) {
     font-size: 16px;
     padding: 6px 15px;
   }
+
   user-select: none;
   transition: all 0.3s ease 0s;
   border: 3px solid #000000;

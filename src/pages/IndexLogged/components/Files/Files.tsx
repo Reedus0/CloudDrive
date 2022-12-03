@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SimpleBar from 'simplebar-react'
 import { IElement, IElementTypes } from '../../../../models/IElement'
 import 'simplebar-react/dist/simplebar.min.css';
-import { refreshAllFiles } from '../../../../utils';
+import { formatFiles, refreshAllFiles } from '../../../../utils';
 import './Files.scss'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
@@ -14,12 +14,6 @@ const Files = () => {
   const { setSelectedFile, setFilesPath } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
-
-  const formatFiles = (element: any) => {
-
-    refreshAllFiles()
-    element.closest(".browser-files__element").classList.add("_active")
-  }
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -40,10 +34,10 @@ const Files = () => {
           <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__view-mods'>
-          <button className='header-browser__view-mode' onClick={() => {tilesViewSet(false); setSelectedFile({} as IElement)}}>
+          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); setSelectedFile({} as IElement) }}>
             <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' width={25} height={23} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/rows.png' />
           </button>
-          <button className='header-browser__view-mode' onClick={() => {tilesViewSet(true); setSelectedFile({} as IElement)}}>
+          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(true); setSelectedFile({} as IElement) }}>
             <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' width={25} height={25} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/tiles.png' />
           </button>
         </div>

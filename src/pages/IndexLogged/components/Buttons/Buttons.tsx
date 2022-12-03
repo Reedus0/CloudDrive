@@ -82,17 +82,17 @@ const Buttons = () => {
         </div>
           <div className='browser-buttons__buttons'>
 
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => openElement()}>Открыть</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => copyFile(path, selectedFile)}>Копировать</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
+            <button className='browser-buttons__button' disabled={isEditing} onClick={() => openElement()}>Открыть</button>
+            <button className='browser-buttons__button' disabled={isEditing} onClick={() => copyFile(path, selectedFile)}>Копировать</button>
+            <button className='browser-buttons__button' disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
+            <button className='browser-buttons__button' disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
 
           </div></> :
           <div className='browser-buttons__choose'>
             <h1 className='browser-buttons__choose-title'>Выберите файл</h1>
           </div>}
         <div className='browser-buttons__buttons-bottom'>
-          <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
+          <button className='browser-buttons__button' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
         </div>
         <div className='browser-buttons__bottom'>
           <button className='browser-buttons__create' onClick={

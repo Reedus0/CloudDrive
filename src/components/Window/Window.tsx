@@ -7,7 +7,6 @@ const Window = (props: any) => {
     <div className='window'>
       <h1 className='window__title'>{props.name}</h1>
       <div className='window__inner'>
-
         {props.children}
       </div>
     </div>

@@ -5,7 +5,7 @@
   backdrop-filter: blur(20px);
 
   border-radius: 20px;
- 
+
 
   width: calc(100vw - 250px);
 
@@ -15,9 +15,6 @@
 
   @media (max-width: 991px) {
     width: calc(90vw - 20px);
-  }
-
-  &__inner{
   }
 
   &__title {

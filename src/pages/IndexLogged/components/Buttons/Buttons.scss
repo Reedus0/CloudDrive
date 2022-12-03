@@ -11,7 +11,7 @@
     justify-content: space-between;
     min-height: 160px;
     padding: 10px 10px 0 10px;
-    
+
   }
 
   &__top {
@@ -113,9 +113,9 @@
     border: none;
     margin: 7.5px 0;
 
-    &._disabled {
+    &:disabled {
       cursor: default;
-      color: rgb(100, 100, 100);
+      color: rgb(130, 130, 130);
     }
 
     @media (max-width: 991px) {

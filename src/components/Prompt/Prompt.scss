@@ -19,17 +19,16 @@
     border-radius: 100px 0px 60px 0;
     position: relative;
 
-    
-
     display: flex;
     justify-content: center;
     align-items: center;
 
     padding: 50px;
     margin: 0 10px;
+
     @media (max-width: 767px) {
-        padding: 25px;
-        border-radius: 60px 0px 40px 0;
+      padding: 25px;
+      border-radius: 60px 0px 40px 0;
 
     }
   }

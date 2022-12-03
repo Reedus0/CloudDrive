@@ -18,7 +18,7 @@ const Header: FC = () => {
         <div className='header__profile profile-header'>
           {isAuth ?
             <>
-              <Button name="Выйти" function={() => logout()}/>
+              <Button name="Выйти" function={() => logout()} />
             </>
             :
             <>

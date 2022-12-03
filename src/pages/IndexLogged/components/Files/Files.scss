@@ -222,7 +222,7 @@
 
     &:disabled {
       background: rgb(210, 210, 210);
-
+      cursor: default;
     }
 
     cursor: pointer;
@@ -272,7 +272,6 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
-
   }
 
   &__view-icon {
@@ -281,6 +280,7 @@
     filter: invert(75%);
 
     &._active {
+      cursor: default;
       filter: invert(0%);
     }
   }

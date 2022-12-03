@@ -1,17 +1,19 @@
 .header {
   z-index: 1000;
+
   @media (max-width: 767px) {
     height: 60px;
   }
-  
+
   height: 60px;
   width: 100%;
   position: relative;
-  
+
   &__inner {
-    &._blur{
+    &._blur {
       backdrop-filter: blur(20px);
     }
+
     z-index: 1000;
 
     @media (max-width: 767px) {
@@ -209,7 +211,8 @@
 
   &__links {
     padding: 10px 5px;
-    border-top: 1px solid rgb(0, 0, 0, 0.05);;
+    border-top: 1px solid rgb(0, 0, 0, 0.05);
+    ;
 
     @media (max-width: 767px) {
       padding: 10px 0 0 0;

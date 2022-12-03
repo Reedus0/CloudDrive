@@ -3,10 +3,10 @@ import { API } from "./API";
 export class FilesService {
   API = new API()
   path: string = '/'
-  constructor(path: string){
+  constructor(path: string) {
     this.path = path
   }
-  setPath(path: string){
+  setPath(path: string) {
     this.path = path
   }
   addFile(file: File) {

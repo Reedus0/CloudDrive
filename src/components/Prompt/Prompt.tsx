@@ -11,7 +11,6 @@ export default function Prompt(props: any) {
     <div className="prompt" onClick={() => setPrompt(<></>)}>
       <div className="prompt__inner" onClick={(e) => e.stopPropagation()} >
         <div className='prompt__wrapper'>
-
           <button className="prompt__close" onClick={() => setPrompt(<></>)}>&#10006;</button>
           <h1 className="prompt__title">{props.title}</h1>
           <div className="prompt__content">

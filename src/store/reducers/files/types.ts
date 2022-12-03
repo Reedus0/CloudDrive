@@ -6,7 +6,7 @@ export interface FilesState {
   selectedFile: IElement,
   filesAreLoading: boolean,
   filesError: string,
-  copiedFile: {'path': string, 'file': IElement}
+  copiedFile: { 'path': string, 'file': IElement }
 }
 
 export enum FilesActionEnum {
@@ -35,7 +35,7 @@ export interface SetSelectedFileAction {
 
 export interface CopyFileAction {
   type: FilesActionEnum.COPY_FILE;
-  payload: {'path': string, 'file': IElement};
+  payload: { 'path': string, 'file': IElement };
 }
 
 export interface AddFileAction {
@@ -60,7 +60,7 @@ export interface PasteFileAction {
 
 export interface RenameFileAction {
   type: FilesActionEnum.RENAME_FILE;
-  payload: {file: IElement, name: string};
+  payload: { file: IElement, name: string };
 }
 
 export interface SetFilesErrorAction {
@@ -84,7 +84,7 @@ export type FilesAction =
   DeleteFileAction |
   CreateFileAction |
   RenameFileAction |
-  SetFilesErrorAction | 
+  SetFilesErrorAction |
   SetFilesLoadingAction |
   SetSelectedFileAction |
   PasteFileAction |

@@ -12,13 +12,16 @@
   &__button {
     user-select: none;
     transition: all 0.3s ease 0s;
-    &._red{
+
+    &._red {
       background: rgb(218, 30, 30);
     }
-    &:disabled{
+
+    &:disabled {
       cursor: default;
       background: #808080;
     }
+
     flex: 1 1 calc(50% - 10px);
     background: #000000;
     border-radius: 20px 0px;
@@ -51,7 +54,7 @@
     font-size: 20px;
     line-height: 24px;
     border: none;
-    
+
     color: #FFFFFF;
     padding: 12px 0;
   }
