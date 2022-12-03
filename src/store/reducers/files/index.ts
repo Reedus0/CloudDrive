@@ -100,6 +100,582 @@ const initialState = {
       'name': "filqwee f",
       'type': IElementTypes.FILE
     },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "filqwee f",
+      'type': IElementTypes.FILE
+    },
   ] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,

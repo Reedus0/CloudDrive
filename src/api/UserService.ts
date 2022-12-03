@@ -5,4 +5,7 @@ export class UserService{
   login(login: string, password: string) {
     return this.API.postRequest('/api/user/login', {'login': login, 'password': password})
   }
+  getUser() {
+    return this.API.postRequest('/api/user/get')
+  }
 }
