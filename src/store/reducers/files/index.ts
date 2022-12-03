@@ -119,13 +119,13 @@ export default function filesReducer(state = initialState, action: FilesAction):
       return { ...state, files: [...state.files.filter((file: IElement) => file !== action.payload['file']), { type: action.payload['file']['type'], name: action.payload['name'] }], filesAreLoading: false }
     case FilesActionEnum.CREATE_FILE:
       return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
-    case FilesActionEnum.SET_ERROR:
+    case FilesActionEnum.SET_FILES_ERROR:
       return { ...state, filesError: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_PATH:
       return { ...state, path: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_SELECTED_FILE:
       return { ...state, selectedFile: action.payload, filesAreLoading: false }
-    case FilesActionEnum.SET_LOADING:
+    case FilesActionEnum.SET_FILES_LOADING:
       return { ...state, filesAreLoading: action.payload }
     case FilesActionEnum.COPY_FILE:
       return { ...state, copiedFile: action.payload }

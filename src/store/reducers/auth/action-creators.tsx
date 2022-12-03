@@ -9,8 +9,8 @@ import { NotificationActionCreators } from "../notification/action-creators";
 export const AuthActionCreators = {
   setUser: (user: IUser): SetUserAction => ({ type: AuthActionEnum.SET_USER, payload: user }),
   setIsAuth: (auth: boolean): SetAuthAction => ({ type: AuthActionEnum.SET_AUTH, payload: auth }),
-  setAuthError: (error: string): SetAuthErrorAction => ({ type: AuthActionEnum.SET_ERROR, payload: error }),
-  setAuthLoading: (isLoading: boolean): SetAuthLoadingAction => ({ type: AuthActionEnum.SET_LOADING, payload: isLoading }),
+  setAuthError: (error: string): SetAuthErrorAction => ({ type: AuthActionEnum.SET_AUTH_ERROR, payload: error }),
+  setAuthLoading: (isLoading: boolean): SetAuthLoadingAction => ({ type: AuthActionEnum.SET_AUTH_LOADING, payload: isLoading }),
   login: (login: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(AuthActionCreators.setAuthLoading(true))

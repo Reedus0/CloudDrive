@@ -87,6 +87,7 @@
   }
 
   &__name {
+    user-select: none;
     overflow: hidden;
     font-family: 'Montserrat';
     font-style: normal;
@@ -127,6 +128,10 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   &__empty-title {
@@ -185,6 +190,10 @@
       min-height: 25px;
     }
   }
+
+  &__icon {
+    user-select: none;
+  }
 }
 
 .header-browser {
@@ -208,6 +217,9 @@
   }
 
   &__button {
+    user-select: none;
+    transition: all 0.3s ease 0s;
+
     &:disabled {
       background: rgb(200, 200, 200);
 
@@ -264,6 +276,7 @@
   }
 
   &__view-icon {
+    user-select: none;
     transition: all 0.3s ease 0s;
     filter: invert(50%);
 

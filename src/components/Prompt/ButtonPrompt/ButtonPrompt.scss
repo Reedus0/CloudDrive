@@ -10,6 +10,7 @@
 
 
   &__button {
+    user-select: none;
     transition: all 0.3s ease 0s;
     &._red{
       background: rgb(218, 30, 30);

@@ -15,9 +15,9 @@ export enum FilesActionEnum {
   DELETE_FILE = "DELETE_FILE",
   CREATE_FILE = "CREATE_FILE",
   RENAME_FILE = "RENAME_FILE",
-  SET_ERROR = "SET_ERROR",
+  SET_FILES_ERROR = "SET_FILES_ERROR",
   SET_SELECTED_FILE = "SET_SELECTED_FILE",
-  SET_LOADING = "SET_LOADING",
+  SET_FILES_LOADING = "SET_FILES_LOADING",
   PASTE_FILE = "PASTE_FILE",
   COPY_FILE = "COPY_FILE",
   SET_PATH = "SET_PATH"
@@ -64,7 +64,7 @@ export interface RenameFileAction {
 }
 
 export interface SetFilesErrorAction {
-  type: FilesActionEnum.SET_ERROR;
+  type: FilesActionEnum.SET_FILES_ERROR;
   payload: string;
 }
 
@@ -74,7 +74,7 @@ export interface SetFilesPathAction {
 }
 
 export interface SetFilesLoadingAction {
-  type: FilesActionEnum.SET_LOADING;
+  type: FilesActionEnum.SET_FILES_LOADING;
   payload: boolean;
 }
 

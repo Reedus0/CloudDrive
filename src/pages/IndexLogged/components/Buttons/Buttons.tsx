@@ -14,7 +14,7 @@ import './Buttons.scss'
 const Buttons = () => {
 
   const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile, setFilesPath } = useActions()
+  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
@@ -84,7 +84,6 @@ const Buttons = () => {
 
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => openElement()}>Открыть</button>
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => copyFile(path, selectedFile)}>Копировать</button>
-            <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
             <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
 
@@ -92,6 +91,9 @@ const Buttons = () => {
           <div className='browser-buttons__choose'>
             <h1 className='browser-buttons__choose-title'>Выберите файл</h1>
           </div>}
+        <div className='browser-buttons__buttons-bottom'>
+          <button className={['browser-buttons__button', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
+        </div>
         <div className='browser-buttons__bottom'>
           <button className='browser-buttons__create' onClick={
             () => setPrompt(
@@ -110,20 +112,22 @@ const Buttons = () => {
         </div>
       </div>
       <div className='browser-buttons__upload-mobile'>
-        <button className='browser-buttons__create' onClick={
+        <button className='browser-buttons__create' disabled={isEditing} onClick={
           () => setPrompt(
             <Prompt title="Создать">
               <Create />
             </Prompt>
           )
         }>Создать</button>
-        <button className='browser-buttons__create' onClick={
+        <button className='browser-buttons__create' disabled={isEditing} onClick={
           () => setPrompt(
             <Prompt title="Загрузить">
               <Upload />
             </Prompt>
           )
         }>Загрузить</button>
+        <button className={['browser-buttons__create', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
+
       </div>
     </>
   )
