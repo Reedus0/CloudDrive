@@ -9,6 +9,13 @@ export class API {
     })
   }
 
+  async fileRequest(path: string, formData: FormData) {
+    return fetch(this.link + path, {
+      method: "POST",
+      body: formData
+    })
+  }
+
   setCookie(name: string, value: string, options: { [key: string]: any } = {}) {
     options = {
       path: '/',
@@ -37,6 +44,6 @@ export class API {
   getCookie(name: string) {
     let matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"))
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return matches ? decodeURIComponent(matches[1]) : "";
   }
 }

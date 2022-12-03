@@ -29,7 +29,7 @@ const Files = () => {
     setSelectedFile({} as IElement)
     refreshAllFiles()
     console.log(location);
-    
+
   }, [location])
 
 
@@ -42,14 +42,18 @@ const Files = () => {
           <button className='header-browser__button _right' onClick={() => navigate(+1)}>^</button>
         </div>
         <div className='header-browser__view-mods'>
-          <button className='header-browser__view-mode' onClick={() => tilesViewSet(false)}>Rows</button>
-          <button className='header-browser__view-mode' onClick={() => tilesViewSet(true)}>Tiles</button>
+          <button className='header-browser__view-mode' onClick={() => tilesViewSet(false)}>
+            <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' src='https://reedus0.github.io/img/catalog-bottom/imgs/style2.png' />
+          </button>
+          <button className='header-browser__view-mode' onClick={() => tilesViewSet(true)}>
+            <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' src='https://reedus0.github.io/img/catalog-bottom/imgs/style1.png' />
+          </button>
         </div>
       </div>
       {filesAreLoading ? <div className='browser-files__loading'>
         <div className='browser-files__ring'></div>
       </div> : <></>}
-      <SimpleBar style={{ maxHeight: "calc(100vh - 180px)"}} forceVisible="y" autoHide={false}>
+      <SimpleBar style={{ maxHeight: "calc(100vh - 180px)", backgroundColor: window.innerWidth < 767 ? "white" : "" }} forceVisible="y" autoHide={false}>
         <div className={['browser-files__inner', tilesView ? '_tiles' : '_rows'].join(' ')}>
           {files.length ? files.map((file: IElement, index: number) =>
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
@@ -71,7 +75,7 @@ const Files = () => {
                   <img className='browser-files__icon' alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
                 </div>
               }
-              <h1 className='browser-files__name'>
+              <h1 className={['browser-files__name', tilesView ? '_tiles' : '_rows'].join(' ')}>
                 {file.name}
               </h1>
             </div>)

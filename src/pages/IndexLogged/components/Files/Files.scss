@@ -1,7 +1,7 @@
 .browser-files {
   position: relative;
   flex: 1 1 75%;
-  padding-right: 5px;
+  padding: 0 5px;
 
 
   @media (max-width: 767px) {
@@ -9,6 +9,7 @@
   }
 
   &__inner {
+    
     background: white;
     margin-right: 15px;
     min-height: calc(100vh - 180px);
@@ -16,13 +17,19 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      justify-content: space-between;
-      
+      align-content: flex-start;
+      &::after {
+        content: "";
+        flex: 1 1 auto;
+      }
+    }
+    @media (max-width: 767px) {
+        margin-right: 0;
     }
   }
 
   &__element {
-
+    word-wrap: break-word;
     overflow: hidden;
 
     &._active {
@@ -39,13 +46,13 @@
     }
 
     cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    
     &._rows {
+      justify-content: flex-start;
       padding: 12px 15px;
 
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
 
       @media (max-width: 767px) {
         padding: 8px 15px;
@@ -53,14 +60,23 @@
     }
 
     &._tiles {
-      flex: 1 1 80px;
-      width: 80px;
-      height: 60px;
+      flex: 0 1 calc(10% - 10px);
+      width: 75px;
+      height: 80px;
       padding: 5px;
+      flex-direction: column;
       text-align: center;
+      justify-content: center;
+      @media (max-width: 1440px) {
+        flex: 0 1 calc(20% - 10px);
+      }
+      @media (max-width: 991px) {
+        flex: 0 1 calc(25% - 10px);
+      }
+      @media (max-width: 767px) {
+        flex: 0 1 calc(33.3% - 10px);
+      }
     }
-
-
   }
 
   &__name {
@@ -71,6 +87,12 @@
     font-size: 20px;
     line-height: 24px;
     margin-left: 10px;
+    height: 25px;
+
+    &._tiles{
+      margin: 5px 0 0 0;
+      width: 75px;
+    }
 
     @media (max-width: 767px) {
       font-size: 18px;
@@ -89,9 +111,9 @@
 
     z-index: 1000;
     width: calc(100% - 20px);
-    height: 100%;
+    height: calc(100% - 50px); 
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 0;
 
     display: flex;
@@ -168,6 +190,10 @@
   border-radius: 15px;
   margin-bottom: 8px;
 
+  @media (max-width: 767px) {
+      margin-right: 0;
+  }
+
   &__buttons {
     display: flex;
     justify-content: flex-start;
@@ -209,5 +235,27 @@
       transform: rotate(90deg);
       padding-top: 10px;
     }
+  }
+
+  &__view-mods{
+    display: flex;
+    margin-right: 5px;
+  }
+
+  &__view-mode{
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &:not(:last-child){
+      margin-right: 10px;
+    }
+    
+  }
+  &__view-icon{
+    filter: grayscale(100%);
   }
 }

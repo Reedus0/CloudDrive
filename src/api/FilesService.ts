@@ -12,7 +12,9 @@ export class FilesService {
   addFile(file: File) {
     const formData = new FormData()
     formData.append(file.name, file)
-    return this.API.postRequest('/api/files/add', { 'path': this.path, 'file': formData })
+    formData.append('path', this.path)
+    formData.append('access_token', this.API.getCookie('access_token'))
+    return this.API.fileRequest('/api/files/add', formData)
   }
   getFiles() {
     return this.API.postRequest('/api/files/path', { 'path': this.path })

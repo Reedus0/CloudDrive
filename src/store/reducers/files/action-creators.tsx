@@ -112,11 +112,15 @@ export const FilesActionCreators = {
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
-				navigate(-1)
+				if(document.location.pathname !== '/'){
+					navigate(-1)
+				}
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при загрузке файлов"))
-			navigate(-1)
+			if(document.location.pathname !== '/'){
+				navigate(-1)
+			}
 		}
 	},
 }

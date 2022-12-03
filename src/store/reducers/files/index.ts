@@ -45,7 +45,7 @@ const initialState = {
       'type': IElementTypes.FILE
     },
     {
-      'name': "folder f",
+      'name': "folderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolderfolder",
       'type': IElementTypes.FOLDER
     },
     {
@@ -97,7 +97,7 @@ const initialState = {
       'type': IElementTypes.FOLDER
     },
     {
-      'name': "file f",
+      'name': "filqwee f",
       'type': IElementTypes.FILE
     },
   ] as IElement[],
