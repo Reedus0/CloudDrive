@@ -12,6 +12,94 @@ const initialState = {
       'name': "file f",
       'type': IElementTypes.FILE
     },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
+    {
+      'name': "folder f",
+      'type': IElementTypes.FOLDER
+    },
+    {
+      'name': "file f",
+      'type': IElementTypes.FILE
+    },
   ] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,

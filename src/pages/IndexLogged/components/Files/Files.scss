@@ -3,6 +3,7 @@
   flex: 1 1 75%;
   padding-right: 5px;
 
+
   @media (max-width: 767px) {
     flex: 1 1 100%;
   }
@@ -11,19 +12,23 @@
     background: white;
     margin-right: 15px;
     min-height: calc(100vh - 180px);
-
+    &._tiles{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      
+    }
   }
 
   &__element {
+
     overflow: hidden;
-    width: calc(100% - 24px);
 
     &._active {
       background: rgba(233, 235, 235, 0.5);
 
     }
-
-    padding: 12px 15px;
 
     transition: all 0.3s ease 0s;
 
@@ -34,13 +39,27 @@
     }
 
     cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 
-    @media (max-width: 767px) {
-      padding: 8px 15px;
+    &._rows {
+      padding: 12px 15px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @media (max-width: 767px) {
+        padding: 8px 15px;
+      }
     }
+
+    &._tiles {
+      flex: 1 1 80px;
+      width: 80px;
+      height: 60px;
+      padding: 5px;
+      text-align: center;
+    }
+
 
   }
 
@@ -81,7 +100,7 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
 
-  &__empty-title{
+  &__empty-title {
     margin-top: 10px;
 
     font-family: 'Montserrat';
@@ -135,6 +154,60 @@
     @media (max-width: 767px) {
       min-width: 25px;
       min-height: 25px;
+    }
+  }
+}
+
+.header-browser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin-right: 14px;
+  padding: 6px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__button {
+    &:disabled {
+      background: rgb(200, 200, 200);
+
+    }
+
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    font-size: 32px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    background: rgb(230, 230, 230);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    &._left {
+      transform: rotate(-90deg);
+      padding-top: 10px;
+    }
+
+    &._right {
+      transform: rotate(90deg);
+      padding-top: 10px;
     }
   }
 }

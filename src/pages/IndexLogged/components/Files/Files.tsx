@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SimpleBar from 'simplebar-react'
 import { IElement, IElementTypes } from '../../../../models/IElement'
 import 'simplebar-react/dist/simplebar.min.css';
@@ -13,6 +13,8 @@ const Files = () => {
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
   const { setSelectedFile, setFilesPath } = useActions()
 
+  const [tilesView, tilesViewSet] = useState<boolean>(false)
+
   const formatFiles = (element: any) => {
 
     refreshAllFiles()
@@ -26,19 +28,31 @@ const Files = () => {
     setFilesPath(document.location.pathname, navigate)
     setSelectedFile({} as IElement)
     refreshAllFiles()
+    console.log(location);
+    
   }, [location])
 
 
 
   return (
     <div className='browser-files'>
+      <div className='browser-files__header header-browser'>
+        <div className='header-browser__buttons'>
+          <button className='header-browser__button _left' onClick={() => navigate(-1)}>^</button>
+          <button className='header-browser__button _right' onClick={() => navigate(+1)}>^</button>
+        </div>
+        <div className='header-browser__view-mods'>
+          <button className='header-browser__view-mode' onClick={() => tilesViewSet(false)}>Rows</button>
+          <button className='header-browser__view-mode' onClick={() => tilesViewSet(true)}>Tiles</button>
+        </div>
+      </div>
       {filesAreLoading ? <div className='browser-files__loading'>
         <div className='browser-files__ring'></div>
       </div> : <></>}
-      <SimpleBar style={{ maxHeight: "calc(100vh - 180px)" }} forceVisible="y" autoHide={false}>
-        <div className='browser-files__inner'>
+      <SimpleBar style={{ maxHeight: "calc(100vh - 180px)"}} forceVisible="y" autoHide={false}>
+        <div className={['browser-files__inner', tilesView ? '_tiles' : '_rows'].join(' ')}>
           {files.length ? files.map((file: IElement, index: number) =>
-            <div className='browser-files__element' key={index} onClick={(e) => {
+            <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
                 if (file.type === IElementTypes.FOLDER) {
