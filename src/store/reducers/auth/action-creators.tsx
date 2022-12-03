@@ -19,7 +19,7 @@ export const AuthActionCreators = {
       const response: Response = await userService.login(login, password)
       const responseJSON = await response.clone().json()
       if (response.status === 200) {
-        dispatch(AuthActionCreators.setUser(responseJSON['user']))
+        dispatch(AuthActionCreators.setUser({'username': login}))
         dispatch(AuthActionCreators.setAuthError(""))
         dispatch(AuthActionCreators.setIsAuth(true))
         dispatch(PromptActionCreators.setPrompt(<></>))

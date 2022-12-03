@@ -70,6 +70,15 @@ const Files = () => {
               <h1 className={['browser-files__name', tilesView ? '_tiles' : '_rows'].join(' ')}>
                 {file.name}
               </h1>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+                {file.owner}
+              </h1>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+                {file.size}
+              </h1>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+                {file.lastUpdated}
+              </h1>
             </div>)
             :
             <div className='browser-files__empty'>

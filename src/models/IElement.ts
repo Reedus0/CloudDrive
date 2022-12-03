@@ -1,5 +1,8 @@
 export interface IElement {
   name: string,
+  owner: string,
+  lastUpdated: string,
+  size: string,
   type: IElementTypes
 }
 

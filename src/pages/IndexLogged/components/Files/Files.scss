@@ -107,6 +107,27 @@
     }
   }
 
+  &__field {
+    user-select: none;
+    overflow: hidden;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    margin-left: 10px;
+    height: 25px;
+    color: rgb(210, 210, 210);
+
+    &._tiles {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
   &__empty {
     display: flex;
     justify-content: center;
@@ -118,11 +139,11 @@
   &__loading {
 
     z-index: 1000;
-    width: calc(100% - 20px);
+    width: calc(100% - 25px);
     height: calc(100% - 50px);
     position: absolute;
     top: 50px;
-    left: 0;
+    left: 5px;
 
     display: flex;
     justify-content: center;
@@ -131,6 +152,7 @@
 
     @media (max-width: 767px) {
       width: 100%;
+      left: 0;
     }
   }
 

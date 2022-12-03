@@ -34,7 +34,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.addFile(file)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.addFileStore({ 'name': file.name, 'type': IElementTypes.FILE }))
+				dispatch(FilesActionCreators.addFileStore({ 'name': file.name, 'type': IElementTypes.FILE, 'owner': '', 'lastUpdated': '', 'size': '' }))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -48,7 +48,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.createFile(type)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.createFileStore({ 'name': responseJSON['name'], 'type': IElementTypes.FOLDER }))
+				dispatch(FilesActionCreators.createFileStore({ 'name': responseJSON['name'], 'type': IElementTypes.FOLDER, 'owner': '', 'lastUpdated': '', 'size': '' }))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -104,10 +104,12 @@ export const FilesActionCreators = {
 	setFilesPath: (path: string, navigate: Function) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
+			
 			filesService.setPath(path)
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
+				console.log(formatRequestFiles(responseJSON['files']))
 				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {

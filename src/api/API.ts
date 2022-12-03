@@ -1,6 +1,6 @@
 export class API {
 
-  link = "http://4.tcp.eu.ngrok.io:16765"
+  link = "https://ac46-176-59-73-148.eu.ngrok.io"
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
