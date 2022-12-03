@@ -221,7 +221,7 @@
     transition: all 0.3s ease 0s;
 
     &:disabled {
-      background: rgb(200, 200, 200);
+      background: rgb(210, 210, 210);
 
     }
 
@@ -278,7 +278,7 @@
   &__view-icon {
     user-select: none;
     transition: all 0.3s ease 0s;
-    filter: invert(50%);
+    filter: invert(75%);
 
     &._active {
       filter: invert(0%);
