@@ -10,7 +10,7 @@ import './Header.scss'
 const Header: FC = () => {
 
   const { setPrompt, logout } = useActions()
-  const { isAuth } = useTypedSelector(state => state.auth);
+  const { isAuth, user } = useTypedSelector(state => state.auth);
 
   return (
     <header className='header'>
@@ -18,10 +18,15 @@ const Header: FC = () => {
         <div className='header__profile profile-header'>
           {isAuth ?
             <>
+              <div className='profile-header__user'>
+                <h1 className='profile-header__name'>{window.innerWidth < 767 ? user['username'] : 'С возвращением, ' + user['username'] + '!'}</h1>
+              </div>
               <Button name="Выйти" function={() => logout()} />
             </>
             :
             <>
+              <div className='profile-header__user'>
+              </div>
               <Button name="Войти" function={() => setPrompt(
                 <Prompt title="Вход">
                   <FormLogin />
