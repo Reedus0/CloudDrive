@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import { useTypedSelector } from './hooks/useTypedSelector';
 
@@ -12,6 +13,14 @@ const App: FC = () => {
   const { prompt } = useTypedSelector(state => state.prompt);
   const { notification } = useTypedSelector(state => state.notification);
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(document.location.pathname != '/'){
+      document.location.pathname = '/'
+    }
+  }, [])
+  
 
   return (
     <>

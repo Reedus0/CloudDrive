@@ -24,8 +24,6 @@ const Files = () => {
     refreshAllFiles()
   }, [location])
 
-
-
   return (
     <div className='browser-files'>
       <div className='browser-files__header header-browser'>

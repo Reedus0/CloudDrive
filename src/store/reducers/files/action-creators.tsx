@@ -103,7 +103,6 @@ export const FilesActionCreators = {
 	},
 	setFilesPath: (path: string, navigate: Function) => async (dispatch: AppDispatch) => {
 		try {
-			dispatch(FilesActionCreators.setFilesLoading(true))
 			
 			filesService.setPath(path)
 			const response: Response = await filesService.getFiles()
