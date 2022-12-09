@@ -1,3 +1,5 @@
+@import '../../styles/Themes.scss';
+
 .header {
   z-index: 1000;
 
@@ -121,15 +123,14 @@
 
 .profile-header {
   position: relative;
-
+  
   flex: 1 1 11%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &__user {}
-
+  
   &__name {
+    transition: all 0.3s ease 0s;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -137,6 +138,9 @@
     line-height: 24px;
     @media (max-width: 767px) {
       font-size: 20px;
+    }
+    @include themify($themes) {
+      color: themed('mainColor')
     }
   }
 
@@ -301,6 +305,12 @@
       transition: all 0.1s ease 0s;
     }
   }
+}
+
+.right-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 

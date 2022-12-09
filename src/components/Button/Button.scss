@@ -1,12 +1,6 @@
+@import '../../styles/Themes.scss';
+
 .button {
-
-
-  @media (any-hover: hover) {
-    &:hover {
-      background: black;
-      color: white;
-    }
-  }
 
   @media (max-width: 767px) {
     font-size: 16px;
@@ -15,7 +9,16 @@
 
   user-select: none;
   transition: all 0.3s ease 0s;
-  border: 3px solid #000000;
+  @include themify($themes) {
+    border: 3px solid themed('mainColor');
+    color: themed('mainColor');
+    @media (any-hover: hover) {
+      &:hover {
+        background: themed('mainColor');
+        color: themed('secondColor');
+      }
+    }
+  }
   border-radius: 20px;
   text-decoration: none;
   cursor: pointer;
@@ -32,7 +35,6 @@
 
   background: none;
 
-  color: #000000;
 
 
   padding: 8px 30px;
