@@ -4,12 +4,12 @@ $themes: (
   light: (
     mainColor: #000,
     secondColor: #fff,
-    invert: 0%
+    invert: 100%
   ),
   dark: (
     mainColor: #fff,
     secondColor: #000,
-    invert: 100%
+    invert: 0
   ),
 );
 
