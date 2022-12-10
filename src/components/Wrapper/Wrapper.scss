@@ -14,9 +14,9 @@
   justify-content: center;
 
   &__bg {
+    filter: invert(100%);
     transition: all 0.3s ease 0s;
     user-select: none;
-    opacity: 0;
     top: 0;
     left: 0;
     position: absolute;
