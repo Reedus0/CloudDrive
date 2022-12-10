@@ -14,7 +14,6 @@
   justify-content: center;
 
   &__bg {
-    filter: invert(100%);
     transition: all 0.3s ease 0s;
     user-select: none;
     top: 0;
@@ -23,6 +22,7 @@
     width: 100vw;
     height: 100vh;
     @include themify($themes) {
+      filter: invert(themed('invert'));
     }
   }
 

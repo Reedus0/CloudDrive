@@ -1,3 +1,5 @@
+@import '../../../../styles/Themes.scss';
+
 .intro {
   min-width: 100vw;
   min-height: calc(100vh - 140px);
@@ -11,12 +13,21 @@
   align-items: center;
   justify-content: center;
 
+  &__inner{
+    position: absolute;
+  }
+
   &__title {
+    transition: all 0.3s ease 0s;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 128px;
     line-height: 156px;
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
 
     @media (max-width: 767px) {
       font-size: 60px;
@@ -25,11 +36,15 @@
 
   &__bg {
     filter: blur(20px);
+    transition: all 0.3s ease 0s;
     top: 0;
     left: 0;
     position: absolute;
     width: 100vw;
     height: 100vh;
-  }
 
+    @include themify($themes) {
+      filter: invert(themed('invert')) blur(20px);
+    }
+  }
 }

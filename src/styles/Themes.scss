@@ -4,12 +4,18 @@ $themes: (
   light: (
     mainColor: #000,
     secondColor: #fff,
-    invert: 100%
+    windowBackground: rgba(235, 235, 235, 0.5),
+    background: rgba(255, 255, 255, 1),
+    disabled:rgb(130, 130, 130),
+    invert: 0%
   ),
   dark: (
     mainColor: #fff,
     secondColor: #000,
-    invert: 0
+    background: rgb(80, 80, 80),
+    windowBackground: rgba(30, 30, 30, 0.5),
+    disabled:rgb(190, 190, 190),
+    invert: 90%
   ),
 );
 

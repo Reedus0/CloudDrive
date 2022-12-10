@@ -3,7 +3,178 @@ import { FilesAction, FilesState, FilesActionEnum } from "./types";
 
 const initialState = {
   path: '/',
-  files: [] as IElement[],
+  files: [
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "file",
+      type: IElementTypes.FILE,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    {
+      name: "folder",
+      type: IElementTypes.FOLDER,
+      owner: 'me',
+      lastUpdated: "now",
+      size: '30'
+    },
+    
+
+  ] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,
   copiedFile: {} as { 'path': string, 'file': IElement },

@@ -120,6 +120,10 @@
     border: none;
     margin: 7.5px 0;
 
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
+
     &:disabled {
       cursor: default;
       color: rgb(130, 130, 130);
@@ -141,6 +145,7 @@
   }
 
   &__name {
+    transition: all 0.3s ease 0s;
     user-select: none;
     font-family: 'Montserrat';
     font-style: normal;
@@ -148,6 +153,10 @@
     font-size: 26px;
     line-height: 29px;
     width: 20vw;
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
 
     @media (max-width: 767px) {
       width: 25vw;
@@ -193,6 +202,11 @@
       margin-right: 7.5px;
     }
 
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
+
     @media (max-width: 767px) {
       font-size: 16px;
       line-height: 20px;
@@ -203,9 +217,12 @@
     border: none;
     border-radius: 10px;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.5);
+    @include themify($themes) {
+      background: themed('background');
+      color: themed('mainColor');
+    }
     font-size: 20px;
-
+    width: 20vw;
     @media (max-width: 767px) {
       font-size: 16px;
       width: calc(25vw - 20px);

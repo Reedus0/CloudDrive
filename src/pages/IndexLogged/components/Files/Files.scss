@@ -12,8 +12,10 @@
   }
 
   &__inner {
-
-    background: white;
+    transition: all 0.3s ease 0s;
+    @include themify($themes) {
+      background: themed('background')
+    }
     margin-right: 15px;
     min-height: calc(100vh - 180px);
 
@@ -41,13 +43,17 @@
     overflow: hidden;
 
     &._active {
-      background: rgba(233, 235, 235, 0.5);
+      @include themify($themes) {
+        background: themed('windowBackground')
+      }
     }
 
 
     @media (any-hover: hover) {
       &:hover {
-        background: rgba(233, 235, 235, 0.5);
+        @include themify($themes) {
+          background: themed('windowBackground')
+        }
       }
     }
 
@@ -89,6 +95,7 @@
   }
 
   &__name {
+    transition: all 0.3s ease 0s;
     user-select: none;
     overflow: hidden;
     font-family: 'Montserrat';
@@ -98,6 +105,10 @@
     line-height: 24px;
     margin-left: 10px;
     height: 25px;
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
 
     &._tiles {
       margin: 5px 0 0 0;
@@ -221,15 +232,22 @@
   }
 
   &__icon {
+    transition: all 0.3s ease 0s;
     user-select: none;
+    @include themify($themes) {
+      filter: invert(themed('invert'))
+    }
   }
 }
 
 .header-browser {
+  transition: all 0.3s ease 0s;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  @include themify($themes) {
+    background: themed('background')
+  }
   margin-right: 14px;
   padding: 6px;
   border-radius: 15px;
@@ -306,11 +324,24 @@
   &__view-icon {
     user-select: none;
     transition: all 0.3s ease 0s;
-    filter: invert(75%);
-
+    @include themify($themes) {
+      filter: invert(abs(calc(themed('invert') - 70% )))
+    }
+    
     &._active {
       cursor: default;
-      filter: invert(0%);
+      @include themify($themes) {
+        filter: invert(themed('invert'))
+      }
+    }
+  }
+}
+
+.simplebar-scrollbar {
+  &::before{
+    @include themify($themes) {
+      transition: all 0.3s ease 0s;
+      background: themed('mainColor')
     }
   }
 }
