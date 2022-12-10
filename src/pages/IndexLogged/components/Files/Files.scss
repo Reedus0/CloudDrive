@@ -150,7 +150,7 @@
   }
 
   &__loading {
-
+    transition: all 0.3s ease 0s;
     z-index: 1000;
     width: calc(100% - 25px);
     height: calc(100% - 50px);
@@ -161,7 +161,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    @include themify($themes) {
+      opacity: 0.1;
+      background: themed('mainColor')      
+    }
 
     @media (max-width: 767px) {
       width: 100%;
@@ -203,8 +206,10 @@
     height: 44px;
 
     border-radius: 50%;
-    border: 6px solid #fff;
-    border-color: white transparent white transparent;
+    @include themify($themes) {
+      border: 6px solid themed('mainColor');
+      border-color: themed('secondColor') transparent themed('secondColor') transparent;
+    }
     animation: lds-dual-ring 1.2s linear infinite;
   }
 

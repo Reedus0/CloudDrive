@@ -8,9 +8,7 @@ const Wrapper = (props: any) => {
 
   return (
     <div className='wrapper'>
-
-      <img className='wrapper__bg' alt="Background" src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/bg.png?raw=true' />
-
+      <div className='wrapper__bg'></div>
       <div className='wrapper__inner'>
         {props.children}
       </div>

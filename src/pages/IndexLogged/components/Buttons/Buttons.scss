@@ -198,6 +198,8 @@
     border: none;
     background: none;
 
+    
+
     &:not(:last-child) {
       margin-right: 7.5px;
     }
@@ -205,6 +207,11 @@
 
     @include themify($themes) {
       color: themed('mainColor')
+    }
+
+    &:disabled {
+      cursor: default;
+      color: rgb(130, 130, 130);
     }
 
     @media (max-width: 767px) {

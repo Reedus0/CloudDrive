@@ -1,6 +1,7 @@
 @import '../../styles/Themes.scss';
 
 .wrapper {
+  position: relative;
   min-width: 100vw;
   min-height: calc(100vh - 60px);
 
@@ -14,13 +15,14 @@
   justify-content: center;
 
   &__bg {
+    background: url('https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/bg.png?raw=true');
     transition: all 0.3s ease 0s;
     user-select: none;
-    top: 0;
+    top: -70px;
     left: 0;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: calc(100% + 70px);    
     @include themify($themes) {
       filter: invert(themed('invert'));
     }

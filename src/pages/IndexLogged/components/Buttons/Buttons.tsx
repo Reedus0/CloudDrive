@@ -126,7 +126,7 @@ const Buttons = () => {
             </Prompt>
           )
         }>Загрузить</button>
-        <button className={['browser-buttons__create', isEditing ? '_disabled' : ''].join(' ')} disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
+        <button className='browser-buttons__create' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
 
       </div>
     </>
