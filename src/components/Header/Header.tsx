@@ -14,6 +14,11 @@ const Header: FC = () => {
   const { isAuth, user } = useTypedSelector(state => state.auth);
   const { theme } = useTypedSelector(state => state.themes);
 
+  const changeTheme = (theme: IThemes) => {
+    setTheme(theme)
+    localStorage.setItem('default-theme', theme)
+  }
+
   return (
     <header className='header'>
       <div className={['header__inner', isAuth ? "_blur" : ""].join(" ")}>
@@ -24,7 +29,7 @@ const Header: FC = () => {
                 <h1 className='profile-header__name'>{window.innerWidth < 767 ? user['username'] : 'С возвращением, ' + user['username'] + '!'}</h1>
               </div>
               <div className='header__right right-header'>
-                <button className='header__theme-button' onClick={() => setTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
+                <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
                   <img className='header__theme-button-img' width={40} height={40} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/theme.png?raw=true' />
                 </button>
                 <Button name="Выйти" function={() => logout()} />
@@ -35,7 +40,7 @@ const Header: FC = () => {
               <div className='profile-header__user'>
               </div>
               <div className='header__right right-header'>
-                <button className='header__theme-button' onClick={() => setTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
+                <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
                   <img className='header__theme-button-img' width={40} height={40} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/theme.png?raw=true' />
                 </button>
                 <Button name="Войти" function={() => setPrompt(
