@@ -11,6 +11,20 @@
   width: 100%;
   position: relative;
 
+  &__theme-button{
+    cursor: pointer;
+    margin-right: 10px;
+    background: none;
+    border: none;
+  }
+  
+  &__theme-button-img{
+    transition: all 0.3s ease 0s;
+    @include themify($themes) {
+      filter: invert(calc(themed('invert') + 20%))
+    }
+  }
+
   &__inner {
     &._blur {
       backdrop-filter: blur(20px);
