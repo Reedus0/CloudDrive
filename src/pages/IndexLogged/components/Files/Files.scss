@@ -272,10 +272,7 @@
     user-select: none;
     transition: all 0.3s ease 0s;
 
-    &:disabled {
-      background: rgb(210, 210, 210);
-      cursor: default;
-    }
+
 
     cursor: pointer;
 
@@ -292,7 +289,15 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    background: rgb(230, 230, 230);
+    @include themify($themes) {
+      background: themed('background');
+      color: themed('mainColor');
+    }
+    &:disabled {
+      filter: invert(25%);
+      cursor: default;
+    }
+    filter: invert(10%);
     width: 30px;
     height: 30px;
     border-radius: 50%;
