@@ -1,3 +1,5 @@
+@import '../../../../styles/Themes.scss';
+
 .browser-buttons {
   flex: 0 0 25%;
   display: flex;
@@ -49,8 +51,13 @@
   }
 
   &__choose-title {
+    transition: all 0.3s ease 0s;
     user-select: none;
     margin-bottom: 18vh;
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
 
     @media (max-width: 1440px) {
       font-size: 26px;
