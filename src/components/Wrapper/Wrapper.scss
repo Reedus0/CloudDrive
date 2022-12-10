@@ -14,12 +14,18 @@
   justify-content: center;
 
   &__bg {
+    filter: invert(1);
+    transition: all 0.3s ease 0s;
     user-select: none;
+    opacity: 0;
     top: 0;
     left: 0;
     position: absolute;
     width: 100vw;
     height: 100vh;
+    &._active{
+      opacity: 1;
+    }
   }
 
 }
