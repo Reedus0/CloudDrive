@@ -1,3 +1,5 @@
+@import '../../styles/Themes.scss';
+
 .input {
   position: relative;
 
@@ -8,6 +10,9 @@
     top: 14px;
     left: 24px;
 
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -36,7 +41,10 @@
 
     box-sizing: border-box;
 
-    background: #FFFFFF;
+    @include themify($themes) {
+      background: themed('windowBackground');
+      
+    }
     border-radius: 20px 0px;
     padding: 44px 24px 14px;
 

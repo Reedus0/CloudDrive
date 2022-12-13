@@ -1,3 +1,5 @@
+@import '../../../../styles/Themes.scss';
+
 .browser-upload {
   margin-top: 25px;
   min-width: 260px;
@@ -14,12 +16,15 @@
     justify-content: center;
     align-items: center;
     padding: 60px 50px;
-    border: dashed 3px black;
-    margin-bottom: 10px;
-    &._active{
-      background-color: black;
-      color: white;
+    @include themify($themes) {
+      border: dashed 3px themed('mainColor');
+      color: themed('mainColor');
+      &._active{
+        background-color: themed('mainColor');
+        color: themed('secondColor');
+      }
     }
+    margin-bottom: 10px;
     @media (max-width: 991px) {
       display: none;
     }
@@ -30,6 +35,9 @@
     font-size: 20px;
     @media (max-width: 991px) {
       display: none;
+    }
+    @include themify($themes) {
+      color: themed('mainColor')
     }
   }
 

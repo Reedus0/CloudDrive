@@ -1,3 +1,5 @@
+@import '../../../../styles/Themes.scss';
+
 .browser-create {
 
   margin-top: 10px;
@@ -26,6 +28,12 @@
     justify-content: center;
   }
 
+  &__icon {
+    @include themify($themes) {
+      filter: invert(themed('invert'))
+    }
+  }
+
   &__name {
     font-family: 'Montserrat';
     font-style: normal;
@@ -33,6 +41,9 @@
     font-size: 24px;
     line-height: 24px;
     margin-left: 10px;
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
     @media (max-width: 767px) {
       font-size: 20px;
     }

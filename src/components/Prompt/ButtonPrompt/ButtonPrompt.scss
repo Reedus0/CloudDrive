@@ -1,3 +1,5 @@
+@import '../../../styles/Themes.scss';
+
 .buttons-prompt {
 
   position: relative;
@@ -13,17 +15,9 @@
     user-select: none;
     transition: all 0.3s ease 0s;
 
-    &._red {
-      background: rgb(218, 30, 30);
-    }
-
-    &:disabled {
-      cursor: default;
-      background: #808080;
-    }
 
     flex: 1 1 calc(50% - 10px);
-    background: #000000;
+    
     border-radius: 20px 0px;
 
     @media (max-width: 767px) {
@@ -44,8 +38,18 @@
     outline: none;
     position: relative;
 
-    color: black;
-    background: black;
+    @include themify($themes) {
+      background: themed('mainColor');
+      color: themed('secondColor');
+      &:disabled {
+        cursor: default;
+        filter: invert(30%);
+      }
+      &._red {
+        background: rgb(218, 30, 30);
+        color: white;
+      }
+    }
 
     width: 100%;
     font-family: 'Montserrat';
@@ -55,7 +59,6 @@
     line-height: 24px;
     border: none;
 
-    color: #FFFFFF;
     padding: 12px 0;
   }
 }
