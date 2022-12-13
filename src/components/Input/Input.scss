@@ -43,7 +43,7 @@
 
     @include themify($themes) {
       background: themed('windowBackground');
-      
+      color: themed('mainColor');
     }
     border-radius: 20px 0px;
     padding: 44px 24px 14px;
