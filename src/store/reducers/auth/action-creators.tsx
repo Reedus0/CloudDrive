@@ -19,7 +19,7 @@ export const AuthActionCreators = {
       const response: Response = await userService.login(login, password)
       const responseJSON = await response.clone().json()
       if (response.status === 200) {
-        dispatch(AuthActionCreators.setUser({'username': login}))
+        dispatch(AuthActionCreators.setUser({ 'username': login }))
         dispatch(AuthActionCreators.setAuthError(""))
         dispatch(AuthActionCreators.setIsAuth(true))
         dispatch(PromptActionCreators.setPrompt(<></>))
@@ -38,20 +38,19 @@ export const AuthActionCreators = {
       const response: Response = await userService.getUser()
       const responseJSON = await response.clone().json()
       console.log(responseJSON)
-      if (response.status === 401) {
-        dispatch(AuthActionCreators.setUser({} as IUser))
-        dispatch(AuthActionCreators.setAuthError(""))
-        dispatch(AuthActionCreators.setIsAuth(false))
-      } 
-      dispatch(AuthActionCreators.setUser({'username': responseJSON['username']}))
-      dispatch(AuthActionCreators.setAuthLoading(false))
+      if (response.status === 200) {
+        dispatch(AuthActionCreators.setUser({ 'username': responseJSON['username'] }))
+        dispatch(AuthActionCreators.setAuthLoading(false))
+        dispatch(AuthActionCreators.setIsAuth(true))
+      }
+      dispatch(AuthActionCreators.setUser({} as IUser))
+      dispatch(AuthActionCreators.setAuthError(""))
     } catch (e) {
       dispatch(AuthActionCreators.setAuthError("Произошла ошибка"))
     }
   },
   logout: () => async (dispatch: AppDispatch) => {
     const api = new API()
-    api.deleteCookie('token')
     dispatch(NotificationActionCreators.setNotification(<></>))
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false))

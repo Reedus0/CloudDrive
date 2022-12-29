@@ -42,10 +42,10 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при добавлении файла"))
 		}
 	},
-	createFile: (type: string) => async (dispatch: AppDispatch) => {
+	createFile: () => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
-			const response: Response = await filesService.createFile(type)
+			const response: Response = await filesService.createFile()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
 				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))

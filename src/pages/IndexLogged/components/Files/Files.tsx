@@ -11,7 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath, setFilesLoading } = useActions()
+  const { setSelectedFile, setFilesPath } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 

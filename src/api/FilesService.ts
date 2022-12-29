@@ -20,7 +20,7 @@ export class FilesService {
   downloadFile() {
     return this.API.postRequest('/api/load', { 'path': decodeURI(this.path) })
   }
-  createFile(type: string) {
+  createFile() {
     return this.API.postRequest('/api/mkdir', { 'path': decodeURI(this.path) + (this.path === '/' ? '/' : '') + 'Папка' })
   }
   deleteFile(name: string) {
