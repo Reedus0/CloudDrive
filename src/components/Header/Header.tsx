@@ -38,6 +38,7 @@ const Header: FC = () => {
             :
             <>
               <div className='profile-header__user'>
+                <h1 className='profile-header__name'>CloudDrive</h1>
               </div>
               <div className='header__right right-header'>
                 <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
