@@ -6,6 +6,6 @@ export class UserService {
     return this.API.postRequest('/api/auth', { 'login': login, 'password': password })
   }
   getUser() {
-    return this.API.postRequest('/api/user/get')
+    return this.API.postRequest('/api/whoami')
   }
 }

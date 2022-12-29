@@ -1,16 +1,18 @@
 export class API {
 
-  link = "https://ac46-176-59-73-148.eu.ngrok.io"
+  link = "http://localhost:9999"
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
+      credentials: "include",
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(data) 
     })
   }
 
   async fileRequest(path: string, formData: FormData) {
     return fetch(this.link + path, {
+      credentials: "include",
       method: "POST",
       body: formData
     })

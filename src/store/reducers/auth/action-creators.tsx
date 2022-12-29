@@ -37,13 +37,13 @@ export const AuthActionCreators = {
       const userService = new UserService()
       const response: Response = await userService.getUser()
       const responseJSON = await response.clone().json()
-      if (response.status === 200) {
-        dispatch(AuthActionCreators.setUser(responseJSON['user']))
+      console.log(responseJSON)
+      if (response.status === 401) {
+        dispatch(AuthActionCreators.setUser({} as IUser))
         dispatch(AuthActionCreators.setAuthError(""))
-        dispatch(AuthActionCreators.setIsAuth(true))
-      } else {
-        dispatch(AuthActionCreators.setAuthError(responseJSON['error']))
-      }
+        dispatch(AuthActionCreators.setIsAuth(false))
+      } 
+      dispatch(AuthActionCreators.setUser({'username': responseJSON['username']}))
       dispatch(AuthActionCreators.setAuthLoading(false))
     } catch (e) {
       dispatch(AuthActionCreators.setAuthError("Произошла ошибка"))
@@ -55,5 +55,5 @@ export const AuthActionCreators = {
     dispatch(NotificationActionCreators.setNotification(<></>))
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false))
-  }
+  },
 }

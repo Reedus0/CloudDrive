@@ -15,12 +15,13 @@ const App: FC = () => {
   const { notification } = useTypedSelector(state => state.notification);
   const { theme } = useTypedSelector(state => state.themes);
   
-  const { setTheme } = useActions()
+  const { setTheme, getUser } = useActions()
 
   useEffect(() => {
     if(document.location.pathname != '/'){
       document.location.pathname = '/'
     }
+    getUser()
     setTheme(localStorage.getItem('default-theme') ? localStorage.getItem('default-theme') as IThemes : IThemes.LIGHT)
   }, [])
 
