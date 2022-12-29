@@ -5,7 +5,7 @@ import { IElement, IElementTypes } from "../../../models/IElement";
 import { formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, RenameFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction } from "./types";
 
 const filesService = new FilesService('/')
 
@@ -18,8 +18,7 @@ export const FilesActionCreators = {
 	addFileStore: (file: IElement): AddFileAction => ({ type: FilesActionEnum.ADD_FILE, payload: file }),
 	deleteFileStore: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	setPathStore: (path: string): SetFilesPathAction => ({ type: FilesActionEnum.SET_PATH, payload: path }),
-	renameFileStore: (file: IElement, name: string): RenameFileAction => ({ type: FilesActionEnum.RENAME_FILE, payload: { file: file, name: name } }),
-	pasteFileStore: (name: string): PasteFileAction => ({ type: FilesActionEnum.PASTE_FILE, payload: name }),
+	pasteFileStore: (file: IElement): PasteFileAction => ({ type: FilesActionEnum.PASTE_FILE, payload: file }),
 	createFileStore: (file: IElement): CreateFileAction => ({ type: FilesActionEnum.CREATE_FILE, payload: file }),
 	setFilesError: (error: string): any => (dispatch: AppDispatch) => {
 		dispatch(NotificationActionCreators.setNotification(
@@ -34,7 +33,8 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.addFile(file)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.addFileStore({ 'name': file.name, 'type': IElementTypes.FILE, 'owner': '', 'lastUpdated': '', 'size': '' }))
+				console.log(responseJSON['files'])
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -48,7 +48,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.createFile(type)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.createFileStore({ 'name': responseJSON['name'], 'type': IElementTypes.FOLDER, 'owner': '', 'lastUpdated': '', 'size': '' }))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -79,7 +79,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.renameFile(file['name'], name)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.renameFileStore(file, responseJSON['name']))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -87,13 +87,13 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при перeименовании файла"))
 		}
 	},
-	pasteFile: (name: string, newPath: string) => async (dispatch: AppDispatch) => {
+	pasteFile: (name: string, oldPath: string) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
-			const response: Response = await filesService.pasteFile(name, newPath)
+			const response: Response = await filesService.pasteFile(name, oldPath)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.pasteFileStore(responseJSON['name']))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}

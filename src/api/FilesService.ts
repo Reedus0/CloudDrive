@@ -11,25 +11,25 @@ export class FilesService {
   }
   addFile(file: File) {
     const formData = new FormData()
-    formData.append(file.name, file, this.path)
+    formData.append(file.name, file, decodeURI(this.path))
     return this.API.fileRequest('/api/upload', formData)
   }
   getFiles() {
-    return this.API.postRequest('/api/dir', { 'path': this.path })
+    return this.API.postRequest('/api/dir', { 'path': decodeURI(this.path) })
   }
   downloadFile() {
-    return this.API.postRequest('/api/load', { 'path': this.path })
+    return this.API.postRequest('/api/load', { 'path': decodeURI(this.path) })
   }
   createFile(type: string) {
-    return this.API.postRequest('/api/files/create', { 'path': this.path, 'type': type })
+    return this.API.postRequest('/api/mkdir', { 'path': decodeURI(this.path) + '/' + 'Папка' })
   }
   deleteFile(name: string) {
-    return this.API.postRequest('/api/files/delete', { 'path': this.path, 'name': name })
+    return this.API.postRequest('/api/delete', { 'path': decodeURI(this.path) + '/' + name })
   }
   renameFile(oldName: string, newName: string) {
-    return this.API.postRequest('/api/files/rename', { 'path': this.path, 'oldName': oldName, 'newName': newName })
+    return this.API.postRequest('/api/move', { 'old': decodeURI(this.path) + '/' + oldName, 'new': decodeURI(this.path) + '/' + newName })
   }
   pasteFile(name: string, oldPath: string) {
-    return this.API.postRequest('/api/files/paste', { 'name': name, 'oldPath': oldPath, 'newPath': this.path })
+    return this.API.postRequest('/api/paste', { 'old': decodeURI(oldPath) + '/' + name, 'new': decodeURI(this.path) + '/' + name })
   }
 } 

@@ -92,7 +92,7 @@ const Buttons = () => {
             <h1 className='browser-buttons__choose-title'>Выберите файл</h1>
           </div>}
         <div className='browser-buttons__buttons-bottom'>
-          <button className='browser-buttons__button' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], path)}>Вставить</button>
+          <button className='browser-buttons__button' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], copiedFile['path'])}>Вставить</button>
         </div>
         <div className='browser-buttons__bottom'>
           <button className='browser-buttons__create' onClick={
