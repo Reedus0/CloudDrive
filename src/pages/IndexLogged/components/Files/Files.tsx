@@ -11,7 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath } = useActions()
+  const { setSelectedFile, setFilesPath, setFilesLoading } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 
@@ -19,8 +19,8 @@ const Files = () => {
   const location = useLocation()
 
   useEffect(() => {
-    setFilesPath(document.location.pathname, navigate)
     setSelectedFile({} as IElement)
+    setFilesPath(document.location.pathname, navigate)
     refreshAllFiles()
   }, [location])
 
@@ -32,7 +32,7 @@ const Files = () => {
           <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__view-mods'>
-          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement)  }}>
+          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement) }}>
             <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' width={25} height={23} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/rows.png' />
           </button>
           <button className='header-browser__view-mode' onClick={() => { tilesViewSet(true); !tilesView && setSelectedFile({} as IElement) }}>
@@ -40,6 +40,7 @@ const Files = () => {
           </button>
         </div>
       </div>
+
       {filesAreLoading ? <div className='browser-files__loading'>
         <div className='browser-files__ring'></div>
       </div> : <></>}
@@ -49,32 +50,32 @@ const Files = () => {
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                
+
                 navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
-                
+
               }
               formatFiles(e.target)
             }
             }>
               {file.type === IElementTypes.FOLDER ?
                 <div className='browser-files__icon-wrapper'>
-                  <img className='browser-files__icon' alt="Icon" width={25} height={20} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/folder.png?raw=true' />
+                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={25} height={20} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/folder.png?raw=true' />
                 </div>
                 :
                 <div className='browser-files__icon-wrapper'>
-                  <img className='browser-files__icon' alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
+                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
                 </div>
               }
-              <h1 className={['browser-files__name', tilesView ? '_tiles' : '_rows'].join(' ')}>
+              <h1 className={['browser-files__name', tilesView ? '_tiles' : '_rows', file.name[0] === '.' ? '_transparent' : ''].join(' ')}>
                 {file.name}
               </h1>
-              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows', file.name[0] === '.' ? '_transparent' : ''].join(' ')}>
                 {file.owner}
               </h1>
-              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows', file.name[0] === '.' ? '_transparent' : ''].join(' ')}>
                 {file.size}
               </h1>
-              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows'].join(' ')}>
+              <h1 className={['browser-files__field', tilesView ? '_tiles' : '_rows', file.name[0] === '.' ? '_transparent' : ''].join(' ')}>
                 {file.lastUpdated}
               </h1>
             </div>)

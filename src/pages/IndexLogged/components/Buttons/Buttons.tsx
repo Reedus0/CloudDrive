@@ -36,9 +36,9 @@ const Buttons = () => {
   }
 
   const openElement = () => {
-    
+
     navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
-    
+
   }
 
   const renameElement = () => {
@@ -78,7 +78,20 @@ const Buttons = () => {
                 renameElement()
               }}
             />}
-          <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
+          <div className='browser-buttons__info'>
+            <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
+            <div className='browser-buttons__file-info'>
+              <h1 className='browser-buttons__info-field'>
+                {selectedFile.owner}
+              </h1>
+              <h1 className='browser-buttons__info-field'>
+                {selectedFile.size}
+              </h1>
+              <h1 className='browser-buttons__info-field'>
+                {selectedFile.lastUpdated}
+              </h1>
+            </div>
+          </div>
         </div>
           <div className='browser-buttons__buttons'>
 

@@ -110,6 +110,10 @@
       color: themed('mainColor')
     }
 
+    &._transparent {
+      opacity: 0.4;
+    }
+
     &._tiles {
       margin: 5px 0 0 0;
       width: 75px;
@@ -131,6 +135,12 @@
     margin-left: 10px;
     height: 25px;
     color: rgb(210, 210, 210);
+
+    &._transparent {
+      @include themify($themes) {
+        opacity: abs(calc(themed('invert') - 50% ));
+      }
+    }
     
     &._tiles {
       display: none;
@@ -241,6 +251,9 @@
     user-select: none;
     @include themify($themes) {
       filter: invert(themed('invert'))
+    }
+    &._transparent {
+      opacity: 0.4;
     }
   }
 }
