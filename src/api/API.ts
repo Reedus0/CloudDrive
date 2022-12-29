@@ -1,6 +1,6 @@
 export class API {
 
-  link = "http://localhost:9999"
+  link = "https://api.cloud.wanilla.ru"
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
