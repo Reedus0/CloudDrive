@@ -13,7 +13,7 @@ import './Buttons.scss'
 
 const Buttons = () => {
 
-  const { selectedFile, copiedFile, path, historyCount } = useTypedSelector(state => state.files)
+  const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
   const { setPrompt, deleteFile, downloadFile, renameFile, copyFile, pasteFile, setSelectedFile, setHistoryCount } = useActions()
 
   const [name, nameSet] = useState<string>("")

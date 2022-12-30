@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { IThemes } from '../../models/ITheme';
@@ -11,13 +11,20 @@ import './Header.scss'
 
 const Header: FC = () => {
 
-  const { setPrompt, setTheme, logout } = useActions()
-  const { isAuth, user } = useTypedSelector(state => state.auth);
+  const { setPrompt, setTheme, logout, setHistoryCount } = useActions()
+  const { isAuth } = useTypedSelector(state => state.auth);
   const { theme } = useTypedSelector(state => state.themes);
+
+  const navigate = useNavigate()
 
   const changeTheme = (theme: IThemes) => {
     setTheme(theme)
     localStorage.setItem('default-theme', theme)
+  }
+
+  const returnToMain = () => {
+    setHistoryCount(0)
+    navigate('/')
   }
 
   return (
@@ -27,7 +34,7 @@ const Header: FC = () => {
           {isAuth ?
             <>
               <div className='profile-header__user'>
-                <Link to='/' className='profile-header__name'>CloudDrive</Link>
+                <h1 onClick={() => returnToMain()} className='profile-header__name'>CloudDrive</h1>
               </div>
               <div className='header__right right-header'>
                 <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
