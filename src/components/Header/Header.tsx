@@ -11,20 +11,13 @@ import './Header.scss'
 
 const Header: FC = () => {
 
-  const { setPrompt, setTheme, logout, setHistoryCount } = useActions()
+  const { setPrompt, setTheme, logout } = useActions()
   const { isAuth } = useTypedSelector(state => state.auth);
   const { theme } = useTypedSelector(state => state.themes);
-
-  const navigate = useNavigate()
 
   const changeTheme = (theme: IThemes) => {
     setTheme(theme)
     localStorage.setItem('default-theme', theme)
-  }
-
-  const returnToMain = () => {
-    setHistoryCount(0)
-    navigate('/')
   }
 
   return (
@@ -34,7 +27,7 @@ const Header: FC = () => {
           {isAuth ?
             <>
               <div className='profile-header__user'>
-                <h1 onClick={() => returnToMain()} className='profile-header__name'>CloudDrive</h1>
+                <Link to='/' className='profile-header__name'>CloudDrive</Link>
               </div>
               <div className='header__right right-header'>
                 <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>

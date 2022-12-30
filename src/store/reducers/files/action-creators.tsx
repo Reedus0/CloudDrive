@@ -1,26 +1,22 @@
 import { AppDispatch } from "../..";
 import { FilesService } from "../../../api/FilesService";
 import Notification from "../../../components/Notification/Notification";
-import { IElement, IElementTypes } from "../../../models/IElement";
+import { IElement } from "../../../models/IElement";
 import { formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction, SetCopiedFileAction, SetHistoryCountAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, SetFilesPathAction, SetCopiedFileAction } from "./types";
 
 const filesService = new FilesService('/')
 
 export const FilesActionCreators = {
-	setHistoryCount: (count: number): SetHistoryCountAction => ({ type: FilesActionEnum.SET_HISTORY_COUNT, payload: count }),
 	setFiles: (files: IElement[]): SetFilesAction => ({ type: FilesActionEnum.SET_FILES, payload: files }),
 	setSelectedFile: (file: IElement): SetSelectedFileAction => ({ type: FilesActionEnum.SET_SELECTED_FILE, payload: file }),
 	setCopiedFile: (file: { 'path': string, 'file': IElement, 'copy': boolean }): SetCopiedFileAction => ({ type: FilesActionEnum.SET_COPIED_FILE, payload: file }),
 	setFilesLoading: (isLoading: boolean): SetFilesLoadingAction => ({ type: FilesActionEnum.SET_FILES_LOADING, payload: isLoading }),
-	copyFile: (path: string, file: IElement, copy: boolean): CopyFileAction => ({ type: FilesActionEnum.COPY_FILE, payload: { 'path': path, 'file': file, 'copy': copy } }),
 	setFilesErrorStore: (error: string): SetFilesErrorAction => ({ type: FilesActionEnum.SET_FILES_ERROR, payload: error }),
-	addFileStore: (file: IElement): AddFileAction => ({ type: FilesActionEnum.ADD_FILE, payload: file }),
 	deleteFileStore: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	setPathStore: (path: string): SetFilesPathAction => ({ type: FilesActionEnum.SET_PATH, payload: path }),
-	createFileStore: (file: IElement): CreateFileAction => ({ type: FilesActionEnum.CREATE_FILE, payload: file }),
 	setFilesError: (error: string): any => (dispatch: AppDispatch) => {
 		dispatch(NotificationActionCreators.setNotification(
 			<Notification title="Ошибка" >
@@ -71,7 +67,7 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при скачивании файла"))
 		}
 	},
-	deleteFile: (file: IElement) => async (dispatch: AppDispatch) => {
+	deleteFile: (file: IElement) => async (dispatch: AppDispatch) => { 
 		dispatch(PromptActionCreators.setPrompt(<></>))
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))

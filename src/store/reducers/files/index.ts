@@ -6,21 +6,16 @@ const initialState = {
   files: [] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,
-  historyCount: 0,
   copiedFile: {} as { 'path': string, 'file': IElement, 'copy': boolean },
   filesError: ''
 }
 
 export default function filesReducer(state = initialState, action: FilesAction): FilesState {
-  switch (action.type) {
+  switch (action.type) { 
     case FilesActionEnum.SET_FILES:
       return { ...state, files: action.payload, filesAreLoading: false }
     case FilesActionEnum.DELETE_FILE:
       return { ...state, files: [...state.files.filter((file: IElement) => file !== action.payload)], filesAreLoading: false }
-    case FilesActionEnum.ADD_FILE:
-      return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
-    case FilesActionEnum.CREATE_FILE:
-      return { ...state, files: [...state.files, action.payload], filesAreLoading: false }
     case FilesActionEnum.SET_FILES_ERROR:
       return { ...state, filesError: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_PATH:
@@ -30,10 +25,6 @@ export default function filesReducer(state = initialState, action: FilesAction):
     case FilesActionEnum.SET_FILES_LOADING:
       return { ...state, filesAreLoading: action.payload }
     case FilesActionEnum.SET_COPIED_FILE:
-      return { ...state, copiedFile: action.payload, filesAreLoading: false }
-    case FilesActionEnum.SET_HISTORY_COUNT:
-        return { ...state, historyCount: action.payload }
-    case FilesActionEnum.COPY_FILE:
       return { ...state, copiedFile: action.payload, filesAreLoading: false }
     
 
