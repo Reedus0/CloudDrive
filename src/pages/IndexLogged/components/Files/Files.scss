@@ -326,9 +326,27 @@
     }
   }
 
+  &__right {
+    display: flex;
+  }
+
+  &__refresh {
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  &__refresh-icon {
+
+  }
+
   &__view-mods {
     display: flex;
-    margin-right: 5px;
+    margin: 0 5px;
   }
 
   &__view-mode {

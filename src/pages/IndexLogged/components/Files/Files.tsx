@@ -31,13 +31,18 @@ const Files = () => {
           <button className='header-browser__button _left' disabled={location.key === 'default'} onClick={() => navigate(-1)}>^</button>
           <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
         </div>
-        <div className='header-browser__view-mods'>
-          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement) }}>
-            <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' width={25} height={23} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/rows.png' />
+        <div className='header-browser__right'>
+          <button className='header-browser__refresh' onClick={() => setFilesPath(document.location.pathname, navigate)}>
+            <img className='header-browser__refresh-icon' src='https://i.imgur.com/QUBX0db.png' width={24} height={24} />
           </button>
-          <button className='header-browser__view-mode' onClick={() => { tilesViewSet(true); !tilesView && setSelectedFile({} as IElement) }}>
-            <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' width={25} height={25} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/tiles.png' />
-          </button>
+          <div className='header-browser__view-mods'>
+            <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement) }}>
+              <img className={['header-browser__view-icon', tilesView ? '' : '_active'].join(' ')} alt='Rows' width={25} height={23} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/rows.png' />
+            </button>
+            <button className='header-browser__view-mode' onClick={() => { tilesViewSet(true); !tilesView && setSelectedFile({} as IElement) }}>
+              <img className={['header-browser__view-icon', tilesView ? '_active' : ''].join(' ')} alt='Tiles' width={25} height={25} src='https://raw.githubusercontent.com/Reedus0/CloudDrive/c51bb2077ca8a25bec6f952fb6b363412b1ba153/src/img/tiles.png' />
+            </button>
+          </div>
         </div>
       </div>
 
