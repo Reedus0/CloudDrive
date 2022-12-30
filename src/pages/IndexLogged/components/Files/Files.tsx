@@ -56,7 +56,7 @@ const Files = () => {
         </div>
         <div className='header-browser__right'>
           <button className='header-browser__refresh' onClick={() => setFilesPath(document.location.pathname, navigate)}>
-            <img className='header-browser__refresh-icon' src='https://i.imgur.com/QUBX0db.png' width={24} height={24} />
+            <img className='header-browser__refresh-icon' src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/refresh.png?raw=true' width={24} height={24} />
           </button>
           <div className='header-browser__view-mods'>
             <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement) }}>
