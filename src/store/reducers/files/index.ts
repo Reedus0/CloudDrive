@@ -6,7 +6,7 @@ const initialState = {
   files: [] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,
-  copiedFile: {} as { 'path': string, 'file': IElement },
+  copiedFile: {} as { 'path': string, 'file': IElement, 'copy': boolean },
   filesError: ''
 }
 
@@ -25,14 +25,14 @@ export default function filesReducer(state = initialState, action: FilesAction):
     case FilesActionEnum.SET_PATH:
       return { ...state, path: action.payload, filesAreLoading: false }
     case FilesActionEnum.SET_SELECTED_FILE:
-      return { ...state, selectedFile: action.payload, filesAreLoading: false }
+      return { ...state, selectedFile: action.payload }
     case FilesActionEnum.SET_FILES_LOADING:
       return { ...state, filesAreLoading: action.payload }
+    case FilesActionEnum.SET_COPIED_FILE:
+      return { ...state, copiedFile: action.payload, filesAreLoading: false }
     case FilesActionEnum.COPY_FILE:
       return { ...state, copiedFile: action.payload, filesAreLoading: false }
-    case FilesActionEnum.PASTE_FILE:
-      return { ...state, files: [...state.files, action.payload], filesAreLoading: false, copiedFile: {} as { 'path': string, 'file': IElement }  }
-
+    
     default:
       return state;
   }

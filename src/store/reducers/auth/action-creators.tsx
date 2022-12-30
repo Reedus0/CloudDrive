@@ -40,11 +40,12 @@ export const AuthActionCreators = {
       console.log(responseJSON)
       if (response.status === 200) {
         dispatch(AuthActionCreators.setUser({ 'username': responseJSON['username'] }))
-        dispatch(AuthActionCreators.setAuthLoading(false))
         dispatch(AuthActionCreators.setIsAuth(true))
+      } else {
+        dispatch(AuthActionCreators.setUser({} as IUser))
+        dispatch(AuthActionCreators.setAuthError(""))
       }
-      dispatch(AuthActionCreators.setUser({} as IUser))
-      dispatch(AuthActionCreators.setAuthError(""))
+      dispatch(AuthActionCreators.setAuthLoading(false))
     } catch (e) {
       dispatch(AuthActionCreators.setAuthError("Произошла ошибка"))
     }

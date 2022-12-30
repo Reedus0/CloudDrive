@@ -7,16 +7,39 @@ import './Files.scss'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getEventListeners } from 'events';
 
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath } = useActions()
+  const { setSelectedFile, setFilesPath, addFile } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 
   const navigate = useNavigate()
   const location = useLocation()
+
+  const uploadElement = async (uploadedFiles: FileList) => {
+    for (let i = 0; i < uploadedFiles.length; i++) {
+      addFile(uploadedFiles[i])
+    }
+  }
+
+  const onDragOver = (event: any) => {
+    event.preventDefault()
+    document.querySelector('.browser-files__drag')?.classList.add('_active')
+  }
+  
+  const onDragLeave = (event: any) => {
+    event.preventDefault()
+    event.target.closest('.browser-files__drag').classList.remove('_active')
+  }
+
+  const onDrop = (event: any) => {
+    event.preventDefault()
+    event.target.closest('.browser-files__drag').classList.remove('_active')
+    uploadElement(event.dataTransfer.files)
+  }
 
   useEffect(() => {
     setSelectedFile({} as IElement)
@@ -45,12 +68,24 @@ const Files = () => {
           </div>
         </div>
       </div>
-
-      {filesAreLoading ? <div className='browser-files__loading'>
-        <div className='browser-files__ring'></div>
-      </div> : <></>}
+      <div className='browser-files__drag'>
+        <div className='browser-files__drop'
+        onDragOver={(e) => onDragOver(e)}
+        onDragLeave={(e) => onDragLeave(e)}
+        onDrop={(e) => onDrop(e)}
+        >
+        <h1 className='browser-files__drag-title'>Перетащите файлы</h1>
+        </div>
+      </div>
+      {filesAreLoading ?
+        <div className='browser-files__loading'>
+          <div className='browser-files__ring'></div>
+        </div> : <></>}
       <SimpleBar style={{ maxHeight: "calc(100vh - 180px)", backgroundColor: window.innerWidth < 767 ? "white" : "" }} forceVisible="y" autoHide={false}>
-        <div className={['browser-files__inner', tilesView ? '_tiles' : '_rows'].join(' ')}>
+        <div
+          className={['browser-files__inner', tilesView ? '_tiles' : '_rows'].join(' ')}
+          onDragOver={(e) => onDragOver(e)}
+        >
           {files.length ? files.map((file: IElement, index: number) =>
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)

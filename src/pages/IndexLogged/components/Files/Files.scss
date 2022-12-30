@@ -159,6 +159,26 @@
     min-height: calc(100vh - 180px);
   }
 
+  &__empty-title {
+    transition: all 0.3s ease 0s;
+    margin-top: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    margin-left: 15px;
+
+    @include themify($themes) {
+      color: themed('mainColor')
+    }
+
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+
   &__loading {
     transition: all 0.3s ease 0s;
     z-index: 1000;
@@ -179,26 +199,6 @@
     @media (max-width: 767px) {
       width: 100%;
       left: 0;
-    }
-  }
-
-  &__empty-title {
-    transition: all 0.3s ease 0s;
-    margin-top: 10px;
-
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    margin-left: 15px;
-
-    @include themify($themes) {
-      color: themed('mainColor')
-    }
-
-    @media (max-width: 767px) {
-      font-size: 20px;
     }
   }
 
@@ -254,6 +254,52 @@
     }
     &._transparent {
       opacity: 0.4;
+    }
+  }
+
+  &__drag {
+    &._active {
+      opacity: 1;
+      z-index: 999;
+    }
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.2s ease 0s;
+    width: calc(100% - 25px);
+    height: calc(100% - 50px);
+    position: absolute;
+    box-sizing: border-box;
+    top: 50px;
+    left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include themify($themes) {
+      background: themed('background');
+      border: 2px dashed themed('mainColor');
+    }
+  }
+
+  &__drop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__drag-title {
+    user-select: none;
+    margin-top: 10px;
+    pointer-events: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 24px;
+    margin-left: 15px;
+    @include themify($themes) {
+      color: themed('mainColor');
     }
   }
 }
@@ -331,6 +377,7 @@
   }
 
   &__refresh {
+    user-select: none;
     cursor: pointer;
     background: none;
     border: none;
@@ -341,7 +388,11 @@
   }
 
   &__refresh-icon {
-
+    margin-top: 1px;
+    transition: all 0.3s ease 0s;
+    @include themify($themes) {
+      filter: invert(themed('invert') + (themed('invert') * 0.25))
+    }
   }
 
   &__view-mods {

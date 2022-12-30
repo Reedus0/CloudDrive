@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { IThemes } from '../../models/ITheme';
@@ -26,7 +27,7 @@ const Header: FC = () => {
           {isAuth ?
             <>
               <div className='profile-header__user'>
-                <h1 className='profile-header__name'>{window.innerWidth < 767 ? user['username'] : 'С возвращением, ' + user['username'] + '!'}</h1>
+                <Link to='/' className='profile-header__name'>CloudDrive</Link>
               </div>
               <div className='header__right right-header'>
                 <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
@@ -38,7 +39,7 @@ const Header: FC = () => {
             :
             <>
               <div className='profile-header__user'>
-                <h1 className='profile-header__name'>CloudDrive</h1>
+              <Link to='/' className='profile-header__name'>CloudDrive</Link>
               </div>
               <div className='header__right right-header'>
                 <button className='header__theme-button' onClick={() => changeTheme(theme === IThemes.LIGHT ? IThemes.DARK : IThemes.LIGHT)}>
