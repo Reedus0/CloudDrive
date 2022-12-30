@@ -56,6 +56,20 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при создании файла"))
 		}
 	},
+	downloadFile: (file: IElement) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(FilesActionCreators.setFilesLoading(true))
+			const response: Response = await filesService.downloadFile(file['name'])
+			const responseJSON = await response.clone().json()
+			if (response.status === 200) {
+				dispatch(FilesActionCreators.setFilesLoading(false))
+			} else {
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+			}
+		} catch (e) {
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при скачивании файла"))
+		}
+	},
 	deleteFile: (file: IElement) => async (dispatch: AppDispatch) => {
 		dispatch(PromptActionCreators.setPrompt(<></>))
 		try {

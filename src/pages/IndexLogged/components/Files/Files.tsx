@@ -7,7 +7,6 @@ import './Files.scss'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getEventListeners } from 'events';
 
 const Files = () => {
 

@@ -14,7 +14,7 @@ import './Buttons.scss'
 const Buttons = () => {
 
   const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
+  const { setPrompt, deleteFile, downloadFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
@@ -35,10 +35,12 @@ const Buttons = () => {
     )
   }
 
+  const downloadElement = () => {
+    downloadFile(selectedFile)
+  }
+
   const openElement = () => {
-
     navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
-
   }
 
   const renameElement = () => {
@@ -105,6 +107,7 @@ const Buttons = () => {
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, true)}>Копировать</button>
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, false)}>Вырезать</button>
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
+            <button className='browser-buttons__button' disabled={isEditing} onClick={() => downloadElement()}>Скачать</button>
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
 
           </div></> :

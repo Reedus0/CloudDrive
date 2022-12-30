@@ -17,8 +17,8 @@ export class FilesService {
   getFiles() {
     return this.API.postRequest('/api/dir', { 'path': decodeURI(this.path) })
   }
-  downloadFile() {
-    return this.API.postRequest('/api/load', { 'path': decodeURI(this.path) })
+  downloadFile(name: string) {
+    return this.API.postRequest('/api/load', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }
   createFile() {
     return this.API.postRequest('/api/mkdir', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + 'Папка' })
