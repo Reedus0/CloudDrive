@@ -5,11 +5,12 @@ import { IElement, IElementTypes } from "../../../models/IElement";
 import { formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction, SetCopiedFileAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, AddFileAction, CreateFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, PasteFileAction, CopyFileAction, SetFilesPathAction, SetCopiedFileAction, SetHistoryCountAction } from "./types";
 
 const filesService = new FilesService('/')
 
 export const FilesActionCreators = {
+	setHistoryCount: (count: number): SetHistoryCountAction => ({ type: FilesActionEnum.SET_HISTORY_COUNT, payload: count }),
 	setFiles: (files: IElement[]): SetFilesAction => ({ type: FilesActionEnum.SET_FILES, payload: files }),
 	setSelectedFile: (file: IElement): SetSelectedFileAction => ({ type: FilesActionEnum.SET_SELECTED_FILE, payload: file }),
 	setCopiedFile: (file: { 'path': string, 'file': IElement, 'copy': boolean }): SetCopiedFileAction => ({ type: FilesActionEnum.SET_COPIED_FILE, payload: file }),

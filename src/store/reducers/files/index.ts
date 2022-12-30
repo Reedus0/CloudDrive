@@ -1,4 +1,4 @@
-import { IElement, IElementTypes } from "../../../models/IElement";
+import { IElement } from "../../../models/IElement";
 import { FilesAction, FilesState, FilesActionEnum } from "./types";
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
   files: [] as IElement[],
   filesAreLoading: false,
   selectedFile: {} as IElement,
+  historyCount: 0,
   copiedFile: {} as { 'path': string, 'file': IElement, 'copy': boolean },
   filesError: ''
 }
@@ -30,9 +31,12 @@ export default function filesReducer(state = initialState, action: FilesAction):
       return { ...state, filesAreLoading: action.payload }
     case FilesActionEnum.SET_COPIED_FILE:
       return { ...state, copiedFile: action.payload, filesAreLoading: false }
+    case FilesActionEnum.SET_HISTORY_COUNT:
+        return { ...state, historyCount: action.payload }
     case FilesActionEnum.COPY_FILE:
       return { ...state, copiedFile: action.payload, filesAreLoading: false }
     
+
     default:
       return state;
   }

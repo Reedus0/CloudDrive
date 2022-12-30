@@ -10,8 +10,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Files = () => {
 
-  const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath, addFile } = useActions()
+  const { files, filesAreLoading, historyCount } = useTypedSelector(state => state.files);
+  const { setSelectedFile, setFilesPath, setHistoryCount, addFile } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 
@@ -46,12 +46,13 @@ const Files = () => {
     refreshAllFiles()
   }, [location])
 
+
   return (
     <div className='browser-files'>
       <div className='browser-files__header header-browser'>
         <div className='header-browser__buttons'>
-          <button className='header-browser__button _left' disabled={location.key === 'default'} onClick={() => navigate(-1)}>^</button>
-          <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
+          <button className='header-browser__button _left' disabled={location.key === 'default'} onClick={() => {navigate(-1); setHistoryCount(historyCount - 1)}}>^</button>
+          <button className='header-browser__button _right' disabled={historyCount === 0} onClick={() => {navigate(1); setHistoryCount(historyCount + 1)}}>^</button>
         </div>
         <div className='header-browser__right'>
           <button className='header-browser__refresh' onClick={() => setFilesPath(document.location.pathname, navigate)}>
@@ -89,7 +90,7 @@ const Files = () => {
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-
+                setHistoryCount(0)
                 navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
 
               }

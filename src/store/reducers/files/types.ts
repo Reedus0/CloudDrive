@@ -6,10 +6,12 @@ export interface FilesState {
   selectedFile: IElement,
   filesAreLoading: boolean,
   filesError: string,
+  historyCount: number,
   copiedFile: { 'path': string, 'file': IElement, 'copy': boolean }
 }
 
 export enum FilesActionEnum {
+  SET_HISTORY_COUNT = "SET_HISTORY_COUNT",
   SET_FILES = "SET_FILES",
   ADD_FILE = "ADD_FILE",
   DELETE_FILE = "DELETE_FILE",
@@ -31,6 +33,11 @@ export interface SetFilesAction {
 export interface SetSelectedFileAction {
   type: FilesActionEnum.SET_SELECTED_FILE;
   payload: IElement;
+}
+
+export interface SetHistoryCountAction {
+  type: FilesActionEnum.SET_HISTORY_COUNT;
+  payload: number;
 }
 
 export interface CopyFileAction {
@@ -89,4 +96,5 @@ export type FilesAction =
   PasteFileAction |
   CopyFileAction |
   SetFilesPathAction |
-  SetCopiedFileAction
+  SetCopiedFileAction |
+  SetHistoryCountAction

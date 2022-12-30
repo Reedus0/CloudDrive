@@ -13,8 +13,8 @@ import './Buttons.scss'
 
 const Buttons = () => {
 
-  const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, downloadFile, renameFile, copyFile, pasteFile, setSelectedFile } = useActions()
+  const { selectedFile, copiedFile, path, historyCount } = useTypedSelector(state => state.files)
+  const { setPrompt, deleteFile, downloadFile, renameFile, copyFile, pasteFile, setSelectedFile, setHistoryCount } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
@@ -40,6 +40,7 @@ const Buttons = () => {
   }
 
   const openElement = () => {
+    setHistoryCount(0)
     navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
   }
 
