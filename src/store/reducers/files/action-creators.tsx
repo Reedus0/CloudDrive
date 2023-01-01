@@ -144,4 +144,19 @@ export const FilesActionCreators = {
 			}
 		}
 	},
+	openFile: (path: string) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(FilesActionCreators.setFilesLoading(true))
+			
+			const response: Response = await filesService.openFile(path)
+			const responseJSON = await response.clone().json()
+			if (response.status === 200) {
+				
+			} else {
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+			}
+		} catch (e) {
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при открытии файла"))
+		}
+	},
 }

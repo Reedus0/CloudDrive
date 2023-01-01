@@ -1,0 +1,21 @@
+@import "../../../../styles/Themes.scss";
+
+.file-preview {
+    min-width: 80vw;
+    min-height: 80vh;
+    &__inner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+        @media (max-width: 767px) {
+            height: 50vh;
+            padding: 15px 0;
+        }
+    }
+    &__file{
+        max-width: 100%;
+        max-height: 100%;
+        border: none;
+    }
+}

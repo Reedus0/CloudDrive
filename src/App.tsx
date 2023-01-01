@@ -18,8 +18,6 @@ const App: FC = () => {
   const { setTheme, getUser } = useActions()
 
   useEffect(() => {
-    document.cookie = ""
-    document.cookie = "token=2468743957a728591078aa4896ecca410d7cf59b2209f3dca88f414a8cb927ef"
     getUser()
     setTheme(localStorage.getItem('default-theme') ? localStorage.getItem('default-theme') as IThemes : IThemes.LIGHT)
   }, [])

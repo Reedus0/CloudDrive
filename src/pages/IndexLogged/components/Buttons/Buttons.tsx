@@ -4,9 +4,10 @@ import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPromp
 import Prompt from '../../../../components/Prompt/Prompt'
 import { useActions } from '../../../../hooks/useActions'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector'
-import { IElement } from '../../../../models/IElement'
+import { IElement, IElementTypes } from '../../../../models/IElement'
 import { refreshAllFiles } from '../../../../utils'
 import Create from '../Create/Create'
+import Preview from '../Preview/Preview'
 import Upload from '../Upload/Upload'
 
 import './Buttons.scss'
@@ -40,7 +41,17 @@ const Buttons = () => {
   }
 
   const openElement = () => {
-    navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
+    if (selectedFile['type'] === IElementTypes.FILE) {
+      console.log(true)
+      setPrompt(
+        <Prompt >
+          <Preview />
+        </Prompt>
+      )
+    } else {
+      navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
+    }
+
   }
 
   const renameElement = () => {
@@ -55,7 +66,7 @@ const Buttons = () => {
   }
 
   const handleCopy = (path: string, file: IElement, copy: boolean) => {
-    setCopiedFile({'path': path, 'file': file, 'copy': copy})
+    setCopiedFile({ 'path': path, 'file': file, 'copy': copy })
     setSelectedFile({} as IElement)
     refreshAllFiles()
   }

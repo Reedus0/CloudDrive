@@ -7,11 +7,13 @@ import './Files.scss'
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useActions } from '../../../../hooks/useActions';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Preview from '../Preview/Preview';
+import Prompt from '../../../../components/Prompt/Prompt';
 
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath, addFile } = useActions()
+  const { setSelectedFile, setFilesPath, addFile, setPrompt } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 
@@ -28,7 +30,7 @@ const Files = () => {
     event.preventDefault()
     document.querySelector('.browser-files__drag')?.classList.add('_active')
   }
-  
+
   const onDragLeave = (event: any) => {
     event.preventDefault()
     event.target.closest('.browser-files__drag').classList.remove('_active')
@@ -45,8 +47,6 @@ const Files = () => {
     setFilesPath(document.location.pathname, navigate)
     refreshAllFiles()
   }, [location])
-  
-
 
   return (
     <div className='browser-files'>
@@ -71,11 +71,11 @@ const Files = () => {
       </div>
       <div className='browser-files__drag'>
         <div className='browser-files__drop'
-        onDragOver={(e) => onDragOver(e)}
-        onDragLeave={(e) => onDragLeave(e)}
-        onDrop={(e) => onDrop(e)}
+          onDragOver={(e) => onDragOver(e)}
+          onDragLeave={(e) => onDragLeave(e)}
+          onDrop={(e) => onDrop(e)}
         >
-        <h1 className='browser-files__drag-title'>Перетащите файлы</h1>
+          <h1 className='browser-files__drag-title'>Перетащите файлы</h1>
         </div>
       </div>
       {filesAreLoading ?
@@ -91,7 +91,15 @@ const Files = () => {
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
+                if(file['type'] == IElementTypes.FOLDER){
+                  navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
+                } else {
+                  setPrompt(
+                    <Prompt >
+                      <Preview />
+                    </Prompt>
+                  )
+                }
               }
               formatFiles(e.target)
             }

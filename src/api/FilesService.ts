@@ -23,6 +23,9 @@ export class FilesService {
   createFile() {
     return this.API.postRequest('/api/mkdir', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + 'Папка' })
   }
+  openFile(name: string) {
+    return this.API.postRequest('/api/open', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
+  }
   deleteFile(name: string) {
     return this.API.postRequest('/api/delete', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }
