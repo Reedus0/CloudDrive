@@ -6,7 +6,7 @@ export class API {
     return fetch(this.link + path, {
       credentials: "include",
       method: "POST",
-      body: JSON.stringify(data) 
+      body: JSON.stringify(data)
     })
   }
 

@@ -59,6 +59,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.downloadFile(file['name'])
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
+				console.log(response)
 				dispatch(FilesActionCreators.setFilesLoading(false))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))

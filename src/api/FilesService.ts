@@ -26,6 +26,9 @@ export class FilesService {
   deleteFile(name: string) {
     return this.API.postRequest('/api/delete', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }
+  unzip(path: string, file: string) {
+    return this.API.postRequest('/api/unzip', { 'path': decodeURI(this.path), 'file': decodeURI(this.path) + (this.path === '/' ? '' : '/') + file })
+  }
   moveFile(name: string, oldPath: string) {
     return this.API.postRequest('/api/move', { 'old': decodeURI(oldPath) + (this.path === '/' ? '' : '/') + name, 'new': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }

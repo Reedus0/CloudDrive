@@ -42,6 +42,7 @@ export const AuthActionCreators = {
         dispatch(AuthActionCreators.setUser({ 'username': responseJSON['username'] }))
         dispatch(AuthActionCreators.setIsAuth(true))
       } else {
+        dispatch(NotificationActionCreators.setNotification(<></>))
         dispatch(AuthActionCreators.setUser({} as IUser))
         dispatch(AuthActionCreators.setAuthError(""))
       }
@@ -51,7 +52,6 @@ export const AuthActionCreators = {
     }
   },
   logout: () => async (dispatch: AppDispatch) => {
-    const api = new API()
     dispatch(NotificationActionCreators.setNotification(<></>))
     dispatch(AuthActionCreators.setUser({} as IUser));
     dispatch(AuthActionCreators.setIsAuth(false))
