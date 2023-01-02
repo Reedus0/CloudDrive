@@ -15,9 +15,10 @@ export const formatFiles = (element: any) => {
 export const formatRequestFiles = (files: object): IElement[] => {
   let result: IElement[] = []
   for (let i = 0; i < Object.keys(files).length; i++) {
+    console.log(Object.keys(files)[i].split('.').pop())
     result.push({
       'name': (Object.keys(files))[i],
-      'type': (Object.values(files))[i][0][0] == '-' ? IElementTypes.FILE : IElementTypes.FOLDER,
+      'type': (Object.values(files))[i][0][0] == '-' ?  ((Object.keys(files))[i]).split('.').pop() === 'zip' ? IElementTypes.ZIP : IElementTypes.FILE  : IElementTypes.FOLDER,
       'owner': (Object.values(files))[i][2],
       'lastUpdated': (Object.values(files))[i][5],
       'size': (Object.values(files))[i][4],

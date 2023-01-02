@@ -54,24 +54,18 @@ export const FilesActionCreators = {
 		}
 	},
 	downloadFile: (file: IElement) => async (dispatch: AppDispatch) => {
-		console.log(true)
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
 			const response: Response = await filesService.downloadFile(file['name'])
-			console.log(response.headers.get('content-type'))
-			if (response.headers.get('content-type') === 'application/json; meta-charset=utf-8') {
-				const responseJSON = await response.clone().json()
-				if (response.status === 200) {
-					dispatch(FilesActionCreators.setFilesLoading(false))
-				} else {
-					dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
-				}
+
+			if (response.status === 200) {
+				const blob = await response.blob()
+				const downloadedFile = blobToFile(blob, file['name'])
+				download(downloadedFile)
+				dispatch(FilesActionCreators.setFilesLoading(false))
 			} else {
-				if (response.status === 200) {
-					const blob = await response.blob()
-					const file = blobToFile(blob, 'image.png')
-					download(file)
-				}
+				const responseJSON = await response.clone().json()
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при скачивании файла"))

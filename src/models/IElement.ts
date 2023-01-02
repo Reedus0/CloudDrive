@@ -8,5 +8,6 @@ export interface IElement {
 
 export enum IElementTypes {
   FILE = 'Файл',
-  FOLDER = 'Папка'
+  FOLDER = 'Папка',
+  ZIP = 'Архив'
 }
