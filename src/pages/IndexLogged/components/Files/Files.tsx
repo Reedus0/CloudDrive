@@ -115,7 +115,7 @@ const Files = () => {
                 </div> 
                 :
                 <div className='browser-files__icon-wrapper'>
-                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={32} height={30} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
+                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={25} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
                 </div> 
                 
               }
