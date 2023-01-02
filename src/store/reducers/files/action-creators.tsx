@@ -2,7 +2,7 @@ import { AppDispatch } from "../..";
 import { FilesService } from "../../../api/FilesService";
 import Notification from "../../../components/Notification/Notification";
 import { IElement } from "../../../models/IElement";
-import { formatRequestFiles, refreshAllFiles } from "../../../utils";
+import { blobToFile, download, formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
 import { SetFilesAction, FilesActionEnum, DeleteFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, SetFilesPathAction, SetCopiedFileAction } from "./types";
@@ -54,21 +54,30 @@ export const FilesActionCreators = {
 		}
 	},
 	downloadFile: (file: IElement) => async (dispatch: AppDispatch) => {
+		console.log(true)
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))
 			const response: Response = await filesService.downloadFile(file['name'])
-			const responseJSON = await response.clone().json()
-			if (response.status === 200) {
-				console.log(response)
-				dispatch(FilesActionCreators.setFilesLoading(false))
+			console.log(response.headers.get('content-type'))
+			if (response.headers.get('content-type') === 'application/json; meta-charset=utf-8') {
+				const responseJSON = await response.clone().json()
+				if (response.status === 200) {
+					dispatch(FilesActionCreators.setFilesLoading(false))
+				} else {
+					dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+				}
 			} else {
-				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+				if (response.status === 200) {
+					const blob = await response.blob()
+					const file = blobToFile(blob, 'image.png')
+					download(file)
+				}
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при скачивании файла"))
 		}
 	},
-	deleteFile: (file: IElement) => async (dispatch: AppDispatch) => { 
+	deleteFile: (file: IElement) => async (dispatch: AppDispatch) => {
 		dispatch(PromptActionCreators.setPrompt(<></>))
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))

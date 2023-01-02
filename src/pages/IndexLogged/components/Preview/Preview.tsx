@@ -1,5 +1,4 @@
 import React from 'react'
-import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css';
 import ButtonPrompt from '../../../../components/Prompt/ButtonPrompt/ButtonPrompt'
 import { useActions } from '../../../../hooks/useActions'

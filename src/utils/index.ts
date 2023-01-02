@@ -14,7 +14,7 @@ export const formatFiles = (element: any) => {
 
 export const formatRequestFiles = (files: object): IElement[] => {
   let result: IElement[] = []
-  for(let i = 0; i < Object.keys(files).length; i ++){    
+  for (let i = 0; i < Object.keys(files).length; i++) {
     result.push({
       'name': (Object.keys(files))[i],
       'type': (Object.values(files))[i][0][0] == '-' ? IElementTypes.FILE : IElementTypes.FOLDER,
@@ -24,6 +24,28 @@ export const formatRequestFiles = (files: object): IElement[] => {
     })
   }
   return result
+}
+
+export const blobToFile = (blob: Blob, fileName: string): File => {
+  const b: any = blob;
+  
+  b.lastModifiedDate = new Date();
+  b.name = fileName;
+
+  return <File>blob;
+}
+
+export const download = (file: File) => {
+  const link = document.createElement('a')
+  const url = URL.createObjectURL(file)
+
+  link.href = url
+  link.download = file.name
+  document.body.appendChild(link)
+  link.click()
+
+  document.body.removeChild(link)
+  window.URL.revokeObjectURL(url)
 }
 
 // - l silka
