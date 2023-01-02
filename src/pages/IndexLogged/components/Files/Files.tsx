@@ -91,8 +91,10 @@ const Files = () => {
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
               if (e.detail === 2) {
-                if(file['type'] == IElementTypes.FOLDER){
+                if (file['type'] == IElementTypes.FOLDER) {
                   navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
+                } else if (file['type'] == IElementTypes.ZIP) {
+                  
                 } else {
                   setPrompt(
                     <Prompt >
@@ -110,14 +112,14 @@ const Files = () => {
                 </div>
                 :
                 file.type === IElementTypes.FILE ?
-                <div className='browser-files__icon-wrapper'>
-                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
-                </div> 
-                :
-                <div className='browser-files__icon-wrapper'>
-                  <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={25} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
-                </div> 
-                
+                  <div className='browser-files__icon-wrapper'>
+                    <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
+                  </div>
+                  :
+                  <div className='browser-files__icon-wrapper'>
+                    <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={24} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
+                  </div>
+
               }
               <h1 className={['browser-files__name', tilesView ? '_tiles' : '_rows', file.name[0] === '.' ? '_transparent' : ''].join(' ')}>
                 {file.name}

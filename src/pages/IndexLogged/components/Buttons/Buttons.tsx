@@ -113,8 +113,11 @@ const Buttons = () => {
           </div>
         </div>
           <div className='browser-buttons__buttons'>
-
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => openElement()}>Открыть</button>
+            {selectedFile.type === IElementTypes.ZIP ?
+              <button className='browser-buttons__button' disabled={isEditing} onClick={() => null}>Разархивировать</button>
+              :
+              <button className='browser-buttons__button' disabled={isEditing} onClick={() => openElement()}>Открыть</button>
+            }
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, true)}>Копировать</button>
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, false)}>Вырезать</button>
             <button className='browser-buttons__button' disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
