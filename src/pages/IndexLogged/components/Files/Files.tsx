@@ -42,10 +42,14 @@ const Files = () => {
     uploadElement(event.dataTransfer.files)
   }
 
-  useEffect(() => {
+  const updatePage = () => {
     setSelectedFile({} as IElement)
     setFilesPath(document.location.pathname, navigate)
     refreshAllFiles()
+  }
+
+  useEffect(() => {
+    updatePage()
   }, [location])
 
   return (
@@ -56,7 +60,7 @@ const Files = () => {
           <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__right'>
-          <button className='header-browser__refresh' onClick={() => navigate(document.location.pathname)}>
+          <button className='header-browser__refresh' onClick={() => updatePage()}>
             <img className='header-browser__refresh-icon' src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/refresh.png?raw=true' width={24} height={24} />
           </button>
           <div className='header-browser__view-mods'>
@@ -117,7 +121,7 @@ const Files = () => {
                   </div>
                   :
                   <div className='browser-files__icon-wrapper'>
-                    <img className={['browser-files__icon', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={24} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
+                    <img className={['browser-files__icon _zip', file.name[0] === '.' ? '_transparent' : ''].join(' ')} alt="Icon" width={22} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/zip.png?raw=true' />
                   </div>
 
               }
