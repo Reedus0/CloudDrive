@@ -88,6 +88,21 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при удалении файла"))
 		}
 	},
+	unzipFile: (file: IElement) => async (dispatch: AppDispatch) => {
+		dispatch(PromptActionCreators.setPrompt(<></>))
+		try {
+			dispatch(FilesActionCreators.setFilesLoading(true))
+			const response: Response = await filesService.unzipFile(file['name'])
+			const responseJSON = await response.clone().json()
+			if (response.status === 200) {
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+			} else {
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+			}
+		} catch (e) {
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при распаковке файла"))
+		}
+	},
 	renameFile: (file: IElement, name: string) => async (dispatch: AppDispatch) => {
 		try {
 			dispatch(FilesActionCreators.setFilesLoading(true))

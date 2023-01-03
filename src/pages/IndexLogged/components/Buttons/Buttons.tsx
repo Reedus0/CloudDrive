@@ -15,10 +15,11 @@ import './Buttons.scss'
 const Buttons = () => {
 
   const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, downloadFile, renameFile, pasteFile, setSelectedFile, setCopiedFile } = useActions()
+  const { setPrompt, deleteFile, downloadFile, renameFile, pasteFile, setSelectedFile, setCopiedFile, unzipFile } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
+  const [isPublic, isPublicSet] = useState<boolean>(false)
 
   const navigate = useNavigate()
 
@@ -42,7 +43,6 @@ const Buttons = () => {
 
   const openElement = () => {
     if (selectedFile['type'] === IElementTypes.FILE) {
-      console.log(true)
       setPrompt(
         <Prompt >
           <Preview />
@@ -63,6 +63,10 @@ const Buttons = () => {
       nameSet("")
       refreshAllFiles()
     }
+  }
+
+  const changePrivacy = (privacy: boolean) => {
+    isPublicSet(privacy)
   }
 
   const handleCopy = (path: string, file: IElement, copy: boolean) => {
@@ -98,7 +102,20 @@ const Buttons = () => {
               }}
             />}
           <div className='browser-buttons__info'>
-            <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
+            <div className='browser-buttons__type-wrapper'>
+              <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
+              <div className="browser-buttons__checkbox-wrapper">
+                <p className='browser-buttons__checkbox-title' onClick={() => changePrivacy(!isPublic)}>Публичный</p>
+                <label>
+                  <input
+                    className='browser-buttons__checkbox-checkbox'
+                    type="checkbox"
+                    checked={isPublic}
+                    onChange={() => changePrivacy(!isPublic)}
+                  />
+                </label>
+              </div>
+            </div>
             <div className='browser-buttons__file-info'>
               <h1 className='browser-buttons__info-field'>
                 {selectedFile.owner}
@@ -114,7 +131,7 @@ const Buttons = () => {
         </div>
           <div className='browser-buttons__buttons'>
             {selectedFile.type === IElementTypes.ZIP ?
-              <button className='browser-buttons__button' disabled={isEditing} onClick={() => null}>Разархивировать</button>
+              <button className='browser-buttons__button' disabled={isEditing} onClick={() => unzipFile(selectedFile)}>Разархивировать</button>
               :
               <button className='browser-buttons__button' disabled={isEditing} onClick={() => openElement()}>Открыть</button>
             }

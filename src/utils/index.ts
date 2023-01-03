@@ -15,7 +15,6 @@ export const formatFiles = (element: any) => {
 export const formatRequestFiles = (files: object): IElement[] => {
   let result: IElement[] = []
   for (let i = 0; i < Object.keys(files).length; i++) {
-    console.log(Object.keys(files)[i].split('.').pop())
     result.push({
       'name': (Object.keys(files))[i],
       'type': (Object.values(files))[i][0][0] == '-' ?  ((Object.keys(files))[i]).split('.').pop() === 'zip' ? IElementTypes.ZIP : IElementTypes.FILE  : IElementTypes.FOLDER,
@@ -47,6 +46,10 @@ export const download = (file: File) => {
 
   document.body.removeChild(link)
   window.URL.revokeObjectURL(url)
+}
+
+export const getFileSource = (type: string, extension: string): string => {
+  return ''
 }
 
 // - l silka

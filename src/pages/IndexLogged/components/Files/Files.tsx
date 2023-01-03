@@ -13,7 +13,7 @@ import Prompt from '../../../../components/Prompt/Prompt';
 const Files = () => {
 
   const { files, filesAreLoading } = useTypedSelector(state => state.files);
-  const { setSelectedFile, setFilesPath, addFile, setPrompt } = useActions()
+  const { setSelectedFile, setFilesPath, addFile, setPrompt, unzipFile } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
 
@@ -98,7 +98,7 @@ const Files = () => {
                 if (file['type'] == IElementTypes.FOLDER) {
                   navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
                 } else if (file['type'] == IElementTypes.ZIP) {
-                  
+                  unzipFile(file)
                 } else {
                   setPrompt(
                     <Prompt >

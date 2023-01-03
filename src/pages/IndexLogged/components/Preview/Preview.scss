@@ -6,19 +6,83 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &__inner{
+
+    &__inner {
+
         display: flex;
         justify-content: center;
         align-items: center;
         height: 70vh;
+
         @media (max-width: 767px) {
             height: 50vh;
             padding: 15px 0;
         }
     }
-    &__file{
+
+    &__file {
         max-width: 100%;
         max-height: 100%;
+        width: 100%;
+        height: 100%;
         border: none;
+
+        &._img {
+            width: auto;
+            height: auto;
+        }
+    }
+
+    &__loading {
+        border-radius: 100px 0px 60px 0;
+        transition: all 0.3s ease 0s;
+        z-index: 1000;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include themify($themes) {
+            opacity: 0.1;
+            background: themed('mainColor')
+        }
+
+        @media (max-width: 767px) {
+            border-radius: 60px 0px 40px 0;
+        }
+    }
+
+    &__ring {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+    }
+
+    &__ring:after {
+        content: " ";
+        display: block;
+        width: 44px;
+        height: 44px;
+
+        border-radius: 50%;
+
+        @include themify($themes) {
+            border: 6px solid themed('mainColor');
+            border-color: themed('secondColor') transparent themed('secondColor') transparent;
+        }
+
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 }

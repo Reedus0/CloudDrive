@@ -16,6 +16,8 @@
 
   }
 
+
+
   &__top {
     min-height: 130px;
     border-bottom: 3px solid #B3B3B3;
@@ -121,7 +123,8 @@
     margin: 7.5px 0;
 
     @include themify($themes) {
-      color: themed('mainColor')
+      color: themed('mainColor');
+      
     }
 
     &:disabled {
@@ -134,7 +137,7 @@
     }
 
     @media (max-width: 767px) {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 20px;
       margin: 0px;
 
@@ -159,14 +162,14 @@
     }
 
     @media (max-width: 767px) {
-      width: 25vw;
+      width: auto;
       line-height: 20px;
       font-size: 14px;
     }
   }
 
-  &__info{
-   margin-bottom: 5px;
+  &__info {
+    margin-bottom: 5px;
   }
 
   &__file-info {
@@ -174,6 +177,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+
     @media (max-width: 767px) {
       display: none;
     }
@@ -188,8 +192,19 @@
     font-size: 18px;
     line-height: 24px;
     color: #929292;
-    &:not(:last-child){
+
+    &:not(:last-child) {
       margin-right: 10px;
+    }
+  }
+
+  &__type-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
   }
 
@@ -211,6 +226,52 @@
     }
   }
 
+  &__checkbox-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__checkbox-title {
+    cursor: pointer;
+    user-select: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #929292;
+    margin-right: 7.5px;
+    @media (max-width: 767px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__checkbox-checkbox {
+    position: relative;
+    appearance: none;
+    margin-top: 4px;
+    width: 15px;
+    height: 15px;
+  
+    border: 1px solid #929292;
+    outline: none;
+    cursor: pointer;
+    &:checked {
+      &::after {
+        color: #929292;
+        display: block;
+        content: '¬';
+        font-size: 19px;
+        position: absolute;
+        bottom: -5.7px;
+        left: 2px;
+        transform: rotate(135deg);
+      }
+    }
+  }
+
   &__create {
     user-select: none;
     transition: all 0.3s ease 0s;
@@ -226,7 +287,7 @@
     border: none;
     background: none;
 
-    
+
 
     &:not(:last-child) {
       margin-right: 7.5px;
@@ -252,12 +313,15 @@
     border: none;
     border-radius: 10px;
     padding: 10px;
+
     @include themify($themes) {
       background: themed('background');
       color: themed('mainColor');
     }
+
     font-size: 20px;
     width: 20vw;
+
     @media (max-width: 767px) {
       font-size: 16px;
       width: calc(25vw - 20px);
