@@ -1,6 +1,6 @@
 export class API {
 
-  link = ""
+  link = window.location.origin
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {

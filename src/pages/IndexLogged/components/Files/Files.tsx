@@ -12,7 +12,7 @@ import Prompt from '../../../../components/Prompt/Prompt';
 
 const Files = () => {
 
-  const { files, filesAreLoading } = useTypedSelector(state => state.files);
+  const { files, filesAreLoading, path } = useTypedSelector(state => state.files);
   const { setSelectedFile, setFilesPath, addFile, setPrompt, unzipFile } = useActions()
 
   const [tilesView, tilesViewSet] = useState<boolean>(false)
@@ -56,7 +56,7 @@ const Files = () => {
     <div className='browser-files'>
       <div className='browser-files__header header-browser'>
         <div className='header-browser__buttons'>
-          <button className='header-browser__button _left' disabled={location.key === 'default' || filesAreLoading} onClick={() => navigate(-1)}>^</button>
+          <button className='header-browser__button _left' disabled={path === '/' || filesAreLoading} onClick={() => navigate(-1)}>^</button>
           <button className='header-browser__button _right' disabled={filesAreLoading} onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__right'>

@@ -13,14 +13,10 @@ export const formatFiles = (element: any) => {
 }
 
 export const formatRequestFiles = (files: object, publicFiles: string[], path: string): IElement[] => {
-  console.log(files)
-  console.log(path)
-  console.log(publicFiles)
   let fileIsPublic: boolean = false
   
   let result: IElement[] = []
   for (let i = 0; i < Object.keys(files).length; i++) {
-    console.log(path === '/' ? '' + (Object.keys(files))[i] : path + '/' + (Object.keys(files))[i])
     if(publicFiles.includes(path === '/' ? '' + (Object.keys(files))[i] : path + '/' + (Object.keys(files))[i] )){
       fileIsPublic = true
     }
