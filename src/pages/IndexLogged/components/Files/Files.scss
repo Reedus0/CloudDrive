@@ -380,6 +380,7 @@
   }
 
   &__refresh {
+
     user-select: none;
     cursor: pointer;
     background: none;
@@ -388,6 +389,10 @@
     justify-content: center;
     align-items: center;
     margin-right: 5px;
+    &:disabled{
+      cursor: default;
+      opacity: 0.5;
+    }
   }
 
   &__refresh-icon {

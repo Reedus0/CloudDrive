@@ -3,6 +3,7 @@ export interface IElement {
   owner: string,
   lastUpdated: string,
   size: string,
+  public: boolean,
   type: IElementTypes
 }
 

@@ -42,26 +42,26 @@ const Files = () => {
     uploadElement(event.dataTransfer.files)
   }
 
-  const updatePage = () => {
+  const updatePage = (goBack: boolean) => {
     setSelectedFile({} as IElement)
-    setFilesPath(document.location.pathname, navigate)
+    setFilesPath(document.location.pathname, navigate, goBack)
     refreshAllFiles()
   }
 
   useEffect(() => {
-    updatePage()
+    updatePage(true)
   }, [location])
 
   return (
     <div className='browser-files'>
       <div className='browser-files__header header-browser'>
         <div className='header-browser__buttons'>
-          <button className='header-browser__button _left' disabled={location.key === 'default'} onClick={() => navigate(-1)}>^</button>
-          <button className='header-browser__button _right' onClick={() => navigate(1)}>^</button>
+          <button className='header-browser__button _left' disabled={location.key === 'default' || filesAreLoading} onClick={() => navigate(-1)}>^</button>
+          <button className='header-browser__button _right' disabled={filesAreLoading} onClick={() => navigate(1)}>^</button>
         </div>
         <div className='header-browser__right'>
-          <button className='header-browser__refresh' onClick={() => updatePage()}>
-            <img className='header-browser__refresh-icon' src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/refresh.png?raw=true' width={24} height={24} />
+          <button className='header-browser__refresh' disabled={filesAreLoading} onClick={() => updatePage(false)}>
+            <img className='header-browser__refresh-icon' width={24} height={24} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/refresh.png?raw=true' />
           </button>
           <div className='header-browser__view-mods'>
             <button className='header-browser__view-mode' onClick={() => { tilesViewSet(false); tilesView && setSelectedFile({} as IElement) }}>

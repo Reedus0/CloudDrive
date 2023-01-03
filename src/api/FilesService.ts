@@ -3,8 +3,15 @@ import { API } from "./API";
 export class FilesService {
   API = new API()
   path: string = '/'
+  publicFiles: string[] = []
   constructor(path: string) {
     this.path = path
+    this.getPublicFiles()
+  }
+  async getPublicFiles() {
+    const response: Response = await this.API.postRequest('/api/publics')
+    const responseJSON = await response.clone().json()
+    this.publicFiles = responseJSON['files']
   }
   setPath(path: string) {
     this.path = path
@@ -15,11 +22,11 @@ export class FilesService {
     console.log(file)
     return this.API.fileRequest('/api/upload', formData)
   }
-  makePublic(path: string) {
-    return this.API.postRequest('/api/public' + { 'path': decodeURI(this.path) })
+  makePublic(name: string) {
+    return this.API.postRequest('/api/public', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }
-  makePrivate(path: string) {
-    return this.API.postRequest('/api/private' + { 'path': decodeURI(this.path) })
+  makePrivate(name: string) {
+    return this.API.postRequest('/api/private', { 'path': decodeURI(this.path) + (this.path === '/' ? '' : '/') + name })
   }
   getFile(path: string) {
     return this.API.postRequest('/api/static/' + path)

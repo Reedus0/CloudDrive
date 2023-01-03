@@ -12,15 +12,25 @@ export const formatFiles = (element: any) => {
   element.closest(".browser-files__element").classList.add("_active")
 }
 
-export const formatRequestFiles = (files: object): IElement[] => {
+export const formatRequestFiles = (files: object, publicFiles: string[], path: string): IElement[] => {
+  console.log(files)
+  console.log(path)
+  console.log(publicFiles)
+  let fileIsPublic: boolean = false
+  
   let result: IElement[] = []
   for (let i = 0; i < Object.keys(files).length; i++) {
+    console.log(path === '/' ? '' + (Object.keys(files))[i] : path + '/' + (Object.keys(files))[i])
+    if(publicFiles.includes(path === '/' ? '' + (Object.keys(files))[i] : path + '/' + (Object.keys(files))[i] )){
+      fileIsPublic = true
+    }
     result.push({
-      'name': (Object.keys(files))[i],
-      'type': (Object.values(files))[i][0][0] == '-' ?  ((Object.keys(files))[i]).split('.').pop() === 'zip' ? IElementTypes.ZIP : IElementTypes.FILE  : IElementTypes.FOLDER,
+      'name': (Object.keys(files))[i][(Object.keys(files))[i].length - 1] === '/' ? (Object.keys(files))[i].slice(0, -1) : (Object.keys(files))[i],
+      'type': (Object.keys(files))[i][(Object.keys(files))[i].length - 1] !== '/' ?  ((Object.keys(files))[i]).split('.').pop() === 'zip' ? IElementTypes.ZIP : IElementTypes.FILE  : IElementTypes.FOLDER,
       'owner': (Object.values(files))[i][2],
       'lastUpdated': (Object.values(files))[i][5],
       'size': (Object.values(files))[i][4],
+      'public': fileIsPublic
     })
   }
   return result

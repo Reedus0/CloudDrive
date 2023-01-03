@@ -31,7 +31,7 @@ export const FilesActionCreators = {
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
 				console.log(responseJSON['files'])
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -45,12 +45,42 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.createFile()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при создании файла"))
+		}
+	},
+	makePublic: (file: IElement, setPublic: Function) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(FilesActionCreators.setFilesLoading(true))
+			const response: Response = await filesService.makePublic(file['name'])
+			const responseJSON = await response.clone().json()
+			if (response.status === 200) {
+				setPublic(true)
+				dispatch(FilesActionCreators.setFilesLoading(false))
+			} else {
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+			}
+		} catch (e) {
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при изменении доступа"))
+		}
+	},
+	makePrivate: (file: IElement, setPrivate: Function) => async (dispatch: AppDispatch) => {
+		try {
+			dispatch(FilesActionCreators.setFilesLoading(true))
+			const response: Response = await filesService.makePrivate(file['name'])
+			const responseJSON = await response.clone().json()
+			if (response.status === 200) {
+				setPrivate(false)
+				dispatch(FilesActionCreators.setFilesLoading(false))
+			} else {
+				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
+			}
+		} catch (e) {
+			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при изменении доступа"))
 		}
 	},
 	downloadFile: (file: IElement) => async (dispatch: AppDispatch) => {
@@ -95,7 +125,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.unzipFile(file['name'])
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -109,7 +139,7 @@ export const FilesActionCreators = {
 			const response: Response = await filesService.renameFile(file['name'], name)
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -130,7 +160,7 @@ export const FilesActionCreators = {
 				responseJSON = await response.clone().json()
 			}
 			if (response.status === 200) {
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 				dispatch(FilesActionCreators.setCopiedFile({} as { 'path': string, 'file': IElement, 'copy': boolean }))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
@@ -139,26 +169,31 @@ export const FilesActionCreators = {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при вставке файла"))
 		}
 	},
-	setFilesPath: (path: string, navigate: Function) => async (dispatch: AppDispatch) => {
+	setFilesPath: (path: string, navigate: Function, goBack: boolean) => async (dispatch: AppDispatch) => {
 		try {
 			filesService.setPath(path)
+			filesService.getPublicFiles()
 			dispatch(FilesActionCreators.setFilesLoading(true))
 			const response: Response = await filesService.getFiles()
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
-				console.log(formatRequestFiles(responseJSON['files']))
-				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'])))
+				console.log(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path))
+				dispatch(FilesActionCreators.setFiles(formatRequestFiles(responseJSON['files'], filesService.publicFiles, filesService.path)))
 				dispatch(FilesActionCreators.setPathStore(path))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 				if (document.location.pathname !== '/') {
-					navigate(-1)
+					if (goBack) {
+						navigate(-1)
+					}
 				}
 			}
 		} catch (e) {
 			dispatch(FilesActionCreators.setFilesError("Произошла ошибка при загрузке файлов"))
 			if (document.location.pathname !== '/') {
-				navigate(-1)
+				if (goBack) {
+					navigate(-1)
+				}
 			}
 		}
 	},

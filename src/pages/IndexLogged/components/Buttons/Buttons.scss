@@ -230,6 +230,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 767px) {
+      flex-direction: row-reverse;
+    }
   }
 
   &__checkbox-title {
@@ -241,14 +244,19 @@
     font-size: 18px;
     line-height: 24px;
     color: #929292;
-    margin-right: 7.5px;
+    margin: 0 7.5px;
     @media (max-width: 767px) {
       font-size: 14px;
       line-height: 20px;
+      margin: 0 0 0 7.5px;
+    }
+    &._disabled{
+      cursor: default;
     }
   }
 
   &__checkbox-checkbox {
+
     position: relative;
     appearance: none;
     margin-top: 4px;
@@ -265,10 +273,13 @@
         content: '¬';
         font-size: 19px;
         position: absolute;
-        bottom: -5.7px;
+        bottom: -5px;
         left: 2px;
         transform: rotate(135deg);
       }
+    }
+    &:disabled {
+      cursor: default;
     }
   }
 

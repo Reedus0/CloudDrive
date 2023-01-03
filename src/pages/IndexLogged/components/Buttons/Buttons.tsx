@@ -14,12 +14,13 @@ import './Buttons.scss'
 
 const Buttons = () => {
 
-  const { selectedFile, copiedFile, path } = useTypedSelector(state => state.files)
-  const { setPrompt, deleteFile, downloadFile, renameFile, pasteFile, setSelectedFile, setCopiedFile, unzipFile } = useActions()
+  const { user } = useTypedSelector(state => state.auth)
+  const { selectedFile, copiedFile, path, filesAreLoading } = useTypedSelector(state => state.files)
+  const { setPrompt, deleteFile, downloadFile, renameFile, pasteFile, setSelectedFile, setCopiedFile, unzipFile, makePublic, makePrivate } = useActions()
 
   const [name, nameSet] = useState<string>("")
   const [isEditing, isEditingSet] = useState<boolean>(false)
-  const [isPublic, isPublicSet] = useState<boolean>(false)
+  const [isPublic, isPublicSet] = useState<boolean>(selectedFile.public)
 
   const navigate = useNavigate()
 
@@ -51,7 +52,6 @@ const Buttons = () => {
     } else {
       navigate(document.location.pathname === '/' ? selectedFile.name : document.location.pathname + '/' + selectedFile.name)
     }
-
   }
 
   const renameElement = () => {
@@ -66,7 +66,11 @@ const Buttons = () => {
   }
 
   const changePrivacy = (privacy: boolean) => {
-    isPublicSet(privacy)
+    if(privacy) {
+      makePublic(selectedFile, isPublicSet)
+    } else {
+      makePrivate(selectedFile, isPublicSet)
+    }
   }
 
   const handleCopy = (path: string, file: IElement, copy: boolean) => {
@@ -77,6 +81,7 @@ const Buttons = () => {
 
   useEffect(() => {
     isEditingSet(false)
+    isPublicSet(selectedFile.public)
   }, [selectedFile])
 
 
@@ -104,17 +109,18 @@ const Buttons = () => {
           <div className='browser-buttons__info'>
             <div className='browser-buttons__type-wrapper'>
               <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
-              <div className="browser-buttons__checkbox-wrapper">
-                <p className='browser-buttons__checkbox-title' onClick={() => changePrivacy(!isPublic)}>Публичный</p>
+              {selectedFile.owner === user.username &&<div className="browser-buttons__checkbox-wrapper">
+                <p className={['browser-buttons__checkbox-title', filesAreLoading || isEditing ? '_disabled' : '' ].join(' ')} onClick={() => (!(filesAreLoading) || isEditing) && changePrivacy(!isPublic)}>Публичный</p>
                 <label>
                   <input
+                    disabled={filesAreLoading || isEditing}
                     className='browser-buttons__checkbox-checkbox'
                     type="checkbox"
                     checked={isPublic}
                     onChange={() => changePrivacy(!isPublic)}
                   />
                 </label>
-              </div>
+              </div>}
             </div>
             <div className='browser-buttons__file-info'>
               <h1 className='browser-buttons__info-field'>
@@ -131,32 +137,32 @@ const Buttons = () => {
         </div>
           <div className='browser-buttons__buttons'>
             {selectedFile.type === IElementTypes.ZIP ?
-              <button className='browser-buttons__button' disabled={isEditing} onClick={() => unzipFile(selectedFile)}>Разархивировать</button>
+              <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => unzipFile(selectedFile)}>Разархивировать</button>
               :
-              <button className='browser-buttons__button' disabled={isEditing} onClick={() => openElement()}>Открыть</button>
+              <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => openElement()}>Открыть</button>
             }
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, true)}>Копировать</button>
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => handleCopy(path, selectedFile, false)}>Вырезать</button>
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => downloadElement()}>Скачать</button>
-            <button className='browser-buttons__button' disabled={isEditing} onClick={() => deleteElement()}>Удалить</button>
+            <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => handleCopy(path, selectedFile, true)}>Копировать</button>
+            <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => handleCopy(path, selectedFile, false)}>Вырезать</button>
+            <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => { isEditingSet(!isEditing); nameSet(selectedFile['name']) }}>Переименовать</button>
+            <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => downloadElement()}>Скачать</button>
+            <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => deleteElement()}>Удалить</button>
 
           </div></> :
           <div className='browser-buttons__choose'>
             <h1 className='browser-buttons__choose-title'>Выберите файл</h1>
           </div>}
         <div className='browser-buttons__buttons-bottom'>
-          <button className='browser-buttons__button' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], copiedFile['path'], copiedFile['copy'])}>Вставить</button>
+          <button className='browser-buttons__button' disabled={isEditing || Object.keys(copiedFile).length === 0 || filesAreLoading} onClick={() => pasteFile(copiedFile['file']['name'], copiedFile['path'], copiedFile['copy'])}>Вставить</button>
         </div>
         <div className='browser-buttons__bottom'>
-          <button className='browser-buttons__create' onClick={
+          <button className='browser-buttons__create' disabled={isEditing || filesAreLoading} onClick={
             () => setPrompt(
               <Prompt title="Создать">
                 <Create />
               </Prompt>
             )
           }>Создать</button>
-          <button className='browser-buttons__create' onClick={
+          <button className='browser-buttons__create' disabled={isEditing || filesAreLoading} onClick={
             () => setPrompt(
               <Prompt title="Загрузить">
                 <Upload />
@@ -166,21 +172,21 @@ const Buttons = () => {
         </div>
       </div>
       <div className='browser-buttons__upload-mobile'>
-        <button className='browser-buttons__create' disabled={isEditing} onClick={
+        <button className='browser-buttons__create' disabled={isEditing || filesAreLoading} onClick={
           () => setPrompt(
             <Prompt title="Создать">
               <Create />
             </Prompt>
           )
         }>Создать</button>
-        <button className='browser-buttons__create' disabled={isEditing} onClick={
+        <button className='browser-buttons__create' disabled={isEditing || filesAreLoading} onClick={
           () => setPrompt(
             <Prompt title="Загрузить">
               <Upload />
             </Prompt>
           )
         }>Загрузить</button>
-        <button className='browser-buttons__create' disabled={isEditing || Object.keys(copiedFile).length === 0} onClick={() => pasteFile(copiedFile['file']['name'], copiedFile['path'], copiedFile['copy'])}>Вставить</button>
+        <button className='browser-buttons__create' disabled={isEditing || Object.keys(copiedFile).length === 0 || filesAreLoading} onClick={() => pasteFile(copiedFile['file']['name'], copiedFile['path'], copiedFile['copy'])}>Вставить</button>
 
       </div>
     </>
