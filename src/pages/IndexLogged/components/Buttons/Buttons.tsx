@@ -54,6 +54,12 @@ const Buttons = () => {
     }
   }
 
+  const unzipElement = () => {
+    setSelectedFile({} as IElement)
+    unzipFile(selectedFile)
+    refreshAllFiles()
+  }
+
   const renameElement = () => {
     if (name !== "") {
       setSelectedFile({ ...selectedFile, name: name })
@@ -137,7 +143,7 @@ const Buttons = () => {
         </div>
           <div className='browser-buttons__buttons'>
             {selectedFile.type === IElementTypes.ZIP ?
-              <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => unzipFile(selectedFile)}>Разархивировать</button>
+              <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => unzipElement()}>Разархивировать</button>
               :
               <button className='browser-buttons__button' disabled={isEditing || filesAreLoading} onClick={() => openElement()}>Открыть</button>
             }

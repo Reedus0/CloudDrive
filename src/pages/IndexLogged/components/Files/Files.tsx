@@ -48,6 +48,25 @@ const Files = () => {
     refreshAllFiles()
   }
 
+  const openElement = (file: IElement) => {
+    if (file['type'] === IElementTypes.FILE) {
+      setPrompt(
+        <Prompt >
+          <Preview />
+        </Prompt>
+      )
+    } else {
+      navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
+    }
+  }
+
+  const unzipElement = (file: IElement) => {
+    setSelectedFile({} as IElement)
+    unzipFile(file)
+    refreshAllFiles()
+  }
+
+
   useEffect(() => {
     updatePage(true)
   }, [location])
@@ -94,20 +113,14 @@ const Files = () => {
           {files.length ? files.map((file: IElement, index: number) =>
             <div className={['browser-files__element', tilesView ? '_tiles' : '_rows'].join(' ')} key={index} onClick={(e) => {
               setSelectedFile(file)
+              formatFiles(e.target)
               if (e.detail === 2) {
-                if (file['type'] == IElementTypes.FOLDER) {
-                  navigate(document.location.pathname === '/' ? file.name : document.location.pathname + '/' + file.name)
-                } else if (file['type'] == IElementTypes.ZIP) {
-                  unzipFile(file)
+                if (file['type'] == IElementTypes.ZIP) {
+                  unzipElement(file)
                 } else {
-                  setPrompt(
-                    <Prompt >
-                      <Preview />
-                    </Prompt>
-                  )
+                  openElement(file)
                 }
               }
-              formatFiles(e.target)
             }
             }>
               {file.type === IElementTypes.FOLDER ?

@@ -1,6 +1,7 @@
 export class API {
 
-  link = window.location.origin
+  link = 'http://localhost:9999'
+  // link = window.location.origin // if build
 
   async postRequest(path: string, data: object = {}) {
     return fetch(this.link + path, {
