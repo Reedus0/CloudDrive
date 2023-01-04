@@ -72,7 +72,7 @@ const Buttons = () => {
   }
 
   const changePrivacy = (privacy: boolean) => {
-    if(privacy) {
+    if (privacy) {
       makePublic(selectedFile, isPublicSet)
     } else {
       makePrivate(selectedFile, isPublicSet)
@@ -115,8 +115,8 @@ const Buttons = () => {
           <div className='browser-buttons__info'>
             <div className='browser-buttons__type-wrapper'>
               <h2 className='browser-buttons__type'>{selectedFile.type}</h2>
-              {selectedFile.owner === user.username &&<div className="browser-buttons__checkbox-wrapper">
-                <p className={['browser-buttons__checkbox-title', filesAreLoading || isEditing ? '_disabled' : '' ].join(' ')} onClick={() => (!(filesAreLoading) || isEditing) && changePrivacy(!isPublic)}>Публичный</p>
+              {selectedFile.owner === user.username && selectedFile.type !== IElementTypes.FOLDER && <div className="browser-buttons__checkbox-wrapper">
+                <p className={['browser-buttons__checkbox-title', filesAreLoading || isEditing ? '_disabled' : ''].join(' ')} onClick={() => (!(filesAreLoading) || isEditing) && changePrivacy(!isPublic)}>Публичный</p>
                 <label>
                   <input
                     disabled={filesAreLoading || isEditing}
