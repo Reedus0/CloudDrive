@@ -94,15 +94,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &__left {}
+
+    &__left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
 
     &__icon {}
 
-    &__name {}
+    &__name {
+        user-select: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+    }
 
-    &__right {}
+    &__right {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
 
-    &__copy {}
+    &__copy {
+        user-select: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+    }
 
     &__copy-icon {}
 }
