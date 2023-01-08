@@ -20,6 +20,8 @@
         }
     }
 
+    &__header {}
+
     &__file {
         user-select: none;
         max-width: 100%;
@@ -86,4 +88,21 @@
             transform: rotate(360deg);
         }
     }
+}
+
+.header-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__left {}
+
+    &__icon {}
+
+    &__name {}
+
+    &__right {}
+
+    &__copy {}
+
+    &__copy-icon {}
 }

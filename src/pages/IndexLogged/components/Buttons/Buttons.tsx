@@ -63,11 +63,13 @@ const Buttons = () => {
   const renameElement = () => {
     if (name !== "") {
       setSelectedFile({ ...selectedFile, name: name })
-      renameFile(selectedFile, name)
-      isEditingSet(!isEditing)
-      setSelectedFile({} as IElement)
-      nameSet("")
-      refreshAllFiles()
+      if (name !== selectedFile.name) {
+        renameFile(selectedFile, name)
+        isEditingSet(!isEditing)
+        setSelectedFile({} as IElement)
+        nameSet("")
+        refreshAllFiles()
+      }
     }
   }
 
