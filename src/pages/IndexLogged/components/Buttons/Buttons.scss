@@ -19,7 +19,7 @@
 
 
   &__top {
-    min-height: 130px;
+    min-height: 140px;
     border-bottom: 3px solid #B3B3B3;
     display: flex;
     flex-direction: column;
@@ -202,8 +202,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       flex-wrap: wrap;
+    }
+    @media (max-width: 767px) {
       justify-content: flex-end;
     }
   }
@@ -214,9 +216,12 @@
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    margin: 2px 0 2px;
 
     color: #929292;
+
+    @media (max-width: 991px) {
+      margin-top: 5px;
+    }
 
     @media (max-width: 767px) {
       font-size: 14px;
@@ -226,11 +231,13 @@
   }
 
   &__checkbox-wrapper {
+    margin-top: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     @media (max-width: 767px) {
       flex-direction: row-reverse;
+      margin-top: 0;
     }
   }
 
@@ -244,6 +251,9 @@
     line-height: 24px;
     color: #929292;
     margin: 0 7.5px;
+    @media (max-width: 991px) {
+      margin: 0 7.5px 0 0;
+    }
     @media (max-width: 767px) {
       font-size: 14px;
       line-height: 20px;

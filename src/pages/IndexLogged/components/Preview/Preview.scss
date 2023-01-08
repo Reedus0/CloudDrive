@@ -12,7 +12,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 70vh;
+        height: 60vh;
 
         @media (max-width: 767px) {
             height: 50vh;
@@ -95,13 +95,27 @@
     justify-content: space-between;
     align-items: center;
 
+    margin: 0 0 20px;
+
+    @media (max-width: 767px) {
+        margin: 10px 0 5px;
+        justify-content: center;
+    }
+
     &__left {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+
+        @media (max-width: 767px) {
+            display: none;
+        }
     }
 
-    &__icon {}
+    &__icon {
+        user-select: none;
+        margin-right: 7.5px;
+    }
 
     &__name {
         user-select: none;
@@ -113,17 +127,35 @@
 
     &__right {
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-end;
         align-items: center;
+
+        @media (max-width: 767px) {
+            flex-direction: row-reverse;
+        }
     }
 
     &__copy {
+        cursor: pointer;
         user-select: none;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
+
+        @media (max-width: 767px) {
+            font-size: 16px;
+        }
     }
 
-    &__copy-icon {}
-} 
+    &__copy-icon {
+        cursor: pointer;
+        user-select: none;
+        margin-left: 7.5px;
+        @media (max-width: 767px) {
+            margin-right: 7.5px;
+            width: 20px;
+            height: 22px;
+        }
+    }
+}

@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export default function filesReducer(state = initialState, action: FilesAction): FilesState {
-  switch (action.type) { 
+  switch (action.type) {
     case FilesActionEnum.SET_FILES:
       return { ...state, files: action.payload, filesAreLoading: false }
     case FilesActionEnum.DELETE_FILE:
@@ -26,7 +26,9 @@ export default function filesReducer(state = initialState, action: FilesAction):
       return { ...state, filesAreLoading: action.payload }
     case FilesActionEnum.SET_COPIED_FILE:
       return { ...state, copiedFile: action.payload, filesAreLoading: false }
-    
+    case FilesActionEnum.SET_FILE_PRIVACY:
+      return { ...state, files: state.files.map((file: IElement) => { if (file === action.payload) { file.public = !file.public } return file }), filesAreLoading: false }
+
 
     default:
       return state;

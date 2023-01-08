@@ -17,7 +17,8 @@ export enum FilesActionEnum {
   SET_FILES_LOADING = "SET_FILES_LOADING",
   PASTE_FILE = "PASTE_FILE",
   SET_PATH = "SET_PATH",
-  SET_COPIED_FILE = "SET_COPIED_FILE"
+  SET_COPIED_FILE = "SET_COPIED_FILE",
+  SET_FILE_PRIVACY = "SET_FILE_PRIVACY"
 }
 
 export interface SetFilesAction {
@@ -30,6 +31,10 @@ export interface SetSelectedFileAction {
   payload: IElement;
 }
 
+export interface SetFilePrivacyAction {
+  type: FilesActionEnum.SET_FILE_PRIVACY;
+  payload: IElement;
+}
 
 export interface SetCopiedFileAction {
   type: FilesActionEnum.SET_COPIED_FILE;
@@ -69,4 +74,5 @@ export type FilesAction =
   SetSelectedFileAction |
   PasteFileAction |
   SetFilesPathAction |
-  SetCopiedFileAction 
+  SetCopiedFileAction |
+  SetFilePrivacyAction

@@ -13,8 +13,8 @@ const initialState = {
 }
 
 const files = [
-  { name: 'usr/bin', type: 'Папка', owner: 'root', lastUpdated: '16 Sep 02:08', size: '7' } as IElement,
-  { name: 'boot', type: 'Папка', owner: 'root', lastUpdated: '26 Dec 06:16', size: '4.0K' } as IElement
+  { name: 'usr/bin', type: 'Папка', owner: 'root', lastUpdated: '16 Sep 02:08', size: '7', public: false } as IElement,
+  { name: 'boot', type: 'Папка', owner: 'root', lastUpdated: '26 Dec 06:16', size: '4.0K', public: true } as IElement
 ]
 
 
@@ -31,7 +31,7 @@ describe('Files reducer tests', () => {
     initialState['files'] = files
     expect(filesReducer(initialState, {
       type: FilesActionEnum.DELETE_FILE, payload: files[0]
-    })['files']).toEqual([{ name: 'boot', type: 'Папка', owner: 'root', lastUpdated: '26 Dec 06:16', size: '4.0K' } as IElement])
+    })['files']).toEqual([{ name: 'boot', type: 'Папка', owner: 'root', lastUpdated: '26 Dec 06:16', size: '4.0K', public: true } as IElement])
   })
   test('DELETE_FILE empty test', () => {
     initialState['files'] = files
@@ -74,5 +74,15 @@ describe('Files reducer tests', () => {
     expect(filesReducer(initialState, {
       type: FilesActionEnum.SET_COPIED_FILE, payload: {} as { 'path': string, 'file': IElement, 'copy': boolean }
     })['copiedFile']).toEqual({} as { 'path': string, 'file': IElement, 'copy': boolean })
+  })
+  test('SET_FILE_PRIVACY normal test', () => {
+    expect(filesReducer(initialState, {
+      type: FilesActionEnum.SET_FILE_PRIVACY, payload: files[0]
+    })['files'][0]['public']).toEqual(true)
+  })
+  test('SET_FILE_PRIVACY normal test', () => {
+    expect(filesReducer(initialState, {
+      type: FilesActionEnum.SET_FILE_PRIVACY, payload: files[1]
+    })['files'][1]['public']).toEqual(false)
   })
 })

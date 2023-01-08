@@ -5,7 +5,7 @@ import { IElement } from "../../../models/IElement";
 import { blobToFile, download, formatRequestFiles, refreshAllFiles } from "../../../utils";
 import { NotificationActionCreators } from "../notification/action-creators";
 import { PromptActionCreators } from "../prompt/action-creators";
-import { SetFilesAction, FilesActionEnum, DeleteFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, SetFilesPathAction, SetCopiedFileAction } from "./types";
+import { SetFilesAction, FilesActionEnum, DeleteFileAction, SetFilesErrorAction, SetSelectedFileAction, SetFilesLoadingAction, SetFilesPathAction, SetCopiedFileAction, SetFilePrivacyAction } from "./types";
 
 const filesService = new FilesService('/')
 
@@ -15,6 +15,7 @@ export const FilesActionCreators = {
 	setCopiedFile: (file: { 'path': string, 'file': IElement, 'copy': boolean }): SetCopiedFileAction => ({ type: FilesActionEnum.SET_COPIED_FILE, payload: file }),
 	setFilesLoading: (isLoading: boolean): SetFilesLoadingAction => ({ type: FilesActionEnum.SET_FILES_LOADING, payload: isLoading }),
 	setFilesErrorStore: (error: string): SetFilesErrorAction => ({ type: FilesActionEnum.SET_FILES_ERROR, payload: error }),
+	setFilePrivacyStore: (file: IElement): SetFilePrivacyAction => ({ type: FilesActionEnum.SET_FILE_PRIVACY, payload: file }),
 	deleteFileStore: (file: IElement): DeleteFileAction => ({ type: FilesActionEnum.DELETE_FILE, payload: file }),
 	setPathStore: (path: string): SetFilesPathAction => ({ type: FilesActionEnum.SET_PATH, payload: path }),
 	setFilesError: (error: string): any => (dispatch: AppDispatch) => {
@@ -60,7 +61,7 @@ export const FilesActionCreators = {
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
 				setPublic(true)
-				dispatch(FilesActionCreators.setFilesLoading(false))
+				dispatch(FilesActionCreators.setFilePrivacyStore(file))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
@@ -75,7 +76,7 @@ export const FilesActionCreators = {
 			const responseJSON = await response.clone().json()
 			if (response.status === 200) {
 				setPrivate(false)
-				dispatch(FilesActionCreators.setFilesLoading(false))
+				dispatch(FilesActionCreators.setFilePrivacyStore(file))
 			} else {
 				dispatch(FilesActionCreators.setFilesError(responseJSON['error']))
 			}
