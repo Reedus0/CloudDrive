@@ -36,12 +36,12 @@ const Preview = () => {
         <div className='file-preview'>
             <div className='file-preview__header header-preview'>
                 <div className='header-preview__left'>
-                    <img className='header-preview__icon' src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
+                    <img className='header-preview__icon' width={20} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/file.png?raw=true' />
                     <h1 className='header-preview__name'>{selectedFile['name']}</h1>
                 </div>
                 <div className='header-preview__right'>
                     <h1 className='header-preview__copy'>Копировать ссылку</h1>
-                    <img className='header-preview__copy-icon' src='https://pics.freeicons.io/uploads/icons/png/14095787331600002636-24.png'></img>
+                    <img className='header-preview__copy-icon' width={20} height={20} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/copy.png?raw=true'></img>
                 </div>
             </div>
             <div className='file-preview__inner'>
