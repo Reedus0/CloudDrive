@@ -52,7 +52,7 @@ const Preview = () => {
                 </div>
                 <div className='header-preview__right' onClick={() => copyToClipboard()}>
                     <h1 className='header-preview__copy'>Копировать ссылку</h1>
-                    <img className='header-preview__copy-icon' width={23} height={25} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/copy.png?raw=true'></img>
+                    <img className='header-preview__copy-icon' width={22} height={24} src='https://github.com/Reedus0/CloudDrive/blob/CloudDrive-master/src/img/copy.png?raw=true'></img>
                 </div>
             </div>
             <div className='file-preview__inner'>

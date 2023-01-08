@@ -20,8 +20,6 @@
         }
     }
 
-    &__header {}
-
     &__file {
         user-select: none;
         max-width: 100%;
@@ -114,7 +112,10 @@
 
     &__icon {
         user-select: none;
-        margin-right: 7.5px;
+        margin-right: 10px;
+        @include themify($themes) {
+            filter: invert(themed('invert'))
+          }
     }
 
     &__name {
@@ -123,6 +124,10 @@
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
+
+        @include themify($themes) {
+            color: themed('mainColor')
+        }
     }
 
     &__right {
@@ -146,16 +151,24 @@
         @media (max-width: 767px) {
             font-size: 16px;
         }
+
+        @include themify($themes) {
+            color: themed('mainColor')
+        }
     }
 
     &__copy-icon {
         cursor: pointer;
         user-select: none;
-        margin-left: 7.5px;
+        margin-left: 10px;
+
         @media (max-width: 767px) {
             margin-right: 7.5px;
             width: 20px;
             height: 22px;
         }
+        @include themify($themes) {
+            filter: invert(themed('invert'))
+          }
     }
 }
